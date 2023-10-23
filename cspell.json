@@ -1,0 +1,11 @@
+{
+	"import": ["@oly_op/cspell-dict/cspell-ext.json"],
+	"ignorePaths": ["cspell-dict.txt", "book/client/.env*"],
+	"dictionaries": ["custom-words"],
+	"dictionaryDefinitions": [
+		{
+			"name": "custom-words",
+			"path": "./cspell-dict.txt"
+		}
+	]
+}
