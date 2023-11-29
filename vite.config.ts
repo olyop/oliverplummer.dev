@@ -1,15 +1,28 @@
-/// <reference types="vitest" />
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react-swc'
-import tsconfigPaths from 'vite-tsconfig-paths'
+import { readFileSync } from "node:fs";
 
-// https://vitejs.dev/config https://vitest.dev/config
+import react from "@vitejs/plugin-react-swc";
+import { defineConfig } from "vite";
+import { imagetools } from "vite-imagetools";
+import checker from "vite-plugin-checker";
+import tsconfigPaths from "vite-tsconfig-paths";
+
 export default defineConfig({
-  plugins: [react(), tsconfigPaths()],
-  test: {
-    globals: true,
-    environment: 'happy-dom',
-    setupFiles: '.vitest/setup',
-    include: ['**/test.{ts,tsx}']
-  }
-})
+	plugins: [
+		react(),
+		tsconfigPaths(),
+		imagetools(),
+		checker({
+			typescript: true,
+			eslint: {
+				lintCommand: "eslint './src/**/*.{ts,tsx}'",
+			},
+		}),
+	],
+	server: {
+		host: true,
+		https: {
+			cert: readFileSync("/home/op/.certificates/localhost.pem"),
+			key: readFileSync("/home/op/.certificates/localhost-key.pem"),
+		},
+	},
+});

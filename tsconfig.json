@@ -1,22 +1,18 @@
 {
-  "compilerOptions": {
-    "baseUrl": "./src",
-    "target": "esnext",
-    "lib": ["dom", "dom.iterable", "esnext"],
-    "allowJs": true,
-    "skipLibCheck": true,
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-    "strict": true,
-    "forceConsistentCasingInFileNames": true,
-    "module": "esnext",
-    "moduleResolution": "bundler",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "noEmit": true,
-    "jsx": "react-jsx",
-    "types": ["vite/client", "vitest/globals", "@testing-library/jest-dom"]
-  },
-  "include": ["src"],
-  "exclude": ["node_modules"]
+	"extends": "@oly_op/tsconfig",
+	"compilerOptions": {
+		"baseUrl": "./src",
+		"lib": ["dom", "dom.iterable", "esnext"],
+		"allowJs": true,
+		"moduleResolution": "bundler",
+		"module": "ESNext",
+		"resolveJsonModule": true,
+		"isolatedModules": true,
+		"noEmit": true,
+		"jsx": "react-jsx",
+		"exactOptionalPropertyTypes": false,
+		"types": ["vite/client"]
+	},
+	"include": ["src"],
+	"exclude": ["node_modules"]
 }
