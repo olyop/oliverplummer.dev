@@ -2,9 +2,9 @@ import { FC, ReactNode } from "react";
 
 const baseIconClassName = "h-5 w-5";
 
-const Button: FC<ButtonPropTypes> = ({
+const Button: FC<ButtonProps> = ({
 	id,
-	transparent = false,
+	isTransparent = false,
 	isSubmit = false,
 	leftIcon,
 	text,
@@ -13,6 +13,7 @@ const Button: FC<ButtonPropTypes> = ({
 	onClick,
 	tabIndex,
 	className,
+	spanClassName,
 	iconClassName,
 	textClassName,
 	disabled,
@@ -26,35 +27,26 @@ const Button: FC<ButtonPropTypes> = ({
 		aria-label={ariaLabel}
 		onClick={onClick}
 		tabIndex={tabIndex}
-		className={`${
+		className={`font-bold select-none transition-all ease-in-out duration-200 text-sm uppercase flex items-center justify-center gap-2 cursor-pointer ${
 			text === undefined && (leftIcon !== undefined || rightIcon !== undefined)
 				? "p-2 rounded-full w-9 h-9"
-				: "px-2 h-9"
-		} font-bold rounded-xl ${
-			transparent
-				? "text-black bg-transparent hover:bg-gray-200 focus-visible:bg-gray-200"
-				: disabled
-				  ? "cursor-not-allowed text-gray-500 bg-gray-200 !shadow-none"
-				  : "cursor-pointer text-secondary bg-primary-dark hover:bg-primary focus-visible:bg-primary shadow !shadow-black"
-		} text-sm uppercase flex items-center justify-center gap-2 ${transparent ? "" : "shadow-sm"} ${
-			disabled ? "" : "hover:shadow-lg focus-visible:shadow-lg"
-		} select-none transition-all ease-in-out duration-300 items-center ${className ?? ""}`}
+				: "px-4 rounded-xl h-9"
+		} ${
+			isTransparent
+				? "text-black bg-isTransparent hover:bg-gray-200"
+				: "shadow-lg hover:shadow-xl shadow-primary-light/30 text-white bg-primary hover:bg-primary-light"
+		}  ${className ?? ""}`}
 	>
-		{leftIcon && leftIcon(`${baseIconClassName} ${iconClassName ?? ""}`)}
-		{text &&
-			(textClassName ? (
-				<span className={` transition-all ease-in-out duration-300 ${textClassName}`}>{text}</span>
-			) : (
-				text
-			))}
-		{rightIcon && rightIcon(`${baseIconClassName} ${iconClassName ?? ""}`)}
+		{leftIcon && leftIcon(`${spanClassName ?? ""} ${baseIconClassName} ${iconClassName ?? ""}`)}
+		{text && <span className={`${spanClassName} ${textClassName}`}>{text}</span>}
+		{rightIcon && rightIcon(`${spanClassName ?? ""} ${baseIconClassName} ${iconClassName ?? ""}`)}
 		{childrenNode}
 	</button>
 );
 
-export interface ButtonPropTypes {
+export interface ButtonProps {
 	id?: string;
-	transparent?: boolean;
+	isTransparent?: boolean;
 	isSubmit?: boolean;
 	leftIcon?: (className: string) => ReactNode;
 	text?: string | undefined;
@@ -63,6 +55,7 @@ export interface ButtonPropTypes {
 	rightIcon?: (className: string) => ReactNode;
 	onClick?: (() => void) | undefined;
 	className?: string | undefined;
+	spanClassName?: string | undefined;
 	iconClassName?: string | undefined;
 	textClassName?: string;
 	disabled?: boolean;

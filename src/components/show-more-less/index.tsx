@@ -1,8 +1,8 @@
-import { FC, PropsWithChildren, useEffect, useRef, useState } from "react";
+import { FC, useEffect, useRef, useState } from "react";
 
 const isTextClampled = (paragraph: HTMLParagraphElement) => paragraph.scrollHeight > paragraph.clientHeight;
 
-const ShowMoreLess: FC<PropsWithChildren<PropTypes>> = ({ children, className }) => {
+const ShowMoreLess: FC<Props> = ({ text, className }) => {
 	const ref = useRef<HTMLParagraphElement | null>(null);
 
 	const [showMore, setShowMore] = useState(false);
@@ -18,21 +18,28 @@ const ShowMoreLess: FC<PropsWithChildren<PropTypes>> = ({ children, className })
 		}
 	}, []);
 
+	const buttonText = showMore ? "Show less" : "Show more";
+
 	return (
 		<div>
 			<p ref={ref} className={`${showMore ? "" : "line-clamp-3"} ${className ?? ""}`}>
-				{children}
+				{text}
 			</p>
 			{showButton && (
-				<button className="text-blue-600" onClick={handleShowMore}>
-					{showMore ? "Show less" : "Show more"}
+				<button
+					className="text-blue-600 hover:text-blue-800 hover:underline"
+					onClick={handleShowMore}
+					title={buttonText}
+				>
+					{buttonText}
 				</button>
 			)}
 		</div>
 	);
 };
 
-interface PropTypes {
+interface Props {
+	text: string;
 	className?: string;
 }
 

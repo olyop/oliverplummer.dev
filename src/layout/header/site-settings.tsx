@@ -5,14 +5,18 @@ import { FC } from "react";
 
 const SiteSettings: FC = () => {
 	const breakpoint = useBreakpoint();
+
+	if (breakpoint === Breakpoint.TINY) {
+		return null;
+	}
+
 	return (
 		<Button
-			ariaLabel="Site Settings"
-			className="h-14 lg:w-auto px-6 gap-4 !shadow-none"
+			ariaLabel="Settings"
 			textClassName="text-xl"
-			iconClassName="h-12 w-12"
+			className="h-14 w-auto lg:px-6 gap-4 !shadow-none"
 			leftIcon={className => <Cog6ToothIcon className={className} />}
-			text={breakpoint === Breakpoint.TINY || breakpoint === Breakpoint.SMALL ? undefined : "Site Settings"}
+			text={breakpoint === Breakpoint.SMALL || breakpoint === Breakpoint.MEDIUM ? undefined : "Settings"}
 		/>
 	);
 };

@@ -1,3 +1,6 @@
 Comfortaa
+iemobile
+JWT's
 olyop
 Sono
+webos

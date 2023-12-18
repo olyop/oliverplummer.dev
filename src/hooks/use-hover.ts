@@ -1,33 +1,38 @@
 import { RefCallback, useCallback, useRef, useState } from "react";
 
 export const useHover = <T extends HTMLElement>() => {
-	const [hovering, setHovering] = useState(false);
 	const previousNode = useRef<T | null>(null);
 
-	const handleMouseEnter = useCallback(() => {
+	const [hovering, setHovering] = useState(false);
+
+	const handleEnter = useCallback(() => {
 		setHovering(true);
 	}, []);
 
-	const handleMouseLeave = useCallback(() => {
+	const handleLeave = useCallback(() => {
 		setHovering(false);
 	}, []);
 
-	const customRef = useCallback<RefCallback<T>>(
+	const ref = useCallback<RefCallback<T>>(
 		node => {
 			if (previousNode.current?.nodeType === Node.ELEMENT_NODE) {
-				previousNode.current.removeEventListener("mouseenter", handleMouseEnter);
-				previousNode.current.removeEventListener("mouseleave", handleMouseLeave);
+				previousNode.current.removeEventListener("focus", handleEnter);
+				previousNode.current.removeEventListener("blur", handleLeave);
+				previousNode.current.removeEventListener("mouseenter", handleEnter);
+				previousNode.current.removeEventListener("mouseleave", handleLeave);
 			}
 
 			if (node?.nodeType === Node.ELEMENT_NODE) {
-				node.addEventListener("mouseenter", handleMouseEnter);
-				node.addEventListener("mouseleave", handleMouseLeave);
+				node.addEventListener("focus", handleEnter);
+				node.addEventListener("blur", handleLeave);
+				node.addEventListener("mouseenter", handleEnter);
+				node.addEventListener("mouseleave", handleLeave);
 			}
 
 			previousNode.current = node;
 		},
-		[handleMouseEnter, handleMouseLeave],
+		[handleEnter, handleLeave],
 	);
 
-	return [customRef, hovering] as const;
+	return [ref, hovering] as const;
 };

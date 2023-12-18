@@ -4,8 +4,6 @@
 		"project": "./tsconfig.editor.json"
 	},
 	"rules": {
-		"import/extensions": "off",
-		"@typescript-eslint/no-non-null-assertion": "off",
-		"import/no-extraneous-dependencies": "off"
+		"@typescript-eslint/no-non-null-assertion": "off"
 	}
 }

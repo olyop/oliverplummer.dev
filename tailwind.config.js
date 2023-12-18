@@ -8,11 +8,14 @@ module.exports = {
 		},
 		extend: {
 			colors: {
-				primary: "#2f5c3e",
-				"primary-light": "#7a9c72",
-				"primary-dark": "#04331c",
-				"primary-black": "#041304",
-				secondary: "#f1fdc1",
+				"primary": "#1e293b",
+				"primary-light": "#334155",
+				"primary-dark": "#0f172a",
+				"secondary": "#67e8f9",
+				"secondary-light": "#a5f3fc",
+				"secondary-dark": "#22d3ee",
+
+				// other
 				"readytech": "#26d07c",
 			},
 			height: {

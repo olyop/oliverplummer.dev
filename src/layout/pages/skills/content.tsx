@@ -23,6 +23,7 @@ import html5ImagePath from "assets/skills/front-end/html5.png?background=transpa
 import javascriptImagePath from "assets/skills/front-end/javascript.png?background=transparent&fit=contain&aspect=1:1&w=64&allowUpscale=true&format=png";
 import reactImagePath from "assets/skills/front-end/react.png?background=transparent&fit=contain&aspect=1:1&w=64&allowUpscale=true&format=png";
 import reduxImagePath from "assets/skills/front-end/redux.png?background=transparent&fit=contain&aspect=1:1&w=64&allowUpscale=true&format=png";
+import tailwindImagePath from "assets/skills/front-end/tailwind.png?background=transparent&fit=contain&aspect=1:1&w=64&allowUpscale=true&format=png";
 import typescriptImagePath from "assets/skills/front-end/typescript.png?background=transparent&fit=contain&aspect=1:1&w=64&allowUpscale=true&format=png";
 import vueImagePath from "assets/skills/front-end/vue.png?background=transparent&fit=contain&aspect=1:1&w=64&allowUpscale=true&format=png";
 import workboxImagePath from "assets/skills/front-end/workbox.png?background=transparent&fit=contain&aspect=1:1&w=64&allowUpscale=true&format=png";
@@ -35,24 +36,29 @@ import nodeImagePath from "assets/skills/node-js/node.png?background=transparent
 
 import { SkillCategory } from "./types";
 
-const skillCategories: SkillCategory[] = [
+export const skillCategories: SkillCategory[] = [
 	{
+		code: "frontend",
 		label: "Front End",
 		image: className => <CodeBracketIcon className={className} />,
 		skills: [
 			{
+				code: "html",
 				label: "HTML5",
 				image: html5ImagePath,
 				level: 5,
+				dateStarted: new Date(2015, 0, 1),
 				description: `
 					I am very experienced in writing HTML knowledgeable in all areas of the language.
 					I use semantic elements and always follow HTML best practices.
 				`,
 			},
 			{
+				code: "css",
 				label: "CSS3",
 				image: css3ImagePath,
 				level: 5,
+				dateStarted: new Date(2015, 0, 1),
 				description: `
 					I am very experienced in writing CSS. I stay up to date with the latest CSS features and syntax and seek
 					to follow best practices and write clean and maintainable CSS.
@@ -62,9 +68,11 @@ const skillCategories: SkillCategory[] = [
 				`,
 			},
 			{
+				code: "js",
 				label: "JavaScript",
 				image: javascriptImagePath,
 				level: 5,
+				dateStarted: new Date(2015, 0, 1),
 				description: `
 					Very familiar with JavaScript and all of it's concepts.
 					This ranges from a deep understanding of how the language works in both the browser and server-side environments.
@@ -73,9 +81,11 @@ const skillCategories: SkillCategory[] = [
 				`,
 			},
 			{
+				code: "ts",
 				label: "TypeScript",
 				image: typescriptImagePath,
 				level: 5,
+				dateStarted: new Date(2020, 0, 1),
 				description: `
 					Use TypeScript in all of my projects where JavaScript is used.
 					Always in strict mode with most checking flags enabled to take full advantage of the added type safety.
@@ -84,9 +94,11 @@ const skillCategories: SkillCategory[] = [
 				`,
 			},
 			{
+				code: "react",
 				label: "React",
 				image: reactImagePath,
 				level: 5,
+				dateStarted: new Date(2019, 0, 1),
 				description: `
 					I am very familiar with React and have used it in many projects.
 					My knowledge ranges from single-page applications, static sites, to server-side rendered applications.
@@ -96,9 +108,11 @@ const skillCategories: SkillCategory[] = [
 				`,
 			},
 			{
+				code: "redux",
 				label: "Redux",
 				image: reduxImagePath,
 				level: 4,
+				dateStarted: new Date(2021, 0, 1),
 				description: `
 					Have used Redux in many projects.
 					I am familiar with the core concepts of Redux and how to use it in a React application.
@@ -106,9 +120,11 @@ const skillCategories: SkillCategory[] = [
 				`,
 			},
 			{
+				code: "work-box",
 				label: "WorkBox",
 				image: workboxImagePath,
 				level: 3,
+				dateStarted: new Date(2021, 0, 1),
 				description: `
 					I have used WorkBox to create service workers for a few projects.
 					I am familiar with the core concepts of WorkBox and how to use it to create a service worker that will power a single
@@ -116,21 +132,41 @@ const skillCategories: SkillCategory[] = [
 				`,
 			},
 			{
+				code: "vue",
 				label: "Vue",
 				image: vueImagePath,
 				level: 3,
-				description: "Test small description",
+				dateStarted: new Date(2022, 0, 1),
+				description: `
+					Have used Vue in a single project at work.
+					Sound knowledge of the core concepts of Vue and how to use it to create a single page application.
+				`,
+			},
+			{
+				code: "tailwind-css",
+				label: "Tailwind CSS",
+				image: tailwindImagePath,
+				dateStarted: new Date(2023, 0, 1),
+				level: 4,
+				description: `
+					I have used Tailwind CSS in a few projects.
+					I am familiar with the core concepts of Tailwind CSS and how to use it to style a website.
+					I have used it to style React applications and static sites.
+				`,
 			},
 		],
 	},
 	{
+		code: "backend",
 		label: "Back End",
 		image: className => <ServerIcon className={className} />,
 		skills: [
 			{
+				code: "node",
 				label: "Node.js",
 				image: nodeImagePath,
 				level: 3,
+				dateStarted: new Date(2018, 0, 1),
 				description: `
 					Have used Node.js in many of my personal projects to create RESTful APIs and GraphQL APIs.
 					Usually either one of the frameworks Express.js, Fastify.js, or Apollo Server.
@@ -139,9 +175,11 @@ const skillCategories: SkillCategory[] = [
 				`,
 			},
 			{
+				code: "express",
 				label: "Fastify/Express",
 				image: fastifyImagePath,
 				level: 4,
+				dateStarted: new Date(2020, 0, 1),
 				description: `
 					Have used both Fastify and Express to create RESTful APIs and GraphQL APIs.
 					I am very familiar with creating routes, middleware, and handling requests and responses in both.
@@ -149,39 +187,66 @@ const skillCategories: SkillCategory[] = [
 				`,
 			},
 			{
+				code: "next",
 				label: "Next.js",
 				image: nextjsImagePath,
 				level: 2,
-				description: "",
+				dateStarted: new Date(2022, 0, 1),
+				description: `
+					Brief understanding of Next.js and how to use it to create a server-side rendered React application.
+					Not much experience with it but have used it in a project.
+				`,
 			},
 			{
+				code: "java",
 				label: "Java",
 				image: javaImagePath,
 				level: 4,
-				description: "",
+				dateStarted: new Date(2022, 0, 1),
+				description: `
+					Strong knowledge of the Java language and it's core concepts also kept up to date with the latest features of the language.
+					Have used Java to create RESTful & GraphQL APIs and also server-side rendered applications with struts and JSP.
+					I am familiar with using Java with Spring Boot and Java EE to create web applications.
+					Knowledge of the Java ecosystem and how to use Maven and Gradle to manage dependencies and build projects.
+				`,
 			},
 			{
+				code: "spring",
 				label: "Spring",
 				image: springImagePath,
 				level: 3,
-				description: "",
+				dateStarted: new Date(2022, 0, 1),
+				description: `
+					Familiar with the core concepts of Spring and how to use it to create a variety of applications.
+					Understanding of the difference between Spring Boot and Spring Framework. Knowledge with dependency injection and inversion of control.
+					Spring Boot is my preference for creating any Java applications.
+				`,
 			},
 			{
+				code: "tomcat",
 				label: "Tomcat",
 				image: tomcatImagePath,
 				level: 5,
-				description: "",
+				dateStarted: new Date(2022, 0, 1),
+				description: `
+					Strong knowledge of Tomcat and how to use it to deploy Java applications.
+					Have used it to deploy Java EE applications and also Spring Boot applications.
+					Knowledge of how to configure Tomcat and how to deploy applications to it and also how the servlet system works.
+				`,
 			},
 		],
 	},
 	{
+		code: "cloud",
 		label: "Cloud",
 		image: className => <CloudIcon className={className} />,
 		skills: [
 			{
+				code: "aws",
 				label: "AWS",
 				image: awsImagePath,
 				level: 3,
+				dateStarted: new Date(2020, 0, 1),
 				description: `
 					I have used AWS to create a few projects.
 					I am familiar with the core concepts of AWS and how to use it to launch and manage servers.
@@ -190,41 +255,62 @@ const skillCategories: SkillCategory[] = [
 				`,
 			},
 			{
+				code: "azure",
 				label: "Azure",
 				image: azureImagePath,
 				level: 2,
+				dateStarted: new Date(2023, 0, 1),
 				description: `
 					I have a brief understanding of Azure and how to use it to launch and manage servers. Only used it at one job for basic maintenance tasks.
 				`,
 			},
 			{
-				label: "Auth0",
+				code: "auth0",
+				label: "Auth0/OAuth",
 				image: auth0ImagePath,
 				level: 3,
-				description: "",
+				dateStarted: new Date(2022, 0, 1),
+				description: `
+					Huge fan of Auth0 and have used it in many projects. I am familiar with the core concepts of Auth0 and how to use it to add authentication to a project.
+					My knowledge goes beyond just Auth0 and I am familiar with the core concepts of OAuth and how to use it to add authentication to a project
+					and the differences between the different OAuth flows. Understanding of JWT's and how to use them to authenticate requests.
+				`,
 			},
 			{
+				code: "stripe",
 				label: "Stripe",
 				image: stripeImagePath,
 				level: 3,
-				description: "",
+				dateStarted: new Date(2022, 0, 1),
+				description: `
+					Used Stripe in a single project to handle payments. I am familiar with the core concepts of Stripe and how to use it to handle payments
+					and manage everything related to payments.
+				`,
 			},
 			{
+				code: "octopus-deploy",
 				label: "Octopus Deploy",
 				image: octopusDeployImagePath,
 				level: 5,
-				description: "",
+				dateStarted: new Date(2022, 0, 1),
+				description: `
+					Very familiar with Octopus Deploy and it's features and how to use it to deploy applications.
+					Expert knowledge of how to configure Octopus Deploy and how to create projects and releases.
+				`,
 			},
 		],
 	},
 	{
+		code: "database",
 		label: "Database",
 		image: className => <CircleStackIcon className={className} />,
 		skills: [
 			{
+				code: "postgres",
 				label: "PostgreSQL",
 				image: postgresqlImagePath,
 				level: 4,
+				dateStarted: new Date(2018, 0, 1),
 				description: `
 					PostgresSQL is the database I am most familiar with.
 					I have used it in many projects and have a good understanding of how to use it.
@@ -232,9 +318,11 @@ const skillCategories: SkillCategory[] = [
 				`,
 			},
 			{
-				label: "Microsoft SQL Server",
+				code: "mssql",
+				label: "SQL Server",
 				image: sqlServerImagePath,
 				level: 3,
+				dateStarted: new Date(2022, 0, 1),
 				description: `
 					I have experience using Microsoft SQL Server with Java/Spring Boot.
 					I am familiar with using it to create tables, views, stored procedures, functions, indexes, and triggers.
@@ -242,9 +330,11 @@ const skillCategories: SkillCategory[] = [
 				`,
 			},
 			{
+				code: "redis",
 				label: "Redis",
 				image: redisImagePath,
 				level: 3,
+				dateStarted: new Date(2021, 0, 1),
 				description: `
 					I have used Redis in a few projects.
 					I am familiar with the core concepts of Redis and how to use it to store data.
@@ -254,13 +344,16 @@ const skillCategories: SkillCategory[] = [
 		],
 	},
 	{
+		code: "devops",
 		label: "DevOps",
 		image: className => <CommandLineIcon className={className} />,
 		skills: [
 			{
+				code: "docker",
 				label: "Docker",
 				image: dockerImagePath,
 				level: 3,
+				dateStarted: new Date(2020, 0, 1),
 				description: `
 					I have used Docker to containerize a few projects.
 					I am familiar with the core concepts of Docker and how to use it to create and manage containers.
@@ -268,9 +361,11 @@ const skillCategories: SkillCategory[] = [
 				`,
 			},
 			{
+				code: "eslint",
 				label: "ESLint",
 				image: eslintImagePath,
 				level: 5,
+				dateStarted: new Date(2019, 0, 1),
 				description: `
 					Use ESLint in all of my projects where JavaScript or TypeScript is used.
 					Familiar with the core concepts of ESLint and how to use it to lint JavaScript and TypeScript code.
@@ -278,24 +373,30 @@ const skillCategories: SkillCategory[] = [
 				`,
 			},
 			{
+				code: "prettier",
 				label: "Prettier",
 				image: prettierImagePath,
 				level: 5,
+				dateStarted: new Date(2021, 0, 1),
 				description: "",
 			},
 			{
+				code: "stylelint",
 				label: "StyleLint",
 				image: stylelintImagePath,
 				level: 3,
+				dateStarted: new Date(2020, 0, 1),
 				description: `
 					Use StyleLint in all of my projects where CSS is used.
 					Familiar with the core concepts of StyleLint and how to use it to lint CSS.
 				`,
 			},
 			{
+				code: "vite",
 				label: "Vite/Webpack",
 				image: viteImagePath,
 				level: 4,
+				dateStarted: new Date(2018, 0, 1),
 				description: `
 					I have used Vite, ESBuild, and Webpack to bundle JavaScript and TypeScript code.
 					I am familiar with the core concepts of each and how to use them to bundle code for production.
@@ -304,9 +405,11 @@ const skillCategories: SkillCategory[] = [
 				`,
 			},
 			{
+				code: "bash",
 				label: "Bash",
 				image: bashImagePath,
 				level: 4,
+				dateStarted: new Date(2018, 0, 1),
 				description: `
 					I have used Bash to write scripts for a few projects.
 					I am familiar with the core concepts of Bash and how to use it to write scripts.
@@ -314,37 +417,45 @@ const skillCategories: SkillCategory[] = [
 				`,
 			},
 			{
+				code: "powershell",
 				label: "PowerShell",
 				image: powershellImagePath,
 				level: 5,
-				description: "",
+				dateStarted: new Date(2022, 0, 1),
+				description: null,
 			},
 			{
+				code: "git",
 				label: "Git",
 				image: gitImagePath,
 				level: 3,
-				description: "",
+				dateStarted: new Date(2016, 0, 1),
+				description: null,
 			},
 			{
+				code: "svn",
 				label: "SVN",
 				image: svnImagePath,
 				level: 4,
-				description: "",
+				dateStarted: new Date(2022, 0, 1),
+				description: null,
 			},
 			{
+				code: "linux",
 				label: "Linux",
 				image: linuxImagePath,
 				level: 4,
-				description: "",
+				dateStarted: new Date(2021, 0, 1),
+				description: null,
 			},
 			{
+				code: "windows",
 				label: "Windows",
 				image: windowsImagePath,
 				level: 5,
-				description: "",
+				dateStarted: new Date(2012, 0, 1),
+				description: null,
 			},
 		],
 	},
 ];
-
-export default skillCategories;

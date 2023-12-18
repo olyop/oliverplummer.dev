@@ -1,13 +1,11 @@
-import { ReactNode } from "react";
+import { ContentItem } from "types";
 
-export interface SkillBase {
-	label: string;
-	image: string | ((className: string) => ReactNode);
-}
+export type SkillBase = ContentItem;
 
 export interface Skill extends SkillBase {
 	level: 2 | 3 | 4 | 5;
-	description: string;
+	description: string | null;
+	dateStarted: Date;
 }
 
 export interface SkillCategory extends SkillBase {
