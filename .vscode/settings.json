@@ -6,6 +6,8 @@
 		"*.css": "tailwindcss"
 	},
 	"files.exclude": {
-		"dist": true
+		"client/dist": true,
+		"client/node_modules": true,
+		"contact-details/node_modules": true
 	}
 }

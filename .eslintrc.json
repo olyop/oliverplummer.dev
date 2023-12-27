@@ -1,9 +1,0 @@
-{
-	"extends": "@oly_op",
-	"parserOptions": {
-		"project": "./tsconfig.editor.json"
-	},
-	"rules": {
-		"@typescript-eslint/no-non-null-assertion": "off"
-	}
-}

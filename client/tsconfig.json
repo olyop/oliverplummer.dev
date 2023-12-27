@@ -1,0 +1,16 @@
+{
+	"extends": "../tsconfig.base.json",
+	"compilerOptions": {
+		"baseUrl": "./src",
+		"lib": ["dom", "dom.iterable", "esnext"],
+		"allowJs": true,
+		"moduleResolution": "bundler",
+		"module": "ESNext",
+		"resolveJsonModule": true,
+		"isolatedModules": true,
+		"noEmit": true,
+		"jsx": "react-jsx",
+		"types": ["vite/client"]
+	},
+	"include": ["src"]
+}
