@@ -20,6 +20,7 @@ const Project: FC<Props> = ({ isOpen, item, onToggle }) => (
 		contentClassName="flex flex-col items-start gap-8"
 		content={
 			<Fragment>
+				<p>{item.description}</p>
 				<div className="shadow-2xl p-4 grid grid-cols-1 sm:grid-cols-2 gap-8">
 					{item.screenshots.map(screeshot => (
 						<ImageExpand key={screeshot} url={screeshot} label={item.label} />
@@ -49,7 +50,6 @@ const Project: FC<Props> = ({ isOpen, item, onToggle }) => (
 						</a>
 					)}
 				</div>
-				<p>{item.description}</p>
 			</Fragment>
 		}
 	/>

@@ -23,18 +23,18 @@ export const content: Experience[] = [
 		industryIcon: className => <BuildingLibraryIcon className={className} />,
 		description: [
 			`
-				Working at Ready Tech as a Software Developer, I was responsible for developing and maintaining their
-				legacy case management system. This involved working with a variety of technologies including Java,
+				Working at Ready Tech as a Software Developer, I am responsible for developing and maintaining their
+				legacy case management system. This involves working with a variety of technologies including Java,
 				Java EE, Apache Tomcat, Microsoft SQL Server, and Octopus Deploy.
 			`,
 			`
-				As part of my role, I was responsible for developing new features, fixing bugs, and maintaining the
-				infrastructure. I was also responsible for providing support to the users of the system, which
+				As part of my role, I am responsible for developing new features, fixing bugs, and maintaining the
+				infrastructure. I am also responsible for providing support to the users of the system, which
 				involved investigating issues and providing solutions.
 			`,
 			`
-				I was solely responsible for the development and maintenance of our CD system using Octopus Deploy.
-				This involved creating and maintaining the deployment process, and the infrastructure that it ran on.
+				I am solely responsible for the development and maintenance of our CD system using Octopus Deploy.
+				This involves creating and maintaining the deployment process, and the infrastructure that it runs on.
 			`,
 		],
 		responsibilities: [
@@ -66,7 +66,7 @@ export const content: Experience[] = [
 				code: "java",
 				label: "Java",
 				description: `
-					I had never used Java before, so I had to learn the language and the ecosystem around it.
+					I had never used Java before I started at Ready Tech, so I had to learn the language and the ecosystem around it.
 					This included learning the language, the build tools, and the frameworks.
 				`,
 			},
@@ -81,7 +81,7 @@ export const content: Experience[] = [
 				code: "vue-js",
 				label: "Vue.js",
 				description: `
-					Learnt Vue.js, which is a framework they use for building modern user interfaces.
+					I learnt Vue.js at Ready Tech, which is a framework they use for building modern user interfaces.
 				`,
 			},
 		],
@@ -102,7 +102,7 @@ export const content: Experience[] = [
 				working with a variety of technologies including React, TypeScript, and Next.js.
 			`,
 			`
-				I worked with the other developer to develop new features and fix bugs.
+				I worked with the lead developer to create new features and fix bugs.
 			`,
 		],
 		responsibilities: [
@@ -134,7 +134,7 @@ export const content: Experience[] = [
 	},
 	{
 		code: "bar-tender",
-		label: "Aurora Rooftop",
+		label: "Aurora Rooftop Hotel",
 		image: auroraHotelImagePath,
 		dateStarted: new Date(2019, 5, 1),
 		dateEnded: new Date(2023, 0, 1),
@@ -142,9 +142,39 @@ export const content: Experience[] = [
 		roleIcon: className => <FaceSmileIcon className={className} />,
 		industry: "Hospitality",
 		industryIcon: className => <BriefcaseIcon className={className} />,
-		description: ["Test"],
-		responsibilities: [],
-		skillsLearned: [],
+		description: [
+			`
+				I worked as a bar tender at the Aurora Rooftop Hotel. This involved serving drinks to patrons of the hotel.
+			`,
+			`
+				
+			`,
+		],
+		responsibilities: [
+			{
+				code: "customer-service",
+				label: "Customer Service",
+				description: `
+					Providing excellent customer service to patrons of the hotel.
+				`,
+			},
+			{
+				code: "bar-tending",
+				label: "Bar Tending",
+				description: `
+					Bar tending and serving drinks to patrons of the hotel.
+				`,
+			},
+		],
+		skillsLearned: [
+			{
+				code: "customer-service",
+				label: "Customer Service",
+				description: `
+					Working in hospitality has given me the opportunity to develop my customer service, interpersonal and time management skills.
+				`,
+			},
+		],
 	},
 	{
 		code: "work-experience",
@@ -160,7 +190,7 @@ export const content: Experience[] = [
 			`
 			I worked with a lead website developer of an online food-catering company. During my time there I participated
 			in company meetings and assisted in the development of the company’s website. This gave me on-the-job
-			training experience.
+			training and experience.
 		`,
 		],
 		responsibilities: null,

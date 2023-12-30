@@ -1,19 +1,47 @@
-import type { Handler, LambdaFunctionURLEvent } from "aws-lambda";
+import type { APIGatewayProxyEventV2, Handler, LambdaFunctionURLEvent } from "aws-lambda";
 
-const { RECAPTCHA_SECRET_KEY, RECAPTCHA_ACTION_NAME, RECAPTCHA_MINIMUM_SCORE, RECAPTCHA_ALLOWED_HOSTNAMES } =
-	process.env;
+const {
+	RECAPTCHA_SECRET_KEY,
+	RECAPTCHA_ACTION_NAME,
+	RECAPTCHA_MINIMUM_SCORE,
+	RECAPTCHA_ALLOWED_HOSTNAMES,
+	CONTACT_DETAILS_EMAIL_ADDRESS,
+	CONTACT_DETAILS_MOBILE_NUMBER,
+} = process.env;
 
 const RE_CAPTCHA_TOKEN_PARAM_NAME = "reCaptchaToken";
 const RE_CAPTCHA_VERIFY_URL = "https://www.google.com/recaptcha/api/siteverify";
 
-const allowedHostnames = RECAPTCHA_ALLOWED_HOSTNAMES.split(",").reduce(
+const ALLOWED_HOSTNAMES = RECAPTCHA_ALLOWED_HOSTNAMES.split(",").reduce(
 	(accumulator, hostname) => accumulator.add(hostname),
 	new Set<string>(),
 );
 
-const contactDetails: ContactDetails = {
-	emailAddress: "oliver.plummer@outlook.com",
-	mobileNumber: "+61435664195",
+const CONTACT_DETAILS: ContactDetails = {
+	emailAddress: CONTACT_DETAILS_EMAIL_ADDRESS,
+	mobileNumber: CONTACT_DETAILS_MOBILE_NUMBER,
+};
+
+class ValidationError extends Error {
+	constructor(message: string) {
+		super(message);
+
+		this.name = "ValidationError";
+	}
+}
+
+const getReCaptchaToken = (event: APIGatewayProxyEventV2) => {
+	if (event.queryStringParameters === undefined) {
+		throw new ValidationError("event.queryStringParameters is undefined");
+	}
+
+	const reCaptchaToken = event.queryStringParameters[RE_CAPTCHA_TOKEN_PARAM_NAME];
+
+	if (reCaptchaToken === undefined) {
+		throw new ValidationError(`Missing ${RE_CAPTCHA_TOKEN_PARAM_NAME} parameter`);
+	}
+
+	return reCaptchaToken;
 };
 
 const verifyReCaptchaToken = async (token: string, remoteIp: string) => {
@@ -33,47 +61,45 @@ const verifyReCaptchaToken = async (token: string, remoteIp: string) => {
 	const verifyResponse = (await reCaptchaResponse.json()) as ReCaptchaVerifyResponse;
 
 	if (verifyResponse["error-codes"] !== undefined) {
-		throw new Error(verifyResponse["error-codes"].join(", "));
+		throw new ValidationError(verifyResponse["error-codes"].join(", "));
 	}
 
 	if (verifyResponse.action !== RECAPTCHA_ACTION_NAME) {
-		throw new Error("Invalid action");
+		throw new ValidationError("Invalid action");
 	}
 
-	if (!allowedHostnames.has(verifyResponse.hostname ?? "")) {
-		throw new Error("Invalid hostname");
+	if (!ALLOWED_HOSTNAMES.has(verifyResponse.hostname ?? "")) {
+		throw new ValidationError("Invalid hostname");
 	}
 
 	if ((verifyResponse.score ?? 0) < Number.parseInt(RECAPTCHA_MINIMUM_SCORE)) {
-		throw new Error("Invalid score");
+		throw new ValidationError("Invalid score");
 	}
 
 	if (!verifyResponse.success) {
-		throw new Error("Unsuccessful");
+		throw new ValidationError("Unsuccessful");
 	}
 };
 
 export const handler: Handler<LambdaFunctionURLEvent, Response> = async event => {
-	if (event.queryStringParameters === undefined) {
-		return { error: "event.queryStringParameters is undefined" };
-	}
-
-	const reCaptchaToken = event.queryStringParameters[RE_CAPTCHA_TOKEN_PARAM_NAME];
-
-	if (reCaptchaToken === undefined) {
-		return { error: `Missing ${RE_CAPTCHA_TOKEN_PARAM_NAME} parameter` };
-	}
-
 	try {
+		const reCaptchaToken = getReCaptchaToken(event);
+
 		await verifyReCaptchaToken(reCaptchaToken, event.requestContext.http.sourceIp);
 	} catch (error) {
-		return {
-			error: error instanceof Error ? error.message : "Unknown error",
-		};
+		if (error instanceof ValidationError) {
+			return {
+				error: error.message,
+			};
+		} else {
+			console.error(error);
+
+			throw new Error("Unknown error");
+		}
 	}
 
 	return {
-		contactDetails,
+		contactDetails: CONTACT_DETAILS,
 	};
 };
 

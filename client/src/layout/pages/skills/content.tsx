@@ -53,11 +53,11 @@ export const skillCategories: SkillCategory[] = [
 				level: 5,
 				dateStarted: new Date(2015, 0, 1),
 				description: `
-					I am very experienced in writing HTML.
-					Knowledgeable in all areas of the language and how to use it to create any UI or layout.
+					I am very experienced in writing HTML and
+					knowledgeable in all areas of the language and how to use it to create any UI or layout.
 					I use semantic elements and always follow HTML best practices.
 					Accessibility is always on my mind and I always use the correct attributes and tags to make my websites accessible.
-					Always follow SEO best practices and use the correct meta tags and attributes.
+					I always follow SEO best practices and use the correct meta tags and attributes.
 				`,
 			},
 			{
@@ -68,11 +68,11 @@ export const skillCategories: SkillCategory[] = [
 				dateStarted: new Date(2015, 0, 1),
 				description: `
 					I am highly experienced and knowledgeable in writing CSS.
-					I stay up to date with the latest CSS features and syntax and seek
+					I stay up to date with the latest CSS features and syntax, seek
 					to follow best practices and write clean and maintainable CSS.
 					I am familiar with using CSS preprocessors such as Sass and Less.
 					I have used CSS modules and CSS-in-JS solutions such as Emotion and Styled Components.
-					Currently I am using Tailwind CSS in most of my projects mostly for it's amazing developer experience.
+					Currently I am using Tailwind CSS in most of my projects, mostly for it's amazing developer experience.
 				`,
 			},
 			{
@@ -109,7 +109,7 @@ export const skillCategories: SkillCategory[] = [
 				level: 5,
 				dateStarted: new Date(2019, 0, 1),
 				description: `
-					I am very familiar with React and have used it in many projects.
+					I am very proficient with React and have used it in many projects.
 					I have a deep understanding of how React works and different rendering methods.
 					My knowledge ranges from single-page applications, static sites, to server-side rendered applications.
 					The vast majority of projects I have worked on have used React with TypeScript.
@@ -216,9 +216,9 @@ export const skillCategories: SkillCategory[] = [
 				dateStarted: new Date(2022, 0, 1),
 				description: `
 					Strong knowledge of the Java language and it's core concepts. I always keep up to date with the latest features of the language.
-					Have used Java to create RESTful, Servelt, and GraphQL APIs. Also server-side rendered applications with struts/JSP combination.
+					Have used Java to create RESTful, Servelt, and GraphQL APIs. I have also used server-side rendered applications with struts/JSP combination.
 					I am familiar with using Java with Spring Boot and Java EE to create web applications.
-					Knowledge of the Java ecosystem and how to use Maven and Gradle to manage dependencies and build projects.
+					I have knowledge of the Java ecosystem and how to use Maven and Gradle to manage dependencies and build projects.
 				`,
 			},
 			{
@@ -228,7 +228,7 @@ export const skillCategories: SkillCategory[] = [
 				level: 3,
 				dateStarted: new Date(2022, 0, 1),
 				description: `
-					Familiar with the core concepts of Spring and how to use it to create a variety of applications.
+					Am familiar with the core concepts of Spring and how to use it to create a variety of applications.
 					Understanding of the difference between Spring Boot and Spring Framework and knowledge of dependency injection and inversion of control.
 					Spring Boot is my preference for creating any Java applications.
 				`,
@@ -261,7 +261,7 @@ export const skillCategories: SkillCategory[] = [
 				description: `
 					I have used AWS to create a few projects.
 					I am familiar with the core concepts of AWS and how to use it to launch and manage servers.
-					EC2, RDS, S3, Lambda, CloudFront, Route 53, Virtual Private Cloud, and IAM are some of the services I have used.
+					Services I have used include EC2, RDS, S3, Lambda, CloudFront, Route 53, Virtual Private Cloud, and IAM.
 					This is a skill I am actively working on improving. I just need to be exposed to more of the services and use them in projects.
 				`,
 			},
@@ -279,12 +279,12 @@ export const skillCategories: SkillCategory[] = [
 				code: "auth0",
 				label: "Auth0/OAuth",
 				image: auth0ImagePath,
-				level: 3,
+				level: 4,
 				dateStarted: new Date(2022, 0, 1),
 				description: `
 					I am a huge fan of Auth0 and have used it in many projects. I am familiar with the core concepts of Auth0 and how to use it to add authentication to a project.
-					My knowledge goes beyond just Auth0 and I am familiar with the core concepts of OAuth and how to use it to add authentication to a project
-					and the differences between the different OAuth flows. Understanding of JWT's and how to use them to authenticate requests.
+					My knowledge goes beyond just Auth0 and I know how to use OAuth to add authentication to a project without Auth0.
+					I also have knowledge of the different OAuth authentication flows. This includes an understanding of JWT's and how to use them to authenticate requests.
 				`,
 			},
 			{
@@ -294,7 +294,7 @@ export const skillCategories: SkillCategory[] = [
 				level: 3,
 				dateStarted: new Date(2022, 0, 1),
 				description: `
-					Used Stripe in a single project to handle payments. I am familiar with the core concepts of Stripe and how to use it to handle payments
+					I used Stripe in a single project to handle payments. I am familiar with the core concepts of Stripe and how to use it to handle payments
 					and manage everything related to payments.
 				`,
 			},
@@ -305,7 +305,7 @@ export const skillCategories: SkillCategory[] = [
 				level: 5,
 				dateStarted: new Date(2022, 0, 1),
 				description: `
-					Very familiar with Octopus Deploy and it's features and how to use it to deploy applications.
+					Very experienced using Octopus Deploy and it's features and how to use it to deploy applications.
 					Expert knowledge of how to configure Octopus Deploy and how to create projects and releases.
 				`,
 			},

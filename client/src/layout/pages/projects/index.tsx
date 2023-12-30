@@ -30,7 +30,11 @@ const ProjectsPage: FC = () => {
 	};
 
 	return (
-		<Container title="Projects" text="Professional and personal projects" childrenClassName="flex flex-col gap-10">
+		<Container
+			title="Projects"
+			text="Professional and personal projects that I have developed"
+			childrenClassName="flex flex-col gap-10"
+		>
 			{projects.map(project => (
 				<Project
 					key={project.code}

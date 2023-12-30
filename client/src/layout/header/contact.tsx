@@ -12,6 +12,7 @@ const Contact: FC = () => {
 	const [isModalOpen, openModal, closeModal] = useModal(false);
 	const [reCaptchaError, setReCaptchaError] = useState<string | null>(null);
 	const [contactDetails, setContactDetails] = useState<ContactDetails | null>(null);
+	const [reCaptchaMessage, setReCaptchaMessage] = useState<string>("Verifying you are not a robot");
 
 	const [reCaptchaToken, getReCaptchaToken] = useReCaptcha("getContactDetails");
 
@@ -20,23 +21,40 @@ const Contact: FC = () => {
 			const url = new URL(import.meta.env.VITE_GET_CONTACT_DETAILS_URL);
 			url.searchParams.set("reCaptchaToken", reCaptchaToken);
 
-			const response = await fetch(url, {
-				method: "GET",
-				mode: "cors",
-				headers: {
-					"Accept": "application/json",
-				},
-			});
+			const initializingTimeout = setTimeout(() => {
+				setReCaptchaMessage("Contacting ReCaptcha");
+			}, 500);
 
-			if (response.ok) {
-				const verifyResponse = (await response.json()) as GetContactDetailsResponse;
+			const sendingReCaptchaTimeout = setTimeout(() => {
+				setReCaptchaMessage("Sending ReCaptcha");
+			}, 1200);
 
-				if (verifyResponse.error) {
-					console.error(reCaptchaError);
-					setReCaptchaError(verifyResponse.error);
+			try {
+				const response = await fetch(url, {
+					method: "GET",
+					mode: "cors",
+					headers: {
+						"Accept": "application/json",
+					},
+				});
+
+				if (response.ok) {
+					const verifyResponse = (await response.json()) as GetContactDetailsResponse;
+
+					if (verifyResponse.error) {
+						setReCaptchaError(verifyResponse.error);
+					} else {
+						setContactDetails(verifyResponse.contactDetails);
+					}
 				} else {
-					setContactDetails(verifyResponse.contactDetails);
+					setReCaptchaError(response.statusText);
 				}
+			} catch (error) {
+				setReCaptchaError(error instanceof Error ? error.message : "An error occurred while contacting the server");
+			} finally {
+				clearTimeout(initializingTimeout);
+				clearTimeout(sendingReCaptchaTimeout);
+				setReCaptchaMessage("Verifying you are not a robot");
 			}
 		}
 	};
@@ -75,7 +93,7 @@ const Contact: FC = () => {
 					<Fragment>
 						<div className="absolute top-0 left-0 w-full h-full bg-white opacity-80 z-10" />
 						<div className="absolute top-1/2 left-1/2 z-10 flex flex-col gap-4 items-center w-48 -translate-x-1/2 -translate-y-1/2">
-							<p className="text-center p-2 bg-white">Verifying you are not a robot</p>
+							<p className="text-center p-2 bg-white">{reCaptchaError ?? reCaptchaMessage}</p>
 							<ArrowPathIcon className="w-12 h-12 animate-spin " />
 						</div>
 					</Fragment>

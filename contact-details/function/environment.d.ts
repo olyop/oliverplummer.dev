@@ -6,6 +6,8 @@ declare global {
 			RECAPTCHA_ACTION_NAME: string;
 			RECAPTCHA_MINIMUM_SCORE: string;
 			RECAPTCHA_ALLOWED_HOSTNAMES: string;
+			CONTACT_DETAILS_EMAIL_ADDRESS: string;
+			CONTACT_DETAILS_MOBILE_NUMBER: string;
 		}
 	}
 }
