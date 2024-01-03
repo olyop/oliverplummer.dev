@@ -21,11 +21,6 @@ const Project: FC<Props> = ({ isOpen, item, onToggle }) => (
 		content={
 			<Fragment>
 				<p>{item.description}</p>
-				<div className="shadow-2xl p-4 grid grid-cols-1 sm:grid-cols-2 gap-8">
-					{item.screenshots.map(screeshot => (
-						<ImageExpand key={screeshot} url={screeshot} label={item.label} />
-					))}
-				</div>
 				<div className="flex flex-col items-stretch w-full gap-4 justify-stretch sm:flex-row">
 					{item.url && (
 						<a href={item.url} target="_blank" rel="noreferrer">
@@ -49,6 +44,11 @@ const Project: FC<Props> = ({ isOpen, item, onToggle }) => (
 							/>
 						</a>
 					)}
+				</div>
+				<div className="shadow-2xl p-4 grid grid-cols-1 sm:grid-cols-2 gap-8">
+					{item.screenshots.map(screeshot => (
+						<ImageExpand key={screeshot} url={screeshot} label={item.label} />
+					))}
 				</div>
 			</Fragment>
 		}

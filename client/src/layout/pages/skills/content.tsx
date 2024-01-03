@@ -333,7 +333,7 @@ export const skillCategories: SkillCategory[] = [
 				code: "mssql",
 				label: "SQL Server",
 				image: sqlServerImagePath,
-				level: 3,
+				level: 4,
 				dateStarted: new Date(2022, 0, 1),
 				description: `
 					I have experience using Microsoft SQL Server with Java/Spring Boot.
@@ -357,7 +357,7 @@ export const skillCategories: SkillCategory[] = [
 	},
 	{
 		code: "devops",
-		label: "DevOps",
+		label: "Dev Ops & Tools",
 		image: className => <CommandLineIcon className={className} />,
 		skills: [
 			{

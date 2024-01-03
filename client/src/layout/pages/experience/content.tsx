@@ -138,16 +138,13 @@ export const content: Experience[] = [
 		image: auroraHotelImagePath,
 		dateStarted: new Date(2019, 5, 1),
 		dateEnded: new Date(2023, 0, 1),
-		role: "Bar Tender",
+		role: "Bartender",
 		roleIcon: className => <FaceSmileIcon className={className} />,
 		industry: "Hospitality",
 		industryIcon: className => <BriefcaseIcon className={className} />,
 		description: [
 			`
-				I worked as a bar tender at the Aurora Rooftop Hotel. This involved serving drinks to patrons of the hotel.
-			`,
-			`
-				
+				I worked as a bar attendant at the Aurora Rooftop Hotel. This involved serving drinks to patrons of the hotel.
 			`,
 		],
 		responsibilities: [
@@ -159,10 +156,10 @@ export const content: Experience[] = [
 				`,
 			},
 			{
-				code: "bar-tending",
-				label: "Bar Tending",
+				code: "bartender",
+				label: "Bartender",
 				description: `
-					Bar tending and serving drinks to patrons of the hotel.
+					Bartender and serving drinks to patrons of the hotel.
 				`,
 			},
 		],
@@ -188,10 +185,10 @@ export const content: Experience[] = [
 		industry: "Catering",
 		description: [
 			`
-			I worked with a lead website developer of an online food-catering company. During my time there I participated
-			in company meetings and assisted in the development of the company’s website. This gave me on-the-job
-			training and experience.
-		`,
+				I worked with a lead website developer of an online food-catering company. During my time there I participated
+				in company meetings and assisted in the development of the company’s website. This gave me on-the-job
+				training and experience.
+			`,
 		],
 		responsibilities: null,
 		skillsLearned: null,

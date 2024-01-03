@@ -2,7 +2,7 @@ import { readFile } from "node:fs/promises";
 
 import reactSwc from "@vitejs/plugin-react-swc";
 import contentSecurityPolicyBuilder from "content-security-policy-builder";
-import { Plugin, defineConfig, loadEnv } from "vite";
+import { Plugin, defineConfig } from "vite";
 import { imagetools } from "vite-imagetools";
 import tsconfigPaths from "vite-tsconfig-paths";
 
@@ -15,7 +15,7 @@ const html = (variables: Record<string, string>): Plugin => ({
 	},
 });
 
-const determineContentSecurityPolicy = (mode: string, environment: ReturnType<typeof loadEnv>) => {
+const determineContentSecurityPolicy = (mode: string) => {
 	const isProduction = mode === "production";
 
 	return contentSecurityPolicyBuilder({
@@ -30,7 +30,7 @@ const determineContentSecurityPolicy = (mode: string, environment: ReturnType<ty
 			],
 			styleSrc: ["'self'", isProduction ? "" : "'unsafe-inline'", " https://*.googleapis.com"],
 			objectSrc: ["'none'"],
-			connectSrc: ["'self'", environment["VITE_GET_CONTACT_DETAILS_URL"]],
+			connectSrc: ["'self'", "https://api.oliverplummer.com.au/contact-details"],
 			fontSrc: ["'self'", "https://*.gstatic.com"],
 			frameSrc: ["'self'", "https://*.google.com"],
 			imgSrc: ["'self'", "data:"],
@@ -41,21 +41,18 @@ const determineContentSecurityPolicy = (mode: string, environment: ReturnType<ty
 	});
 };
 
-export default defineConfig(async ({ mode }) => {
-	const environment = loadEnv(mode, process.cwd(), "");
-	return {
-		plugins: [
-			reactSwc(),
-			tsconfigPaths(),
-			html({ ...environment, "VITE_CONTENT_SECURITY_POLICY": determineContentSecurityPolicy(mode, environment) }),
-			imagetools(),
-		],
-		server: {
-			host: true,
-			https: {
-				cert: await readFile("/home/op/.certificates/localhost.pem"),
-				key: await readFile("/home/op/.certificates/localhost-key.pem"),
-			},
+export default defineConfig(async ({ mode }) => ({
+	plugins: [
+		reactSwc(),
+		tsconfigPaths(),
+		html({ "VITE_CONTENT_SECURITY_POLICY": determineContentSecurityPolicy(mode) }),
+		imagetools(),
+	],
+	server: {
+		host: true,
+		https: {
+			cert: await readFile("/home/op/.certificates/localhost.pem"),
+			key: await readFile("/home/op/.certificates/localhost-key.pem"),
 		},
-	};
-});
+	},
+}));

@@ -17,7 +17,7 @@ export const projects: Project[] = [
 		sourceCodeUrl: "https://github.com/olyop/xtremehiphopwithtash",
 		description: `
 			I developed the booking system for Xtreme Hip-Hop with Tash. This system is used by
-			over 500 users to book into classes. I continue to maintain and develop new features for this system.
+			over 500 users to book classes. I continue to maintain and develop new features for this system.
 		`,
 		screenshots: [
 			xtremeHipHopScreenShotOneLogoPath,

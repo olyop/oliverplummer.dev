@@ -32,7 +32,7 @@ class ValidationError extends Error {
 
 const getReCaptchaToken = (event: APIGatewayProxyEventV2) => {
 	if (event.queryStringParameters === undefined) {
-		throw new ValidationError("event.queryStringParameters is undefined");
+		throw new ValidationError("Missing query string parameters");
 	}
 
 	const reCaptchaToken = event.queryStringParameters[RE_CAPTCHA_TOKEN_PARAM_NAME];
@@ -87,15 +87,9 @@ export const handler: Handler<LambdaFunctionURLEvent, Response> = async event =>
 
 		await verifyReCaptchaToken(reCaptchaToken, event.requestContext.http.sourceIp);
 	} catch (error) {
-		if (error instanceof ValidationError) {
-			return {
-				error: error.message,
-			};
-		} else {
-			console.error(error);
-
-			throw new Error("Unknown error");
-		}
+		return {
+			error: error instanceof Error ? error.message : "Unknown error",
+		};
 	}
 
 	return {
