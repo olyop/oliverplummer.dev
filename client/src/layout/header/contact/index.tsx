@@ -7,12 +7,10 @@ import { useReCaptcha } from "hooks/use-re-captcha";
 import { FC, Fragment, useEffect, useState } from "react";
 
 import { ContactCopyButtons } from "./contact-buttons";
+import { getContactDetails } from "./get-contact-details";
 
 const INITIAL_RE_CAPTCHA_MESSAGE = "Verifying you are not a robot";
-
-const refreshPage = () => {
-	window.location.reload();
-};
+const DEFAULT_RE_CAPTCHA_ERROR = "An error occurred while contacting the server";
 
 const Contact: FC = () => {
 	const [isModalOpen, openModal, closeModal] = useModal(false);
@@ -24,57 +22,60 @@ const Contact: FC = () => {
 
 	const [reCaptchaToken, getReCaptchaToken] = useReCaptcha("getContactDetails");
 
-	const getContactDetails = async () => {
+	const handleContactDetails = async () => {
 		if (reCaptchaToken) {
-			const url = new URL(import.meta.env.VITE_GET_CONTACT_DETAILS_URL);
-			url.searchParams.set("reCaptchaToken", reCaptchaToken);
-
 			let shouldReset = false;
 
 			const initializingTimeout = setTimeout(() => {
 				setReCaptchaMessage("Contacting ReCaptcha");
-			}, 500);
+			}, 600);
 
 			const sendingReCaptchaTimeout = setTimeout(() => {
-				setReCaptchaMessage("Sending ReCaptcha");
-			}, 1200);
+				setReCaptchaMessage("Sending ReCaptcha Token");
+			}, 1500);
 
 			try {
-				const response = await fetch(url, {
-					method: "GET",
-					mode: "cors",
-					headers: {
-						"Accept": "application/json",
-					},
-				});
+				const response = await getContactDetails(reCaptchaToken);
 
 				if (response.ok) {
 					const verifyResponse = (await response.json()) as GetContactDetailsResponse;
 
 					if (verifyResponse.error) {
+						shouldReset = true;
+
 						setReCaptchaError(verifyResponse.error);
-					} else {
+					} else if (verifyResponse.contactDetails) {
 						setContactDetails(verifyResponse.contactDetails);
+					} else {
+						shouldReset = true;
+
+						setReCaptchaError(DEFAULT_RE_CAPTCHA_ERROR);
 					}
 				} else {
 					shouldReset = true;
 
-					setReCaptchaError("An error occurred while contacting the server");
+					setReCaptchaError(DEFAULT_RE_CAPTCHA_ERROR);
 				}
 			} catch (error) {
 				shouldReset = true;
 
-				setReCaptchaError(error instanceof Error ? error.message : "An error occurred while contacting the server");
+				setReCaptchaError(error instanceof Error ? error.message : DEFAULT_RE_CAPTCHA_ERROR);
 			} finally {
 				clearTimeout(initializingTimeout);
 				clearTimeout(sendingReCaptchaTimeout);
 
 				if (!shouldReset) {
 					setReCaptchaError(null);
-					setReCaptchaMessage(INITIAL_RE_CAPTCHA_MESSAGE);
 				}
+
+				setReCaptchaMessage(INITIAL_RE_CAPTCHA_MESSAGE);
 			}
 		}
+	};
+
+	const handleRetry = () => {
+		setReCaptchaError(null);
+		getReCaptchaToken();
 	};
 
 	useEffect(() => {
@@ -85,7 +86,7 @@ const Contact: FC = () => {
 
 	useEffect(() => {
 		if (reCaptchaToken) {
-			void getContactDetails();
+			void handleContactDetails();
 		}
 	}, [reCaptchaToken]);
 
@@ -113,7 +114,12 @@ const Contact: FC = () => {
 						<div className="absolute top-1/2 left-1/2 z-10 flex flex-col gap-4 items-center w-56 -translate-x-1/2 -translate-y-1/2">
 							<p className="text-center p-2 bg-white">{reCaptchaError ?? reCaptchaMessage}</p>
 							{reCaptchaError ? (
-								<Button ariaLabel="Refresh" text="Refresh" onClick={refreshPage} />
+								<Button
+									ariaLabel="Retry"
+									text="Retry"
+									onClick={handleRetry}
+									leftIcon={className => <ArrowPathIcon className={className} />}
+								/>
 							) : (
 								<ArrowPathIcon className="w-12 h-12 animate-spin " />
 							)}
@@ -146,7 +152,7 @@ interface ContactDetails {
 
 interface GetContactDetailsResponse {
 	error?: string;
-	contactDetails: ContactDetails;
+	contactDetails?: ContactDetails;
 }
 
 export default Contact;

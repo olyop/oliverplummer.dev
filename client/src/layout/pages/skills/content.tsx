@@ -31,6 +31,7 @@ import tailwindImagePath from "assets/skills/front-end/tailwind.png?background=t
 import typescriptImagePath from "assets/skills/front-end/typescript.png?background=transparent&fit=contain&aspect=1:1&w=64&allowUpscale=true&format=png";
 import vueImagePath from "assets/skills/front-end/vue.png?background=transparent&fit=contain&aspect=1:1&w=64&allowUpscale=true&format=png";
 import workboxImagePath from "assets/skills/front-end/workbox.png?background=transparent&fit=contain&aspect=1:1&w=64&allowUpscale=true&format=png";
+import graphqlImagePath from "assets/skills/java/graphql.png?background=transparent&fit=contain&aspect=1:1&w=64&allowUpscale=true&format=png";
 import javaImagePath from "assets/skills/java/java.png?background=transparent&fit=contain&aspect=1:1&w=64&allowUpscale=true&format=png";
 import springImagePath from "assets/skills/java/spring.svg?background=transparent&fit=contain&aspect=1:1&w=64&allowUpscale=true&format=png";
 import tomcatImagePath from "assets/skills/java/tomcat.png?background=transparent&fit=contain&aspect=1:1&w=64&allowUpscale=true&format=png";
@@ -243,6 +244,18 @@ export const skillCategories: SkillCategory[] = [
 					Strong knowledge of Tomcat and how to use it to deploy Java applications.
 					Have used it to deploy Java EE applications and also Spring Boot applications.
 					Knowledge of how to configure Tomcat and how to deploy applications to it and also how the servlet system works.
+				`,
+			},
+			{
+				code: "graphql",
+				label: "GraphQL",
+				image: graphqlImagePath,
+				level: 4,
+				dateStarted: new Date(2022, 0, 1),
+				description: `
+					Have used GraphQL in multiple projects to create APIs.
+					I am very familiar with the core concepts of GraphQL and how to use it to create an API.
+					I have used it with both Node.js and Java/Spring Boot.
 				`,
 			},
 		],

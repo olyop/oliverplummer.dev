@@ -8,7 +8,7 @@ import ShareIcon from "@heroicons/react/20/solid/ShareIcon";
 import Button from "components/button";
 import { Breakpoint, useBreakpoint } from "hooks/use-breakpoint";
 import { useShare } from "hooks/use-share";
-import { FC, useEffect, useState } from "react";
+import { FC, ReactNode, useEffect, useState } from "react";
 
 const ContactShareButton: FC<ButtonProps> = ({ text }) => {
 	const [handleShare, { hasShared, hasCopiedShared, hasError }] = useShare(text);
@@ -53,7 +53,6 @@ const ContactShareButton: FC<ButtonProps> = ({ text }) => {
 const ContactActionButton: FC<ContactActionButtonProps> = ({ text, scheme, schemeIcon, schemeDescription }) => (
 	<a href={`${scheme}:${text}`}>
 		<Button
-			onClick={() => {}}
 			className="w-28"
 			ariaLabel={schemeDescription}
 			leftIcon={className => schemeIcon(className)}
@@ -63,7 +62,7 @@ const ContactActionButton: FC<ContactActionButtonProps> = ({ text, scheme, schem
 );
 
 interface ContactActionButtonProps extends ButtonsProps {
-	schemeIcon: (className: string) => React.ReactNode;
+	schemeIcon: (className: string) => ReactNode;
 	schemeDescription: string;
 }
 
