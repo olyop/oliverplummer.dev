@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions */
 import ChevronDownIcon from "@heroicons/react/20/solid/ChevronDownIcon";
 import { useFocus } from "hooks/use-focus";
 import { useHover } from "hooks/use-hover";
@@ -29,7 +30,7 @@ const Collapsible: FC<Props> = ({
 		<details
 			open={isOpen}
 			ref={hoverRef}
-			className={`transition-all border-2 rounded-2xl overflow-hidden shadow-md ${
+			className={`overflow-hidden rounded-2xl border-2 shadow-md transition-all ${
 				isFocusedOrHovering ? "bg-secondary border-primary shadow-lg" : ""
 			} ${isOpen ? "bg-primary border-primary shadow-2xl" : ""} ${className ?? ""}`}
 		>
@@ -37,7 +38,7 @@ const Collapsible: FC<Props> = ({
 				title={title}
 				ref={focusRef}
 				onClick={handleToggle}
-				className="flex items-start justify-between px-4 py-3 transition-all duration-300 ease-in-out cursor-pointer select-none sm:py-4 sm:px-6"
+				className="flex cursor-pointer select-none items-start justify-between px-4 py-3 transition-all duration-300 ease-in-out sm:px-6 sm:py-4"
 			>
 				<div className="flex items-start gap-3 sm:gap-6">
 					{imageNode(`${isOpen ? "text-white" : ""} mt-[0.2rem] sm:mt-[0.4rem]`)}
@@ -46,24 +47,24 @@ const Collapsible: FC<Props> = ({
 							<b>{title}</b>
 						</h1>
 						{text && (
-							<p className={`${isOpen ? "text-white" : ""} font-light text-xs sm:text-sm ${textClassName ?? ""}`}>
+							<p className={`${isOpen ? "text-white" : ""} text-xs font-light sm:text-sm ${textClassName ?? ""}`}>
 								{text}
 							</p>
 						)}
 					</div>
 				</div>
-				<div className="flex items-center gap-2 mt-[0.2rem] sm:mt-[0.4rem]">
+				<div className="mt-[0.2rem] flex items-center gap-2 sm:mt-[0.4rem]">
 					{!isOpen && (
 						<h1 className="text-xs uppercase sm:text-lg" id={id}>
 							Expand
 						</h1>
 					)}
 					<ChevronDownIcon
-						className={`w-6 h-6 transition-all duration-300 ease-in-out ${isOpen ? "rotate-180 text-white" : ""}`}
+						className={`h-6 w-6 transition-all duration-300 ease-in-out ${isOpen ? "rotate-180 text-white" : ""}`}
 					/>
 				</div>
 			</summary>
-			<div className={`p-4 md:p-6 bg-white ${contentClassName ?? ""}`}>{content}</div>
+			<div className={`bg-white p-4 md:p-6 ${contentClassName ?? ""}`}>{content}</div>
 		</details>
 	);
 };

@@ -51,8 +51,8 @@ export default defineConfig(async ({ mode }) => ({
 	server: {
 		host: true,
 		https: {
-			cert: await readFile("/home/op/.certificates/localhost.pem"),
-			key: await readFile("/home/op/.certificates/localhost-key.pem"),
+			cert: await readFile("/home/op/.mkcert/localhost.pem"),
+			key: await readFile("/home/op/.mkcert/localhost-key.pem"),
 		},
 	},
 }));

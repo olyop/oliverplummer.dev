@@ -14,28 +14,30 @@
 		"email": "oliver.plummer@outlook.com"
 	},
 	"volta": {
-		"node": "21.4.0",
-		"npm": "10.2.5"
+		"node": "21.6.2",
+		"npm": "10.4.0"
 	},
 	"engines": {
-		"node": "21.4.0",
-		"npm": "10.2.5"
+		"node": "21.6.2",
+		"npm": "10.4.0"
 	},
 	"scripts": {
 		"dev": "cd client && npm run dev && cd ..",
 		"build": "cd client && npm run build && cd ..",
 		"deploy-clear": "aws s3 rm s3://oliverplummer.s3.ap-southeast-2.amazonaws.com --recursive",
 		"deploy-sync": "aws s3 sync --cache-control max-age=31536000 ./client/dist/ s3://oliverplummer.s3.ap-southeast-2.amazonaws.com",
-		"deploy": "npm run build && npm run deploy-clear && npm run deploy-sync",
+		"deploy": "npm run build && npm run deploy-clear && npm run deploy-sync && npm run sync",
+		"sync": "git add -A && git commit -m 'sync' && git push",
 		"compile-contact-details": "cd contact-details && tsc && cd .."
 	},
 	"devDependencies": {
-		"@oly_op/cspell-dict": "1.1.2",
-		"@oly_op/eslint-config": "6.5.5",
-		"@oly_op/eslint-config-react": "4.0.0",
-		"@oly_op/prettier-config": "1.7.8",
-		"@oly_op/tsconfig": "1.2.0",
-		"@types/node": "20.10.5",
+		"@oly_op/cspell-dict": "1.1.10",
+		"@oly_op/eslint-config": "6.7.20",
+		"@oly_op/eslint-config-react": "4.3.5",
+		"@oly_op/prettier-config": "1.8.2",
+		"@oly_op/tsconfig": "1.2.1",
+		"@types/node": "20.11.24",
+		"npm-check-updates": "16.14.15",
 		"ts-node": "10.9.2"
 	}
 }

@@ -12,7 +12,7 @@ const FooterButton: FC<FooterButtonProps> = ({ text, leftIcon, rightIcon, onClic
 		iconClassName="!w-4 !h-4"
 		leftIconClassName="mb-[0.1rem] mr-[0.1rem]"
 		textClassName="font-normal group-hover:underline"
-		className="!p-0 shadow-none hover:shadow-none hover:bg-transparent h-auto normal-case group"
+		className="group h-auto !p-0 normal-case shadow-none hover:bg-transparent hover:shadow-none"
 	/>
 );
 

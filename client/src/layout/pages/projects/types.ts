@@ -5,5 +5,7 @@ export interface Project extends ContentItem {
 	url: string | null;
 	sourceCodeUrl: string | null;
 	description: string;
+	features: string[];
+	technologies: string[];
 	screenshots: string[];
 }

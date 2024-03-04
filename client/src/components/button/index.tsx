@@ -28,14 +28,14 @@ const Button: FC<ButtonProps> = ({
 		onClick={onClick}
 		tabIndex={tabIndex}
 		title={text && typeof text === "string" ? text : ariaLabel}
-		className={`font-bold select-none transition-all ease-in-out duration-200 text-sm uppercase flex items-center justify-center gap-2 cursor-pointer ${
+		className={`flex cursor-pointer select-none items-center justify-center gap-2 text-sm font-bold uppercase transition-all duration-200 ease-in-out ${
 			text === undefined && (leftIcon !== undefined || rightIcon !== undefined)
-				? "p-2 rounded-full w-9 h-9"
-				: "px-4 rounded-xl h-9"
+				? "h-9 w-9 rounded-full p-2"
+				: "h-9 rounded-xl px-4"
 		} ${
 			isTransparent
-				? "text-black bg-transparent hover:bg-gray-200"
-				: "shadow-lg hover:shadow-xl shadow-primary-light/30 text-white bg-primary hover:bg-primary-light"
+				? "bg-transparent text-black hover:bg-gray-200"
+				: "shadow-primary-light/30 bg-primary hover:bg-primary-light text-white shadow-lg hover:shadow-xl"
 		}  ${className ?? ""}`}
 	>
 		{leftIcon &&

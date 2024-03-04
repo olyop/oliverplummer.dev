@@ -21,7 +21,27 @@ const Project: FC<Props> = ({ isOpen, item, onToggle }) => (
 		content={
 			<Fragment>
 				<p>{item.description}</p>
-				<div className="flex flex-col items-stretch w-full gap-4 justify-stretch sm:flex-row">
+				<div>
+					<h3 className="mb-2 text-lg">
+						<b>Features</b>
+					</h3>
+					<ul className="list-disc pl-8">
+						{item.features.map(feature => (
+							<li key={feature}>{feature}</li>
+						))}
+					</ul>
+				</div>
+				<div>
+					<h3 className="mb-2 text-lg">
+						<b>Technologies</b>
+					</h3>
+					<ul className="list-disc pl-8">
+						{item.technologies.map(technology => (
+							<li key={technology}>{technology}</li>
+						))}
+					</ul>
+				</div>
+				<div className="flex w-full flex-col items-stretch justify-stretch gap-4 sm:flex-row">
 					{item.url && (
 						<a href={item.url} target="_blank" rel="noreferrer">
 							<Button
@@ -45,7 +65,7 @@ const Project: FC<Props> = ({ isOpen, item, onToggle }) => (
 						</a>
 					)}
 				</div>
-				<div className="shadow-2xl p-4 grid grid-cols-1 sm:grid-cols-2 gap-8">
+				<div className="grid grid-cols-1 gap-8 p-4 shadow-2xl sm:grid-cols-2">
 					{item.screenshots.map(screeshot => (
 						<ImageExpand key={screeshot} url={screeshot} label={item.label} />
 					))}

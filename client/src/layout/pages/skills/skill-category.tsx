@@ -42,7 +42,7 @@ const SkillCategory: FC<Props> = ({
 			contentClassName="flex flex-col gap-6"
 			content={
 				<Fragment>
-					<div className="flex items-center self-end w-full gap-4 justify-stretch md:justify-end">
+					<div className="flex w-full items-center justify-stretch gap-4 self-end md:justify-end">
 						<Input
 							id="skills-sort-by-key"
 							name="Sort By"
@@ -64,7 +64,7 @@ const SkillCategory: FC<Props> = ({
 							selectOptions={skillsSortByDirection}
 						/>
 					</div>
-					<div className="flex flex-col sm:grid sm:grid-cols-[repeat(auto-fit,minmax(25rem,1fr))] gap-5">
+					<div className="flex flex-col gap-5 sm:grid sm:grid-cols-[repeat(auto-fit,minmax(25rem,1fr))]">
 						{skills.map(skill => (
 							<Skill key={skill.label} skill={skill} />
 						))}

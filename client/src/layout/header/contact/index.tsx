@@ -99,7 +99,7 @@ const Contact: FC = () => {
 				spanClassName="text-primary"
 				onClick={openModal}
 				rightIcon={className => <PaperAirplaneIcon className={className} />}
-				className="sm:w-auto gap-2 sm:gap-4 bg-white shadow-3xl w-full h-full border-2 hover:border-secondary-dark border-secondary md:h-14 px-4 sm:px-6 shadow-secondary-dark hover:!shadow-4xl hover:shadow-secondary-dark hover:bg-secondary"
+				className="shadow-3xl hover:border-secondary-dark border-secondary shadow-secondary-dark hover:!shadow-4xl hover:shadow-secondary-dark hover:bg-secondary h-full w-full gap-2 border-2 bg-white px-4 sm:w-auto sm:gap-4 sm:px-6 md:h-14"
 			/>
 			<Modal
 				title="Contact"
@@ -110,9 +110,9 @@ const Contact: FC = () => {
 			>
 				{contactDetails === null && (
 					<Fragment>
-						<div className="absolute top-0 left-0 w-full h-full bg-white opacity-80 z-10" />
-						<div className="absolute top-1/2 left-1/2 z-10 flex flex-col gap-4 items-center w-56 -translate-x-1/2 -translate-y-1/2">
-							<p className="text-center p-2 bg-white">{reCaptchaError ?? reCaptchaMessage}</p>
+						<div className="absolute left-0 top-0 z-10 h-full w-full bg-white opacity-80" />
+						<div className="absolute left-1/2 top-1/2 z-10 flex w-56 -translate-x-1/2 -translate-y-1/2 flex-col items-center gap-4">
+							<p className="bg-white p-2 text-center">{reCaptchaError ?? reCaptchaMessage}</p>
 							{reCaptchaError ? (
 								<Button
 									ariaLabel="Retry"
@@ -121,20 +121,20 @@ const Contact: FC = () => {
 									leftIcon={className => <ArrowPathIcon className={className} />}
 								/>
 							) : (
-								<ArrowPathIcon className="w-12 h-12 animate-spin " />
+								<ArrowPathIcon className="h-12 w-12 animate-spin " />
 							)}
 						</div>
 					</Fragment>
 				)}
 				<div className="flex flex-col items-center justify-center gap-2">
-					<p className="text-sm text-center sm:text">
+					<p className="sm:text text-center text-sm">
 						You can contact
 						<br /> me via email at
 					</p>
 					<ContactCopyButtons text={contactDetails?.emailAddress ?? "**************************"} scheme="mailto" />
 				</div>
 				<div className="flex flex-col items-center justify-center gap-2">
-					<p className="text-sm text-center sm:text">
+					<p className="sm:text text-center text-sm">
 						If you prefer
 						<br /> call or text me on
 					</p>

@@ -18,6 +18,11 @@ declare module "*.svg?background=transparent&fit=contain&aspect=1:1&w=64&allowUp
 	export default content;
 }
 
+declare module "*.webp?background=transparent&fit=contain&aspect=1:1&w=64&allowUpscale=true&format=png" {
+	const content: string;
+	export default content;
+}
+
 declare module "*.jpg?w=500&format=webp" {
 	const content: string;
 	export default content;

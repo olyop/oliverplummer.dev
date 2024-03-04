@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import ChevronDownIcon from "@heroicons/react/24/solid/ChevronDownIcon";
 import { ChangeEventHandler, FC, Fragment, ReactNode } from "react";
 
@@ -91,7 +92,7 @@ const Input: FC<InputProps> = ({
 
 	return (
 		<div
-			className={`relative ${isCheckboxType ? "flex gap-2 flex-row-reverse justify-end" : ""} ${
+			className={`relative ${isCheckboxType ? "flex flex-row-reverse justify-end gap-2" : ""} ${
 				isTextAreaType ? (note ? "h-[8.5rem]" : "h-[7rem]") : ""
 			} ${className ?? ""}`}
 		>
@@ -100,8 +101,8 @@ const Input: FC<InputProps> = ({
 					children={optional ? `${name} (optional)` : name}
 					htmlFor={type === InputType.LIST ? `${id}-select` : id}
 					className={`${
-						isCheckboxType ? "text-base" : "uppercase font-bold text-xs absolute -top-1.5"
-					} cursor-pointer left-3 bg-white z-50 select-none ${disabled ? "text-gray-400" : ""} ${labelClassName ?? ""}`}
+						isCheckboxType ? "text-base" : "absolute -top-1.5 text-xs font-bold uppercase"
+					} left-3 z-50 cursor-pointer select-none bg-white ${disabled ? "text-gray-400" : ""} ${labelClassName ?? ""}`}
 				/>
 			)}
 			{type === InputType.SELECT ? (
@@ -132,7 +133,7 @@ const Input: FC<InputProps> = ({
 						)}
 					</select>
 					<ChevronDownIcon
-						className={`w-4 h-4 absolute -translate-y-1/2 top-1/2 right-4 select-none ${
+						className={`absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 select-none ${
 							disabled ? "text-gray-500" : ""
 						}`}
 					/>
@@ -170,9 +171,9 @@ const Input: FC<InputProps> = ({
 			)}
 			{note && !isCheckboxType && (
 				<p
-					className={`text-gray-500 text-xs md:text-sm px-3 pb-1 ${
+					className={`px-3 pb-1 text-xs text-gray-500 md:text-sm ${
 						noteClassName ?? ""
-					} whitespace-nowrap overflow-hidden overflow-ellipsis`}
+					} overflow-hidden overflow-ellipsis whitespace-nowrap`}
 				>
 					{note || "Image is too large"}
 				</p>

@@ -1,7 +1,10 @@
 Comfortaa
 iemobile
 JWT's
+linkedin
 olyop
+postgres
+postgresql
 Sono
 Tash
 Xtreme

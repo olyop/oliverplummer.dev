@@ -6,8 +6,8 @@ import Navigation from "./layout/navigation";
 import Pages from "./layout/pages";
 
 const Background: FC<PropsWithChildren> = () => (
-	<div className="flex flex-col items-center w-screen h-screen px-0 pb-48 overflow-scroll overflow-x-hidden font-mono gap-28 bg-primary sm:px-8">
-		<div className="flex flex-col items-center w-full gap-12 sm:gap-8">
+	<div className="bg-primary flex h-screen w-screen flex-col items-center gap-28 overflow-scroll overflow-x-hidden px-0 pb-48 font-mono sm:px-8">
+		<div className="flex w-full flex-col items-center gap-12 sm:gap-8">
 			<Header />
 			<Navigation />
 			<Pages />

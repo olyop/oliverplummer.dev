@@ -30,6 +30,7 @@ import reduxImagePath from "assets/skills/front-end/redux.png?background=transpa
 import tailwindImagePath from "assets/skills/front-end/tailwind.png?background=transparent&fit=contain&aspect=1:1&w=64&allowUpscale=true&format=png";
 import typescriptImagePath from "assets/skills/front-end/typescript.png?background=transparent&fit=contain&aspect=1:1&w=64&allowUpscale=true&format=png";
 import vueImagePath from "assets/skills/front-end/vue.png?background=transparent&fit=contain&aspect=1:1&w=64&allowUpscale=true&format=png";
+import webWorkerImagePath from "assets/skills/front-end/web-worker.webp?background=transparent&fit=contain&aspect=1:1&w=64&allowUpscale=true&format=png";
 import workboxImagePath from "assets/skills/front-end/workbox.png?background=transparent&fit=contain&aspect=1:1&w=64&allowUpscale=true&format=png";
 import graphqlImagePath from "assets/skills/java/graphql.png?background=transparent&fit=contain&aspect=1:1&w=64&allowUpscale=true&format=png";
 import javaImagePath from "assets/skills/java/java.png?background=transparent&fit=contain&aspect=1:1&w=64&allowUpscale=true&format=png";
@@ -55,7 +56,7 @@ export const skillCategories: SkillCategory[] = [
 				dateStarted: new Date(2015, 0, 1),
 				description: `
 					I am very experienced in writing HTML and
-					knowledgeable in all areas of the language and how to use it to create any UI or layout.
+					knowledgeable in all areas of the markup and how to use it to create any UI or layout.
 					I use semantic elements and always follow HTML best practices.
 					Accessibility is always on my mind and I always use the correct attributes and tags to make my websites accessible.
 					I always follow SEO best practices and use the correct meta tags and attributes.
@@ -163,6 +164,20 @@ export const skillCategories: SkillCategory[] = [
 					I have used Tailwind CSS in a few projects and am still learning all of it's capabilities.
 					I am familiar with the core concepts of Tailwind CSS and how to use it to style a website.
 					I have used it to style React applications and static sites.
+				`,
+			},
+			{
+				code: "web-worker",
+				label: "Web Worker",
+				image: webWorkerImagePath,
+				level: 4,
+				dateStarted: new Date(2024, 0, 1),
+				description: `
+					I have learnt how to use Web Workers to run JavaScript in a separate thread.
+					This is to keep heavy computations in a separate thread to keep the main thread responsive.
+					I used a web worker to read, and process a large file system in a project - the user would select a folder and it would
+					recursively read all the files and folders and display the file structure in the browser while also scanning the metadata
+					of each file. This was a great use case for a web worker as it kept the main thread responsive while the file system was being read.
 				`,
 			},
 		],

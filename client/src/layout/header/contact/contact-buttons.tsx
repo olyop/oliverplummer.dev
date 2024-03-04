@@ -16,7 +16,7 @@ const ContactShareButton: FC<ButtonProps> = ({ text }) => {
 		<Button
 			isTransparent
 			onClick={handleShare}
-			className="border w-28"
+			className="w-28 border"
 			ariaLabel={`Copy ${text} to clipboard`}
 			text={
 				hasShared === null
@@ -106,7 +106,7 @@ const ContactCopyButton: FC<ButtonProps> = ({ text }) => {
 		<Button
 			isTransparent
 			onClick={handleCopy}
-			className="border w-28"
+			className="w-28 border"
 			ariaLabel={`Copy ${text} to clipboard`}
 			text={hasCopied === null ? "Copy" : hasCopied ? (hasError ? "Error" : "Copied!") : "Copying"}
 			leftIcon={className =>
@@ -146,12 +146,12 @@ export const ContactCopyButtons: FC<ButtonsProps> = ({ text, scheme }) => {
 
 	return (
 		<div className="flex flex-col items-center gap-4 py-2">
-			<a href={`${scheme}:${text}`} className="tracking-wider text-blue-600 text sm:text-lg hover:underline">
+			<a href={`${scheme}:${text}`} className="text tracking-wider text-blue-600 hover:underline sm:text-lg">
 				<u>
 					<b>{text}</b>
 				</u>
 			</a>
-			<div className="flex flex-col items-center gap-4 sm:gap-2 sm:flex-row">
+			<div className="flex flex-col items-center gap-4 sm:flex-row sm:gap-2">
 				{(breakpoint === Breakpoint.TINY || breakpoint === Breakpoint.SMALL) && actionButtonNode}
 				<ContactShareButton text={text} />
 				{breakpoint !== Breakpoint.TINY && breakpoint !== Breakpoint.SMALL && actionButtonNode}

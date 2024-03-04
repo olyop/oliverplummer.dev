@@ -1,11 +1,11 @@
 {
 	"import": ["@oly_op/cspell-dict/cspell-ext.json"],
-	"ignorePaths": ["cspell-dict.txt", "client/.env*"],
-	"dictionaries": ["custom-words"],
+	"ignorePaths": ["cspell-dictionary.txt", "client/.env*", "node_modules", "client/dist"],
+	"dictionaries": ["oliverplummer.com.au"],
 	"dictionaryDefinitions": [
 		{
-			"name": "custom-words",
-			"path": "./cspell-dict.txt"
+			"name": "oliverplummer.com.au",
+			"path": "./cspell-dictionary.txt"
 		}
 	]
 }

@@ -8,7 +8,7 @@ const formatDate = (date: Date) => `${date.toLocaleString(undefined, { month: "l
 export const determineDateStarted = ({ dateStarted, dateEnded }: Experience) => (
 	<Fragment>
 		<span>{formatDate(dateStarted)}</span>
-		<ArrowLongRightIcon className="w-4 h-4" />
+		<ArrowLongRightIcon className="h-4 w-4" />
 		<span>{dateEnded ? formatDate(dateEnded) : "Present"}</span>
 	</Fragment>
 );

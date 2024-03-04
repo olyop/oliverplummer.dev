@@ -1,6 +1,7 @@
 import CodeBracketIcon from "@heroicons/react/20/solid/CodeBracketIcon";
 import githubLogoImagePath from "assets/footer/github.png?background=transparent&fit=contain&aspect=1:1&w=64&allowUpscale=true&format=png";
 import linkedinImagePath from "assets/footer/linkedin.png?background=transparent&fit=contain&aspect=1:1&w=64&allowUpscale=true&format=png";
+import npmImagePath from "assets/footer/npm.png?background=transparent&fit=contain&aspect=1:1&w=64&allowUpscale=true&format=png";
 import stackOverflowImagePath from "assets/footer/stack-overflow.png?background=transparent&fit=contain&aspect=1:1&w=64&allowUpscale=true&format=png";
 import { navigationPages } from "layout/navigation-config";
 import { FC, PropsWithChildren } from "react";
@@ -20,12 +21,13 @@ const Footer: FC = () => (
 	<footer className="container flex flex-col gap-16 px-4 text-white sm:px-0">
 		<div className="flex flex-col gap-8 sm:flex-row lg:grid lg:grid-cols-[20rem_20rem_1fr]">
 			<FooterSection title="Connect">
-				<FooterExternalLink text="GitHub" leftIcon={githubLogoImagePath} url="https://github.com/olyop" />
 				<FooterExternalLink
 					text="LinkedIn"
 					leftIcon={linkedinImagePath}
 					url="https://www.linkedin.com/in/oliver-plummer-840988234"
 				/>
+				<FooterExternalLink text="GitHub" leftIcon={githubLogoImagePath} url="https://github.com/olyop" />
+				<FooterExternalLink text="npm" leftIcon={npmImagePath} url="https://www.npmjs.com/~oly_op" />
 				<FooterExternalLink
 					text="Stack Overflow"
 					leftIcon={stackOverflowImagePath}

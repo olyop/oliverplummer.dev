@@ -33,14 +33,14 @@ const determineDateStartedLabel = (dateStarted: SkillType["dateStarted"]) => {
 };
 
 const Skill: FC<Props> = ({ skill }) => (
-	<div className="flex flex-col items-center gap-4 px-4 pt-5 pb-4 transition-colors border rounded-lg sm:pb-8 sm:px-8 hover:border-primary">
-		<ContentImage contentItem={skill} className="!w-12 !h-12" />
+	<div className="hover:border-primary flex flex-col items-center gap-4 rounded-lg border px-4 pb-4 pt-5 transition-colors sm:px-8 sm:pb-8">
+		<ContentImage contentItem={skill} className="!h-12 !w-12" />
 		<h2 className="text-xl sm:text-2xl">
 			<b>{skill.label}</b>
 		</h2>
 		<h3 className="text-xs">{determineDateStartedLabel(skill.dateStarted)}</h3>
-		<div className="w-24 h-4 overflow-hidden bg-gray-200 rounded-full shadow" title="Skill Level">
-			<div className={`${determineSkillLevel(skill.level)} h-full bg-gray-400 rounded-full`} />h
+		<div className="h-4 w-24 overflow-hidden rounded-full bg-gray-200 shadow" title="Skill Level">
+			<div className={`${determineSkillLevel(skill.level)} h-full rounded-full bg-gray-400`} />h
 		</div>
 		{skill.description && <ShowMoreLess text={skill.description.trim()} />}
 	</div>

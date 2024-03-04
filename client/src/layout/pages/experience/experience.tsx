@@ -21,7 +21,7 @@ const ExperienceItem: FC<Props> = ({ item, isOpen, onToggle }) => (
 		contentClassName="flex flex-col items-start gap-8"
 		content={
 			<Fragment>
-				<div className="flex flex-col w-full gap-4 sm:flex-row">
+				<div className="flex w-full flex-col gap-4 sm:flex-row">
 					<ExperienceItemChip label="Role" text={item.role} icon={className => item.roleIcon(className)} />
 					<ExperienceItemChip label="Industry" text={item.industry} icon={className => item.industryIcon(className)} />
 				</div>
@@ -35,12 +35,12 @@ const ExperienceItem: FC<Props> = ({ item, isOpen, onToggle }) => (
 				{item.responsibilities && (
 					<div className="flex flex-col gap-2">
 						<div className="flex items-center gap-2">
-							<DocumentCheckIcon className="w-4 h-4" />
+							<DocumentCheckIcon className="h-4 w-4" />
 							<h1 className="text-lg">
 								<u>Responsibilities</u>
 							</h1>
 						</div>
-						<ul className="pl-8 list-disc">
+						<ul className="list-disc pl-8">
 							{item.responsibilities.map(({ code, label, description }) => (
 								<li key={code}>
 									<p>
@@ -56,12 +56,12 @@ const ExperienceItem: FC<Props> = ({ item, isOpen, onToggle }) => (
 				{item.skillsLearned && (
 					<div className="flex flex-col gap-2">
 						<div className="flex items-center gap-2">
-							<ListBulletIcon className="w-4 h-4" />
+							<ListBulletIcon className="h-4 w-4" />
 							<h1 className="text-lg">
 								<u>Learnings</u>
 							</h1>
 						</div>
-						<ul className="pl-8 list-disc">
+						<ul className="list-disc pl-8">
 							{item.skillsLearned.map(({ code, label, description }) => (
 								<li key={code}>
 									<p>

@@ -30,21 +30,22 @@
 		"react": "18.2.0",
 		"react-dom": "18.2.0",
 		"react-google-recaptcha-v3": "1.10.1",
-		"react-router-dom": "6.21.1",
-		"tailwindcss": "3.4.0"
+		"react-router-dom": "6.22.2",
+		"tailwindcss": "3.4.1"
 	},
 	"devDependencies": {
-		"@types/node": "20.10.5",
-		"@types/react": "18.2.45",
-		"@types/react-dom": "18.2.18",
-		"@vitejs/plugin-react-swc": "3.5.0",
-		"autoprefixer": "10.4.16",
+		"@types/node": "20.11.24",
+		"@types/react": "18.2.61",
+		"@types/react-dom": "18.2.19",
+		"@vitejs/plugin-react-swc": "3.6.0",
+		"autoprefixer": "10.4.18",
 		"content-security-policy-builder": "2.1.1",
-		"postcss": "8.4.32",
+		"postcss": "8.4.35",
+		"postcss-load-config": "5.0.3",
 		"ts-node": "^10.9.2",
-		"vite": "5.0.10",
-		"vite-imagetools": "6.2.8",
-		"vite-plugin-checker": "0.6.2",
-		"vite-tsconfig-paths": "4.2.2"
+		"vite": "5.1.4",
+		"vite-imagetools": "6.2.9",
+		"vite-plugin-checker": "0.6.4",
+		"vite-tsconfig-paths": "4.3.1"
 	}
 }

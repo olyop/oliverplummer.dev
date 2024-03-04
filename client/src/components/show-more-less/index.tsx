@@ -22,11 +22,12 @@ const ShowMoreLess: FC<Props> = ({ text, className }) => {
 
 	return (
 		<div>
-			<p ref={ref} className={`${showMore ? "" : "line-clamp-3"} ${className ?? ""} text-sm sm:text`}>
+			<p ref={ref} className={`${showMore ? "" : "line-clamp-3"} ${className ?? ""} sm:text text-sm`}>
 				{text}
 			</p>
 			{showButton && (
 				<button
+					type="button"
 					className="text-blue-600 hover:text-blue-800 hover:underline"
 					onClick={handleShowMore}
 					title={buttonText}
