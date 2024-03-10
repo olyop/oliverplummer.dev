@@ -22,7 +22,7 @@
 		"npm": "10.2.5"
 	},
 	"scripts": {
-		"dev": "vite",
+		"development": "vite",
 		"build": "vite build"
 	},
 	"dependencies": {

@@ -22,7 +22,7 @@
 		"npm": "10.4.0"
 	},
 	"scripts": {
-		"dev": "cd client && npm run dev && cd ..",
+		"development": "cd client && npm run development && cd ..",
 		"build": "cd client && npm run build && cd ..",
 		"deploy-clear": "aws s3 rm s3://oliverplummer.s3.ap-southeast-2.amazonaws.com --recursive",
 		"deploy-sync": "aws s3 sync --cache-control max-age=31536000 ./client/dist/ s3://oliverplummer.s3.ap-southeast-2.amazonaws.com",
@@ -36,7 +36,7 @@
 		"@oly_op/eslint-config-react": "4.3.5",
 		"@oly_op/prettier-config": "1.8.2",
 		"@oly_op/tsconfig": "1.2.1",
-		"@types/node": "20.11.24",
+		"@types/node": "20.11.25",
 		"npm-check-updates": "16.14.15",
 		"ts-node": "10.9.2"
 	}

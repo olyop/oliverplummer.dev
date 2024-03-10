@@ -49,7 +49,6 @@ export default defineConfig(async ({ mode }) => ({
 		imagetools(),
 	],
 	server: {
-		host: true,
 		https: {
 			cert: await readFile("/home/op/.mkcert/localhost.pem"),
 			key: await readFile("/home/op/.mkcert/localhost-key.pem"),
