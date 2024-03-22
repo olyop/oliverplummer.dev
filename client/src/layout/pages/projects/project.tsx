@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/media-has-caption */
 import ArrowTopRightOnSquareIcon from "@heroicons/react/20/solid/ArrowTopRightOnSquareIcon";
 import CodeBracketIcon from "@heroicons/react/20/solid/CodeBracketIcon";
 import EyeIcon from "@heroicons/react/20/solid/EyeIcon";
@@ -64,6 +65,13 @@ const Project: FC<Props> = ({ isOpen, item, onToggle }) => (
 							/>
 						</a>
 					)}
+				</div>
+				<div className="grid grid-cols-1 gap-8 p-4 shadow-2xl sm:grid-cols-2">
+					{item.screencasts.map(screencast => (
+						<video key={screencast} controls className="w-full">
+							<source src={screencast} type="video/webm" />
+						</video>
+					))}
 				</div>
 				<div className="grid grid-cols-1 gap-8 p-4 shadow-2xl sm:grid-cols-2">
 					{item.screenshots.map(screeshot => (

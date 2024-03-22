@@ -7,5 +7,6 @@ export interface Project extends ContentItem {
 	description: string;
 	features: string[];
 	technologies: string[];
+	screencasts: string[];
 	screenshots: string[];
 }

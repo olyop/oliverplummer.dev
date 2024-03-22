@@ -35,7 +35,7 @@ const determineContentSecurityPolicy = (mode: string) => {
 			frameSrc: ["'self'", "https://*.google.com"],
 			imgSrc: ["'self'", "data:"],
 			manifestSrc: ["'none'"],
-			mediaSrc: ["'none'"],
+			mediaSrc: ["'self'"],
 			workerSrc: ["'none'"],
 		},
 	});

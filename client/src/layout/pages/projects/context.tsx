@@ -1,4 +1,5 @@
 import directoryToSpotifyLogoPath from "assets/projects/directory-to-spotify/logo.png?background=transparent&fit=contain&aspect=1:1&w=64&allowUpscale=true&format=png";
+import directoryToSpotifyScreenCastOne from "assets/projects/directory-to-spotify/screencast-1.webm";
 import directoryToSpotifyScreenShotOneLogoPath from "assets/projects/directory-to-spotify/screenshot-1.png";
 import directoryToSpotifyScreenShotTwoLogoPath from "assets/projects/directory-to-spotify/screenshot-2.png";
 import directoryToSpotifyScreenShotThreeLogoPath from "assets/projects/directory-to-spotify/screenshot-3.png";
@@ -22,6 +23,7 @@ export const projects: Project[] = [
 		image: xtremeHipHopLogoPath,
 		url: "https://xtremehiphopwithtash.com",
 		sourceCodeUrl: "https://github.com/olyop/xtremehiphopwithtash",
+		screencasts: [],
 		screenshots: [
 			xtremeHipHopScreenShotOneLogoPath,
 			xtremeHipHopScreenShotTwoLogoPath,
@@ -31,7 +33,7 @@ export const projects: Project[] = [
 		],
 		description: `
 			I developed the booking system for Xtreme Hip-Hop with Tash. This system is used by
-			over 500 users to book classes. I continue to maintain and develop new features for this system.
+			over 200 users to book classes. I continue to maintain and develop new features for this system.
 		`,
 		features: [
 			"Account creation and management for users and administrators.",
@@ -68,6 +70,7 @@ export const projects: Project[] = [
 		],
 		technologies: ["React", "TailwindCSS", "Heroicons", "Spotify Web API", "Web Workers", "Redux"],
 		image: directoryToSpotifyLogoPath,
+		screencasts: [directoryToSpotifyScreenCastOne],
 		screenshots: [
 			directoryToSpotifyScreenShotOneLogoPath,
 			directoryToSpotifyScreenShotTwoLogoPath,
