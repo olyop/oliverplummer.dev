@@ -3,7 +3,7 @@ import { FC, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 
 import Container from "../container";
-import { isProjectCodeValid, projects } from "./context";
+import { isProjectCodeValid, projects } from "./content";
 import Project from "./project";
 
 const OPEN_SECTION_PARAM_NAME = "open-section";

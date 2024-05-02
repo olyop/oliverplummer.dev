@@ -6,6 +6,11 @@ import directoryToSpotifyScreenShotThreeLogoPath from "assets/projects/directory
 import directoryToSpotifyScreenShotFourLogoPath from "assets/projects/directory-to-spotify/screenshot-4.png";
 import directoryToSpotifyScreenShotFiveLogoPath from "assets/projects/directory-to-spotify/screenshot-5.png";
 import directoryToSpotifyScreenShotSixLogoPath from "assets/projects/directory-to-spotify/screenshot-6.png";
+import goWarriorsLogoPath from "assets/projects/go-warriors/logo.webp?background=transparent&fit=contain&aspect=1:1&w=64&allowUpscale=true&format=png";
+import goWarriorsScreenShotOneLogoPath from "assets/projects/go-warriors/screenshot-1.png";
+import goWarriorsScreenShotTwoLogoPath from "assets/projects/go-warriors/screenshot-2.png";
+import goWarriorsScreenShotThreeLogoPath from "assets/projects/go-warriors/screenshot-3.png";
+import goWarriorsScreenShotFourLogoPath from "assets/projects/go-warriors/screenshot-4.png";
 import xtremeHipHopLogoPath from "assets/projects/xtremehiphop/logo.png?background=transparent&fit=contain&aspect=1:1&w=64&allowUpscale=true&format=png";
 import xtremeHipHopScreenShotOneLogoPath from "assets/projects/xtremehiphop/screenshot-1.png";
 import xtremeHipHopScreenShotTwoLogoPath from "assets/projects/xtremehiphop/screenshot-2.png";
@@ -17,9 +22,52 @@ import { Project } from "./types";
 
 export const projects: Project[] = [
 	{
+		code: "go-warriors",
+		label: "Go Warriors",
+		text: "An application for viewing NBA games and statistics.",
+		image: goWarriorsLogoPath,
+		description: `
+			I developed this application to learn new web technologies Next.js App Router and Go as a backend API.
+			The front end is written in React Server Components (RSC) and I really tried to write the code for the
+			application in the 'App Router' way so I could understand how this technology works and the pros & cons
+			of this approach. I also really wanted to learn Go and to see what it was like writing a HTTP API in Go.  
+		`,
+		url: "https://go-warriors.vercel.app/",
+		sourceCodeUrl: "https://github.com/olyop/go-warriors",
+		screencasts: [],
+		screenshots: [
+			goWarriorsScreenShotOneLogoPath,
+			goWarriorsScreenShotTwoLogoPath,
+			goWarriorsScreenShotThreeLogoPath,
+			goWarriorsScreenShotFourLogoPath,
+		],
+		features: [
+			"View NBA games and statistics.",
+			"View player statistics.",
+			"View team statistics.",
+			"View game statistics.",
+			"Dark mode.",
+			"Responsive mobile-first design.",
+			"Server-side rendering.",
+			"Caching at the page level using RSC",
+			"API written in Go.",
+		],
+		technologies: [
+			"Next.js",
+			"Vercel Hosted",
+			"React",
+			"TailwindCSS",
+			"Heroicons",
+			"React Server Components",
+			"Go HTTP API",
+			"Go AWS Lambda Serverless",
+			"Go Gin",
+		],
+	},
+	{
 		code: "xtremehiphop",
 		label: "Xtreme Hip-Hop",
-		text: "A class booking application that browse classes, book and pay online, also buy merchandise.",
+		text: "A class booking application to browse classes, book and pay online, also buy merchandise.",
 		image: xtremeHipHopLogoPath,
 		url: "https://xtremehiphopwithtash.com",
 		sourceCodeUrl: "https://github.com/olyop/xtremehiphopwithtash",
