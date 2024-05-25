@@ -30,7 +30,11 @@ const determineContentSecurityPolicy = (mode: string) => {
 			],
 			styleSrc: ["'self'", isProduction ? "" : "'unsafe-inline'", " https://*.googleapis.com"],
 			objectSrc: ["'none'"],
-			connectSrc: ["'self'", "https://api.oliverplummer.com.au/contact-details"],
+			connectSrc: [
+				"'self'",
+				"https://api.oliverplummer.com.au",
+				"https://dgc7bvfucv5j2j275d33oizt4i0somts.lambda-url.ap-southeast-2.on.aws",
+			],
 			fontSrc: ["'self'", "https://*.gstatic.com"],
 			frameSrc: ["'self'", "https://*.google.com"],
 			imgSrc: ["'self'", "data:"],
