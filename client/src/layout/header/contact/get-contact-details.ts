@@ -7,7 +7,7 @@ export const getContactDetails = async (reCaptchaToken: string) => {
 
 	const request = new Request(url, {
 		method: "GET",
-		mode: "cors",
+		mode: "no-cors",
 		headers,
 	});
 

@@ -3,6 +3,7 @@ import CloudIcon from "@heroicons/react/20/solid/CloudIcon";
 import CodeBracketIcon from "@heroicons/react/20/solid/CodeBracketIcon";
 import CommandLineIcon from "@heroicons/react/20/solid/CommandLineIcon";
 import ServerIcon from "@heroicons/react/20/solid/ServerIcon";
+import goImagePath from "assets/skills/back-end/go.png?background=transparent&fit=contain&aspect=1:1&w=64&allowUpscale=true&format=png";
 import auth0ImagePath from "assets/skills/cloud/auth0.png?background=transparent&fit=contain&aspect=1:1&w=64&allowUpscale=true&format=png";
 import awsImagePath from "assets/skills/cloud/aws.jpg?background=transparent&fit=contain&aspect=1:1&w=64&allowUpscale=true&format=png";
 import azureImagePath from "assets/skills/cloud/azure.png?background=transparent&fit=contain&aspect=1:1&w=64&allowUpscale=true&format=png";
@@ -217,11 +218,12 @@ export const skillCategories: SkillCategory[] = [
 				code: "next",
 				label: "Next.js",
 				image: nextjsImagePath,
-				level: 2,
+				level: 3,
 				dateStarted: new Date(2022, 0, 1),
 				description: `
-					Brief understanding of Next.js and how to use it to create a server-side rendered React application.
-					Not much experience with it but have used it in a project.
+					Solid understanding of Next.js and how to use it to create server-side rendered applications.
+					Knowledge in App Router and React Server components pattern and how to use the to create the blend of static and dynamic pages
+					and where to use each.
 				`,
 			},
 			{
@@ -271,6 +273,19 @@ export const skillCategories: SkillCategory[] = [
 					Have used GraphQL in multiple projects to create APIs.
 					I am very familiar with the core concepts of GraphQL and how to use it to create an API.
 					I have used it with both Node.js and Java/Spring Boot.
+				`,
+			},
+			{
+				code: "go",
+				label: "Go",
+				image: goImagePath,
+				level: 2,
+				dateStarted: new Date(2024, 0, 1),
+				description: `
+					I have been learing Go for a few months now and have used it in a few small projects.
+					I am familiar with the core concepts of Go and how to use it to create a RESTful API.
+					Solid understanding of Go's concurrency model including goroutines, channels, wait groups, mutexes, and writing
+					thread-safe code in Go.
 				`,
 			},
 		],

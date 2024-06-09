@@ -33,11 +33,11 @@
 	"devDependencies": {
 		"@oly_op/cspell-dict": "1.1.10",
 		"@oly_op/eslint-config": "6.7.20",
-		"@oly_op/eslint-config-react": "4.3.5",
-		"@oly_op/prettier-config": "1.8.2",
+		"@oly_op/eslint-config-react": "4.3.6",
+		"@oly_op/prettier-config": "1.9.4",
 		"@oly_op/tsconfig": "1.2.1",
-		"@types/node": "20.11.25",
-		"npm-check-updates": "16.14.15",
+		"@types/node": "20.12.12",
+		"npm-check-updates": "16.14.20",
 		"ts-node": "10.9.2"
 	}
 }

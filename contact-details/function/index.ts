@@ -1,4 +1,9 @@
-import type { APIGatewayProxyEventV2, Handler, LambdaFunctionURLEvent } from "aws-lambda";
+import type {
+	APIGatewayProxyEventV2,
+	APIGatewayProxyStructuredResultV2,
+	Handler,
+	LambdaFunctionURLEvent,
+} from "aws-lambda";
 
 const {
 	RECAPTCHA_SECRET_KEY,
@@ -22,15 +27,33 @@ const CONTACT_DETAILS: ContactDetails = {
 	mobileNumber: CONTACT_DETAILS_MOBILE_NUMBER,
 };
 
-class ValidationError extends Error {
-	constructor(message: string) {
-		super(message);
+export const handler: Handler<LambdaFunctionURLEvent, APIGatewayProxyStructuredResultV2> = async event => {
+	try {
+		const reCaptchaToken = getReCaptchaToken(event);
 
-		this.name = "ValidationError";
+		await verifyReCaptchaToken(reCaptchaToken, event.requestContext.http.sourceIp);
+	} catch (error) {
+		return {
+			isBase64Encoded: false,
+			statusCode: 200,
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify({ error: error instanceof Error ? error.message : "Unknown error" }),
+		};
 	}
-}
 
-const getReCaptchaToken = (event: APIGatewayProxyEventV2) => {
+	return {
+		isBase64Encoded: false,
+		statusCode: 200,
+		headers: {
+			"Content-Type": "application/json",
+		},
+		body: JSON.stringify(CONTACT_DETAILS),
+	};
+};
+
+function getReCaptchaToken(event: APIGatewayProxyEventV2) {
 	if (event.queryStringParameters === undefined) {
 		throw new ValidationError("Missing query string parameters");
 	}
@@ -42,9 +65,9 @@ const getReCaptchaToken = (event: APIGatewayProxyEventV2) => {
 	}
 
 	return reCaptchaToken;
-};
+}
 
-const verifyReCaptchaToken = async (token: string, remoteIp: string) => {
+async function verifyReCaptchaToken(token: string, remoteIp: string) {
 	const url = new URL(RE_CAPTCHA_VERIFY_URL);
 
 	url.searchParams.append("secret", RECAPTCHA_SECRET_KEY);
@@ -52,7 +75,7 @@ const verifyReCaptchaToken = async (token: string, remoteIp: string) => {
 	url.searchParams.append("remoteip", remoteIp);
 
 	const reCaptchaResponse = await fetch(url, {
-		method: "POST",
+		method: "GET",
 		headers: {
 			"Accept": "application/json",
 		},
@@ -79,27 +102,14 @@ const verifyReCaptchaToken = async (token: string, remoteIp: string) => {
 	if (!verifyResponse.success) {
 		throw new ValidationError("Unsuccessful");
 	}
-};
+}
 
-export const handler: Handler<LambdaFunctionURLEvent, Response> = async event => {
-	try {
-		const reCaptchaToken = getReCaptchaToken(event);
+class ValidationError extends Error {
+	constructor(message: string) {
+		super(message);
 
-		await verifyReCaptchaToken(reCaptchaToken, event.requestContext.http.sourceIp);
-	} catch (error) {
-		return {
-			error: error instanceof Error ? error.message : "Unknown error",
-		};
+		this.name = "ValidationError";
 	}
-
-	return {
-		contactDetails: CONTACT_DETAILS,
-	};
-};
-
-interface Response {
-	error?: string;
-	contactDetails?: ContactDetails;
 }
 
 interface ContactDetails {

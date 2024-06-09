@@ -37,7 +37,7 @@ const SkillCategory: FC<Props> = ({
 			isOpen={isOpen}
 			onToggle={onToggle}
 			id={skillCategory.code}
-			title={skillCategory.label}
+			title={`${skillCategory.label} (${skills.length})`}
 			imageNode={className => <ContentImage contentItem={skillCategory} className={className} />}
 			contentClassName="flex flex-col gap-6"
 			content={
