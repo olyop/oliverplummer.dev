@@ -14,12 +14,8 @@
 		"email": "oliver.plummer@outlook.com"
 	},
 	"volta": {
-		"node": "21.4.0",
-		"npm": "10.2.5"
-	},
-	"engines": {
-		"node": "21.4.0",
-		"npm": "10.2.5"
+		"node": "21.7.3",
+		"npm": "10.8.1"
 	},
 	"scripts": {
 		"development": "vite",
@@ -31,19 +27,19 @@
 		"react-dom": "18.3.1",
 		"react-google-recaptcha-v3": "1.10.1",
 		"react-router-dom": "6.23.1",
-		"tailwindcss": "3.4.3"
+		"tailwindcss": "3.4.4"
 	},
 	"devDependencies": {
-		"@types/node": "20.12.12",
+		"@types/node": "20.14.2",
 		"@types/react": "18.3.3",
 		"@types/react-dom": "18.3.0",
 		"@vitejs/plugin-react-swc": "3.7.0",
 		"autoprefixer": "10.4.19",
 		"content-security-policy-builder": "2.2.0",
 		"postcss": "8.4.38",
-		"postcss-load-config": "5.1.0",
+		"postcss-load-config": "6.0.1",
 		"ts-node": "^10.9.2",
-		"vite": "5.2.12",
+		"vite": "5.3.0",
 		"vite-imagetools": "7.0.2",
 		"vite-plugin-checker": "0.6.4",
 		"vite-tsconfig-paths": "4.3.2"

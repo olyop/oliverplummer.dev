@@ -192,7 +192,7 @@ export const skillCategories: SkillCategory[] = [
 				code: "node",
 				label: "Node.js",
 				image: nodeImagePath,
-				level: 3,
+				level: 4,
 				dateStarted: new Date(2018, 0, 1),
 				description: `
 					Have used Node.js in many of my personal projects to create RESTful APIs and GraphQL APIs,
@@ -243,7 +243,7 @@ export const skillCategories: SkillCategory[] = [
 				code: "spring",
 				label: "Spring",
 				image: springImagePath,
-				level: 3,
+				level: 4,
 				dateStarted: new Date(2022, 0, 1),
 				description: `
 					Am familiar with the core concepts of Spring and how to use it to create a variety of applications.
@@ -279,7 +279,7 @@ export const skillCategories: SkillCategory[] = [
 				code: "go",
 				label: "Go",
 				image: goImagePath,
-				level: 2,
+				level: 3,
 				dateStarted: new Date(2024, 0, 1),
 				description: `
 					I have been learing Go for a few months now and have used it in a few small projects.
