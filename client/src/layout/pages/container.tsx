@@ -7,7 +7,7 @@ const Container: FC<PropsWithChildren<Props>> = ({
 	children,
 	childrenClassName,
 }) => (
-	<div className="space-y-8">
+	<div className="space-y-4 md:space-y-8">
 		<div className="flex items-start gap-4 py-4">
 			{icon("size-8 mt-1")}
 			<div className="space-y-2">

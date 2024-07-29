@@ -141,7 +141,7 @@ const Layout = () => {
 			/>
 			<div
 				className={clsx(
-					"!mt-header mb-header space-y-8 p-8",
+					"!mt-header mb-header space-y-4 p-4 md:space-y-8 md:p-8",
 					sidebar === null
 						? "container mx-auto"
 						: clsx(sidebar && breakpoint === Breakpoint.LARGE && "ml-sidebar"),

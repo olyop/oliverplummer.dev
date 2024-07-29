@@ -16,7 +16,7 @@ const Sidebar: FC<SidebarProps> = ({ sidebar, breakpoint, onToggleSidebar }) => 
 		)}
 		<div
 			className={clsx(
-				"w-sidebar bg-elevated dark:bg-elevated-dark border-primary dark:border-primary-dark top-header fixed z-40 h-screen border-r py-8 shadow duration-200",
+				"w-sidebar bg-elevated dark:bg-elevated-dark border-primary dark:border-primary-dark top-header fixed z-40 h-screen border-r py-4 shadow duration-200 md:py-8",
 				sidebar ? "left-0 opacity-100" : "-left-sidebar opacity-0",
 			)}
 		>

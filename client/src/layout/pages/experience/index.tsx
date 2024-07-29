@@ -35,7 +35,7 @@ const ExperiencePage: FC = () => {
 			title="Experience"
 			icon={iconClassName => <BriefcaseIcon className={iconClassName} />}
 			text="My professional work experience and occupations.."
-			childrenClassName="flex flex-col gap-8"
+			childrenClassName="md:space-y-8 space-y-4"
 		>
 			{content.map(item => (
 				<ExperienceItem

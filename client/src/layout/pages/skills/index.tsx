@@ -81,7 +81,7 @@ const SkillsPage: FC = () => {
 					A complete list of all the <b>skills & technologies</b> I have experience with..
 				</Fragment>
 			}
-			childrenClassName="flex flex-col gap-8"
+			childrenClassName="md:space-y-8 space-y-4"
 		>
 			{skillCategories.map(skillCategory => (
 				<SkillCategory

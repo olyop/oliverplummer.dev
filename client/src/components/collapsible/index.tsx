@@ -45,7 +45,7 @@ const Collapsible: FC<Props> = ({
 				ref={focusRef}
 				onClick={handleToggle}
 				style={{ transitionProperty: "background-color, border-radius, border-color" }}
-				className="flex cursor-pointer select-none items-center justify-between px-8 py-4 duration-200 ease-in-out"
+				className="flex cursor-pointer select-none items-center justify-between px-6 py-4 duration-200 ease-in-out md:px-8"
 			>
 				<div className="flex items-start gap-3 sm:gap-6">
 					{imageNode("mt-[0.2rem] sm:mt-[0.4rem]")}
@@ -75,7 +75,7 @@ const Collapsible: FC<Props> = ({
 			>
 				{isOpen && (
 					<div
-						className={`bg-elevated dark:bg-elevated-dark rounded-b-2xl p-8 ${contentClassName ?? ""}`}
+						className={`bg-elevated dark:bg-elevated-dark rounded-b-2xl p-4 md:p-8 ${contentClassName ?? ""}`}
 					>
 						{content}
 					</div>

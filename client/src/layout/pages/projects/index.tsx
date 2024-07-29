@@ -35,7 +35,7 @@ const ProjectsPage: FC = () => {
 			title="Projects"
 			icon={iconClassName => <Bars3CenterLeftIcon className={iconClassName} />}
 			text="Professional and personal projects that I have developed"
-			childrenClassName="flex flex-col gap-8"
+			childrenClassName="md:space-y-8 space-y-4"
 		>
 			{projects.map(project => (
 				<Project

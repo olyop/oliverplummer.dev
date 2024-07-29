@@ -30,7 +30,9 @@ const SkillCategory: FC<Props> = ({
 		onSortByDirectionChange(value as SortByDirection);
 	};
 
-	const skills = [...skillCategory.skills].sort(skillsSortByComparator(sortByField, sortByDirection));
+	const skills = [...skillCategory.skills].sort(
+		skillsSortByComparator(sortByField, sortByDirection),
+	);
 
 	return (
 		<Collapsible
@@ -38,8 +40,10 @@ const SkillCategory: FC<Props> = ({
 			onToggle={onToggle}
 			id={skillCategory.code}
 			title={`${skillCategory.label} (${skills.length})`}
-			imageNode={className => <ContentImage contentItem={skillCategory} className={className} />}
-			contentClassName="flex flex-col gap-6"
+			imageNode={className => (
+				<ContentImage contentItem={skillCategory} className={className} />
+			)}
+			contentClassName="space-y-4 md:space-y-8"
 			content={
 				<Fragment>
 					<div className="flex w-full items-center justify-stretch gap-4 self-end md:justify-end">

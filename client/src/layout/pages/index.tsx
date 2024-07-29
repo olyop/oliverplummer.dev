@@ -5,7 +5,7 @@ import { useRoutes } from "react-router-dom";
 const Pages: FC = () => {
 	const routes = useRoutes(navigationPages);
 	return (
-		<main className="border-primary dark:border-primary-dark min-h-[calc(100vh-5rem-4rem)] rounded-2xl border p-8">
+		<main className="border-primary dark:border-primary-dark min-h-[calc(100vh-5rem-4rem)] rounded-2xl border p-4 md:p-8">
 			{routes}
 		</main>
 	);

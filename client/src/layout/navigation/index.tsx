@@ -13,7 +13,7 @@ const Navigation: FC<NavigationProps> = ({ className, sidebar = false, onClick }
 				className={({ isActive }) =>
 					clsx(
 						"hover:bg-hover dark:hover:bg-hover-dark focus:bg-hover dark:focus:bg-hover-dark group relative flex h-full items-center gap-4 text-2xl font-bold lowercase transition-colors duration-100",
-						sidebar ? "px-8 py-4" : "px-6",
+						sidebar ? "px-4 py-4 md:px-8" : "px-4 md:px-8",
 						isActive && "!bg-primary dark:!bg-primary-dark",
 					)
 				}
