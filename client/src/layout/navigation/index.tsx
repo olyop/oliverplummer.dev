@@ -1,32 +1,58 @@
-import Button from "components/button";
-import { Breakpoint, useBreakpoint } from "hooks/use-breakpoint";
+import clsx from "clsx";
 import { navigationPages } from "layout/navigation-config";
-import { FC } from "react";
-import { NavLink } from "react-router-dom";
+import { FC, Fragment, ReactNode } from "react";
+import { NavLink, NonIndexRouteObject } from "react-router-dom";
 
-const Navigation: FC = () => {
-	const breakpoint = useBreakpoint();
-	const isTinyOrSmall = breakpoint === Breakpoint.TINY || breakpoint === Breakpoint.SMALL;
-	return (
-		<nav className="container grid gap-4 px-4 sm:px-0 md:grid-cols-2 md:grid-rows-2 md:gap-6 lg:grid-cols-[6rem_1fr_1fr_1fr] lg:grid-rows-1 lg:gap-8">
-			{navigationPages.map(({ text, icon, path, hideText }) => (
-				<NavLink to={path} key={path}>
-					{({ isActive }) => (
-						<Button
-							tabIndex={-1}
-							ariaLabel={text}
-							textClassName="tracking-wider"
-							text={isTinyOrSmall ? text : hideText ? undefined : text}
-							leftIcon={className => icon(`h-6 w-6 ${className}`)}
-							className={`h-full w-full select-none gap-6 py-3 !text-2xl md:py-4 ${
-								isActive ? "bg-primary-dark !text-white" : "bg-secondary !text-primary hover:!text-white"
-							}`}
+const Navigation: FC<NavigationProps> = ({ className, sidebar = false, onClick }) => (
+	<nav className={className}>
+		{navigationPages.map(({ text, icon, path }) => (
+			<NavLink
+				to={path}
+				key={path}
+				onClick={onClick}
+				className={({ isActive }) =>
+					clsx(
+						"hover:bg-hover dark:hover:bg-hover-dark focus:bg-hover dark:focus:bg-hover-dark group relative flex h-full items-center gap-4 text-2xl font-bold lowercase transition-colors duration-100",
+						sidebar ? "px-8 py-4" : "px-6",
+						isActive && "!bg-primary dark:!bg-primary-dark",
+					)
+				}
+			>
+				{({ isActive }) => (
+					<Fragment>
+						{icon("size-5")}
+						<span>{text}</span>
+						<div
+							className={clsx(
+								"bg-primary-accent dark:bg-primary-accent-dark invisible absolute origin-center transition-all group-hover:visible group-hover:scale-x-100 group-focus:scale-x-100",
+								isActive &&
+									clsx(
+										"bg-primary-accent dark:bg-primary-accent-dark !visible",
+										sidebar ? "scale-y-100" : "scale-x-100",
+									),
+								sidebar
+									? "right-[calc(-0.25rem/2)] top-0 h-full w-1 scale-y-0"
+									: "bottom-[calc(-0.25rem/2)] left-0 h-1 w-full scale-x-0",
+							)}
 						/>
-					)}
-				</NavLink>
-			))}
-		</nav>
-	);
-};
+					</Fragment>
+				)}
+			</NavLink>
+		))}
+	</nav>
+);
+
+export interface NavigationPage extends NonIndexRouteObject {
+	text: string;
+	path: string;
+	hideText: boolean;
+	icon: (className: string) => ReactNode;
+}
+
+export interface NavigationProps {
+	className?: string | undefined;
+	sidebar?: boolean;
+	onClick?: (() => void) | undefined;
+}
 
 export default Navigation;

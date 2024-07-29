@@ -1,4 +1,4 @@
-import Main from "main";
+import Layout from "layout";
 import ReCaptcha from "providers/re-captcha";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
@@ -12,7 +12,7 @@ const root = createRoot(container);
 root.render(
 	<BrowserRouter>
 		<ReCaptcha>
-			<Main />
+			<Layout />
 		</ReCaptcha>
 	</BrowserRouter>,
 );

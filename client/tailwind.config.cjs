@@ -1,31 +1,50 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 /** @type {import('tailwindcss').Config} */
+const scrollbar = require("tailwind-scrollbar");
 
 module.exports = {
+	darkMode: "selector",
 	content: ["./src/**/*.{js,ts,jsx,tsx}"],
 	theme: {
-		fontFamily: {
-			"mono": ["Sono", "monospace"],
-		},
 		extend: {
 			colors: {
-				"primary": "#1e293b",
-				"primary-light": "#334155",
-				"primary-dark": "#0f172a",
-				"secondary": "#67e8f9",
-				"secondary-light": "#a5f3fc",
-				"secondary-dark": "#22d3ee",
-
-				// other
-				"readytech": "#26d07c",
+				"background": "#ecfccb",
+				"background-dark": "#1c1917",
+				"elevated": "#f7fee7",
+				"elevated-dark": "#292524",
+				"hover": "#d9f99d",
+				"hover-dark": "#431407",
+				"primary": "#bef264",
+				"primary-dark": "#9a3412",
+				"primary-accent": "#65a30d",
+				"primary-accent-dark": "#ea580c",
+			},
+			textColor: {
+				"text": "#1a2e05",
+				"text-dark": "#ffedd5",
+			},
+			borderColor: {
+				"hover": "#d9f99d",
+				"hover-dark": "#431407",
+				"primary": "#bef264",
+				"primary-dark": "#9a3412",
+				"primary-accent": "#65a30d",
+				"primary-accent-dark": "#ea580c",
+			},
+			spacing: {
+				"header": "5rem",
+				"sidebar": "20rem",
 			},
 			height: {
-				"header-height": "5rem",
-				"content-height": "calc(100vh - 5rem)",
+				"header": "5rem",
+			},
+			margin: {
+				"header": "5rem",
 			},
 			width: {
-				"booking-modal": "30rem",
+				"sidebar": "20rem",
 			},
 		},
 	},
-	plugins: [],
+	plugins: [scrollbar({ noncompatible: false })],
 };

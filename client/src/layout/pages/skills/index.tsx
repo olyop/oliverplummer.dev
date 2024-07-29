@@ -1,3 +1,4 @@
+import CheckCircleIcon from "@heroicons/react/20/solid/CheckCircleIcon";
 import { initializeSearchParams, syncSearchParams } from "helpers";
 import { FC, Fragment, useState } from "react";
 import { useSearchParams } from "react-router-dom";
@@ -36,13 +37,14 @@ const SkillsPage: FC = () => {
 		isSortByFieldValid,
 	);
 
-	const sortByDirectionInitialValue: SortByDirection = initializeSearchParams<SortByDirection>(
-		SORT_BY_DIRECTION_PARAM_NAME,
-		urlSearchParams,
-		setUrlSearchParams,
-		"asc",
-		isSortByDirectionValid,
-	);
+	const sortByDirectionInitialValue: SortByDirection =
+		initializeSearchParams<SortByDirection>(
+			SORT_BY_DIRECTION_PARAM_NAME,
+			urlSearchParams,
+			setUrlSearchParams,
+			"asc",
+			isSortByDirectionValid,
+		);
 
 	const [openSection, setOpenSection] = useState(openSectionInitialValue);
 	const [sortByField, setSortByField] = useState(sortByFieldInitialValue);
@@ -73,12 +75,13 @@ const SkillsPage: FC = () => {
 	return (
 		<Container
 			title="Skills"
+			icon={iconClassName => <CheckCircleIcon className={iconClassName} />}
 			text={
 				<Fragment>
 					A complete list of all the <b>skills & technologies</b> I have experience with..
 				</Fragment>
 			}
-			childrenClassName="flex flex-col gap-10"
+			childrenClassName="flex flex-col gap-8"
 		>
 			{skillCategories.map(skillCategory => (
 				<SkillCategory

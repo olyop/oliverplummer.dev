@@ -1,3 +1,4 @@
+import { BriefcaseIcon } from "@heroicons/react/20/solid";
 import { initializeSearchParams, syncSearchParams } from "helpers";
 import { FC, useState } from "react";
 import { useSearchParams } from "react-router-dom";
@@ -32,8 +33,9 @@ const ExperiencePage: FC = () => {
 	return (
 		<Container
 			title="Experience"
+			icon={iconClassName => <BriefcaseIcon className={iconClassName} />}
 			text="My professional work experience and occupations.."
-			childrenClassName="flex flex-col gap-10"
+			childrenClassName="flex flex-col gap-8"
 		>
 			{content.map(item => (
 				<ExperienceItem

@@ -1,6 +1,7 @@
 import { FC, useEffect, useRef, useState } from "react";
 
-const isTextClampled = (paragraph: HTMLParagraphElement) => paragraph.scrollHeight > paragraph.clientHeight;
+const isTextClampled = (paragraph: HTMLParagraphElement) =>
+	paragraph.scrollHeight > paragraph.clientHeight;
 
 const ShowMoreLess: FC<Props> = ({ text, className }) => {
 	const ref = useRef<HTMLParagraphElement | null>(null);
@@ -22,13 +23,16 @@ const ShowMoreLess: FC<Props> = ({ text, className }) => {
 
 	return (
 		<div>
-			<p ref={ref} className={`${showMore ? "" : "line-clamp-3"} ${className ?? ""} sm:text text-sm`}>
+			<p
+				ref={ref}
+				className={`${showMore ? "" : "line-clamp-3"} ${className ?? ""} sm:text text-sm`}
+			>
 				{text}
 			</p>
 			{showButton && (
 				<button
 					type="button"
-					className="text-blue-600 hover:text-blue-800 hover:underline"
+					className="text-primary-accent dark:text-primary-accent-dark hover:text-primary dark:hover:text-primary-dark hover:underline"
 					onClick={handleShowMore}
 					title={buttonText}
 				>

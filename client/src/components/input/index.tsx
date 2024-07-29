@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import ChevronDownIcon from "@heroicons/react/24/solid/ChevronDownIcon";
+import clsx from "clsx";
 import { ChangeEventHandler, FC, Fragment, ReactNode } from "react";
 
 import {
@@ -11,18 +12,31 @@ import {
 	determineInputValue,
 	mapListToSelectOptions,
 } from "./helpers";
-import { InputOnChange, InputSelectOptions, InputType, InputValue, SelectOption } from "./types";
+import {
+	InputOnChange,
+	InputSelectOptions,
+	InputType,
+	InputValue,
+	SelectOption,
+} from "./types";
 
-const createClassName = (type: InputType, value: InputValue, className: string | undefined, disabled: boolean) =>
-	`border cursor-pointer outline-none ${type === InputType.CHECKBOX ? "mt-[1px] ml-[1px]" : "w-full"} border-gray-200 ${
-		disabled ? "text-gray-400" : "hover:border-gray-400 transition-all"
-	} rounded-md py-4 px-3 bg-transparent leading-none focus:border-gray-700 ${
+const createClassName = (
+	type: InputType,
+	value: InputValue,
+	className: string | undefined,
+	disabled: boolean,
+) =>
+	`border cursor-pointer outline-none ${type === InputType.CHECKBOX ? "mt-[1px] ml-[1px]" : "w-full"} border-primary dark:border-primary-dark ${
+		disabled
+			? "text-gray-400"
+			: "hover:border-primary focus:border-primary-accent dark:focus:border-primary-accent-dark dark:hover:border-primary-dark transition-all"
+	} rounded-md py-4 px-3 bg-transparent leading-none ${
 		type === InputType.PRICE ? (value === null ? "pl-[3.25rem]" : "pl-6") : ""
 	} ${type === InputType.TEXTAREA ? "resize-none h-[7rem]" : ""} ${
 		type === InputType.IMAGE
 			? `${
 					typeof value === "string" && value.length > 0 ? "!pt-[12rem]" : ""
-				} file:mr-3 file:bg-primary file:border-none file:text-white file:px-4 file:text-sm file:uppercase file:font-bold file:cursor-pointer file:rounded file:h-10 file:hover:shadow-md file:transition-all file:hover:bg-primary-dark`
+				} file:mr-3 file:bg-primary file:border-none file:text-white file:px-4 file:text-sm file:uppercase file:font-bold file:cursor-pointer file:rounded file:h-10 file:hover:shadow-md file:transition-all`
 			: ""
 	} ${className ?? ""}`;
 
@@ -50,7 +64,8 @@ const Input: FC<InputProps> = ({
 	const isDateType = type === InputType.DATE;
 	const isCheckboxType = type === InputType.CHECKBOX;
 	const isTextAreaType = type === InputType.TEXTAREA;
-	const isTextType = type === InputType.TEXT || type === InputType.URL || type === InputType.MOBILE;
+	const isTextType =
+		type === InputType.TEXT || type === InputType.URL || type === InputType.MOBILE;
 	const isIntegerType = type === InputType.INTEGER || type === InputType.PRICE;
 
 	const handleInputChange: ChangeEventHandler<HTMLInputElement> = event => {
@@ -72,7 +87,9 @@ const Input: FC<InputProps> = ({
 		} else if (isCheckboxType) {
 			onChange(checked);
 		} else {
-			throw new Error(`Invalid input type: ${type} ${value?.toString() ?? "unknown"}`);
+			throw new Error(
+				`Invalid input type: ${String(type)} ${value?.toString() ?? "unknown"}`,
+			);
 		}
 	};
 
@@ -82,7 +99,9 @@ const Input: FC<InputProps> = ({
 		if (isTextAreaType) {
 			onChange(nullable ? (targetValue.length === 0 ? null : targetValue) : targetValue);
 		} else {
-			throw new Error(`Invalid input type: ${type} ${value?.toString() ?? "unknown"}`);
+			throw new Error(
+				`Invalid input type: ${String(type)} ${value?.toString() ?? "unknown"}`,
+			);
 		}
 	};
 
@@ -100,9 +119,14 @@ const Input: FC<InputProps> = ({
 				<label
 					children={optional ? `${name} (optional)` : name}
 					htmlFor={type === InputType.LIST ? `${id}-select` : id}
-					className={`${
-						isCheckboxType ? "text-base" : "absolute -top-1.5 text-xs font-bold uppercase"
-					} left-3 z-50 cursor-pointer select-none bg-white ${disabled ? "text-gray-400" : ""} ${labelClassName ?? ""}`}
+					className={clsx(
+						"bg-elevated dark:bg-elevated-dark left-3 z-20 cursor-pointer select-none px-1",
+						isCheckboxType
+							? "text-base"
+							: "absolute -top-1.5 text-xs font-bold uppercase",
+						disabled ? "text-gray-400" : "",
+						labelClassName,
+					)}
 				/>
 			)}
 			{type === InputType.SELECT ? (
@@ -118,14 +142,26 @@ const Input: FC<InputProps> = ({
 						}`}
 					>
 						{selectOptions === null ? (
-							<option value="">None found</option>
+							<option value="" className="bg-elevated dark:bg-elevated-dark">
+								None found
+							</option>
 						) : selectOptions === undefined ? (
-							<option value="">Loading...</option>
+							<option value="" className="bg-elevated dark:bg-elevated-dark">
+								Loading...
+							</option>
 						) : (
 							<Fragment>
-								{hideEmptySelectOptions || <option value="">{placeHolder ?? "Please choose"}</option>}
+								{hideEmptySelectOptions || (
+									<option value="" className="bg-elevated dark:bg-elevated-dark">
+										{placeHolder ?? "Please choose"}
+									</option>
+								)}
 								{selectOptions.map(({ optionID, description }) => (
-									<option key={optionID} value={optionID}>
+									<option
+										key={optionID}
+										value={optionID}
+										className="bg-elevated dark:bg-elevated-dark"
+									>
 										{capitalizeFirstLetter(description)}
 									</option>
 								))}

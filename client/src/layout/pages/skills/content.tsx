@@ -3,7 +3,14 @@ import CloudIcon from "@heroicons/react/20/solid/CloudIcon";
 import CodeBracketIcon from "@heroicons/react/20/solid/CodeBracketIcon";
 import CommandLineIcon from "@heroicons/react/20/solid/CommandLineIcon";
 import ServerIcon from "@heroicons/react/20/solid/ServerIcon";
+import fastifyImagePath from "assets/skills/back-end/fastify.png?background=transparent&fit=contain&aspect=1:1&w=64&allowUpscale=true&format=png";
 import goImagePath from "assets/skills/back-end/go.png?background=transparent&fit=contain&aspect=1:1&w=64&allowUpscale=true&format=png";
+import graphqlImagePath from "assets/skills/back-end/graphql.png?background=transparent&fit=contain&aspect=1:1&w=64&allowUpscale=true&format=png";
+import javaImagePath from "assets/skills/back-end/java.png?background=transparent&fit=contain&aspect=1:1&w=64&allowUpscale=true&format=png";
+import nextjsImagePath from "assets/skills/back-end/next-js.svg?background=transparent&fit=contain&aspect=1:1&w=64&allowUpscale=true&format=png";
+import nodeImagePath from "assets/skills/back-end/node.png?background=transparent&fit=contain&aspect=1:1&w=64&allowUpscale=true&format=png";
+import springImagePath from "assets/skills/back-end/spring.svg?background=transparent&fit=contain&aspect=1:1&w=64&allowUpscale=true&format=png";
+import tomcatImagePath from "assets/skills/back-end/tomcat.png?background=transparent&fit=contain&aspect=1:1&w=64&allowUpscale=true&format=png";
 import auth0ImagePath from "assets/skills/cloud/auth0.png?background=transparent&fit=contain&aspect=1:1&w=64&allowUpscale=true&format=png";
 import awsImagePath from "assets/skills/cloud/aws.jpg?background=transparent&fit=contain&aspect=1:1&w=64&allowUpscale=true&format=png";
 import azureImagePath from "assets/skills/cloud/azure.png?background=transparent&fit=contain&aspect=1:1&w=64&allowUpscale=true&format=png";
@@ -33,13 +40,6 @@ import typescriptImagePath from "assets/skills/front-end/typescript.png?backgrou
 import vueImagePath from "assets/skills/front-end/vue.png?background=transparent&fit=contain&aspect=1:1&w=64&allowUpscale=true&format=png";
 import webWorkerImagePath from "assets/skills/front-end/web-worker.webp?background=transparent&fit=contain&aspect=1:1&w=64&allowUpscale=true&format=png";
 import workboxImagePath from "assets/skills/front-end/workbox.png?background=transparent&fit=contain&aspect=1:1&w=64&allowUpscale=true&format=png";
-import graphqlImagePath from "assets/skills/java/graphql.png?background=transparent&fit=contain&aspect=1:1&w=64&allowUpscale=true&format=png";
-import javaImagePath from "assets/skills/java/java.png?background=transparent&fit=contain&aspect=1:1&w=64&allowUpscale=true&format=png";
-import springImagePath from "assets/skills/java/spring.svg?background=transparent&fit=contain&aspect=1:1&w=64&allowUpscale=true&format=png";
-import tomcatImagePath from "assets/skills/java/tomcat.png?background=transparent&fit=contain&aspect=1:1&w=64&allowUpscale=true&format=png";
-import fastifyImagePath from "assets/skills/node-js/fastify.jpg?background=transparent&fit=contain&aspect=1:1&w=64&allowUpscale=true&format=png";
-import nextjsImagePath from "assets/skills/node-js/next-js.svg?background=transparent&fit=contain&aspect=1:1&w=64&allowUpscale=true&format=png";
-import nodeImagePath from "assets/skills/node-js/node.png?background=transparent&fit=contain&aspect=1:1&w=64&allowUpscale=true&format=png";
 
 import { SkillCategory } from "./types";
 

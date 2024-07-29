@@ -11,7 +11,8 @@ const html = (variables: Record<string, string>): Plugin => ({
 	transformIndexHtml: {
 		order: "pre",
 		// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-		handler: (value: string): string => value.replaceAll(/{{ (.*?) }}/g, (match, p1) => variables[p1] ?? match),
+		handler: (value: string): string =>
+			value.replaceAll(/{{ (.*?) }}/g, (match, p1) => variables[p1] ?? match),
 	},
 });
 
@@ -28,7 +29,11 @@ const determineContentSecurityPolicy = (mode: string) => {
 				"https://*.googleapis.com",
 				isProduction ? "" : "'unsafe-inline'",
 			],
-			styleSrc: ["'self'", isProduction ? "" : "'unsafe-inline'", " https://*.googleapis.com"],
+			styleSrc: [
+				"'self'",
+				isProduction ? "" : "'unsafe-inline'",
+				" https://*.googleapis.com",
+			],
 			objectSrc: ["'none'"],
 			connectSrc: [
 				"'self'",
@@ -53,6 +58,7 @@ export default defineConfig(async ({ mode }) => ({
 		imagetools(),
 	],
 	server: {
+		host: true,
 		https: {
 			cert: await readFile("/home/op/.mkcert/localhost.pem"),
 			key: await readFile("/home/op/.mkcert/localhost-key.pem"),

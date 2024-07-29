@@ -1,3 +1,4 @@
+import { Bars3CenterLeftIcon } from "@heroicons/react/20/solid";
 import { initializeSearchParams, syncSearchParams } from "helpers";
 import { FC, useState } from "react";
 import { useSearchParams } from "react-router-dom";
@@ -32,8 +33,9 @@ const ProjectsPage: FC = () => {
 	return (
 		<Container
 			title="Projects"
+			icon={iconClassName => <Bars3CenterLeftIcon className={iconClassName} />}
 			text="Professional and personal projects that I have developed"
-			childrenClassName="flex flex-col gap-10"
+			childrenClassName="flex flex-col gap-8"
 		>
 			{projects.map(project => (
 				<Project

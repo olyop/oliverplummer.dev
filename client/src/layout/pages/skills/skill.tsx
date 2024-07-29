@@ -28,19 +28,25 @@ const determineDateStartedLabel = (dateStarted: SkillType["dateStarted"]) => {
 		// return years
 		const years = Math.floor((now - unixTime) / (1000 * 60 * 60 * 24 * 365));
 
-		return `Learnt ${years} year${years === 1 ? "" : "s"} ago`;
+		return `Learnt ${years.toString()} year${years === 1 ? "" : "s"} ago`;
 	}
 };
 
 const Skill: FC<Props> = ({ skill }) => (
-	<div className="hover:border-primary flex flex-col items-center gap-4 rounded-lg border px-4 pb-4 pt-5 transition-colors sm:px-8 sm:pb-8">
+	<div className="hover:border-primary-accent dark:hover:border-primary-accent-dark border-primary dark:border-primary-dark flex flex-col items-center gap-4 rounded-lg border px-4 pb-4 pt-5 transition-colors sm:px-8 sm:pb-8">
 		<ContentImage contentItem={skill} className="!h-12 !w-12" />
 		<h2 className="text-xl sm:text-2xl">
 			<b>{skill.label}</b>
 		</h2>
 		<h3 className="text-xs">{determineDateStartedLabel(skill.dateStarted)}</h3>
-		<div className="h-4 w-24 overflow-hidden rounded-full bg-gray-200 shadow" title="Skill Level">
-			<div className={`${determineSkillLevel(skill.level)} h-full rounded-full bg-gray-400`} />h
+		<div
+			className="bg-background dark:bg-background-dark h-4 w-24 overflow-hidden rounded-full shadow"
+			title="Skill Level"
+		>
+			<div
+				className={`${determineSkillLevel(skill.level)} bg-primary-accent dark:bg-primary-accent-dark h-full rounded-full`}
+			/>
+			h
 		</div>
 		{skill.description && <ShowMoreLess text={skill.description.trim()} />}
 	</div>

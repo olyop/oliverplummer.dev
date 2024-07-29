@@ -1,12 +1,12 @@
 import { FC, ReactNode } from "react";
 
 const ExperienceItemChip: FC<Props> = ({ label, text, icon }) => (
-	<div className="border-primary relative min-w-52 rounded-2xl border pb-4 pl-5 pr-8 pt-4">
-		<p className="absolute left-[calc(1.25rem_-_0.375rem)] top-[-0.7rem] bg-white px-1.5 py-0.5 text-sm uppercase">
+	<div className="border-primary dark:border-primary-dark relative min-w-52 rounded-2xl border pb-4 pl-5 pr-8 pt-4">
+		<p className="bg-elevated dark:bg-elevated-dark absolute left-[calc(1.25rem_-_0.375rem)] top-[-0.7rem] px-1.5 py-0.5 text-sm uppercase">
 			<b>{label}</b>
 		</p>
 		<div className="flex items-center gap-3">
-			{icon("w-4 h-4")}
+			{icon("size-4")}
 			<p>{text}</p>
 		</div>
 	</div>

@@ -22,12 +22,20 @@ const ExperienceItem: FC<Props> = ({ item, isOpen, onToggle }) => (
 		content={
 			<Fragment>
 				<div className="flex w-full flex-col gap-4 sm:flex-row">
-					<ExperienceItemChip label="Role" text={item.role} icon={className => item.roleIcon(className)} />
-					<ExperienceItemChip label="Industry" text={item.industry} icon={className => item.industryIcon(className)} />
+					<ExperienceItemChip
+						label="Role"
+						text={item.role}
+						icon={className => item.roleIcon(className)}
+					/>
+					<ExperienceItemChip
+						label="Industry"
+						text={item.industry}
+						icon={className => item.industryIcon(className)}
+					/>
 				</div>
 				<div>
-					{item.description.map((description, index) => (
-						<p key={index} className="mb-4 last:mb-0">
+					{item.description.map(description => (
+						<p key={description} className="mb-4 last:mb-0">
 							{description}
 						</p>
 					))}

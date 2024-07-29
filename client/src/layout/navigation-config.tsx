@@ -2,9 +2,8 @@ import Bars3CenterLeftIcon from "@heroicons/react/20/solid/Bars3CenterLeftIcon";
 import BriefcaseIcon from "@heroicons/react/20/solid/BriefcaseIcon";
 import CheckCircleIcon from "@heroicons/react/20/solid/CheckCircleIcon";
 import InformationCircleIcon from "@heroicons/react/20/solid/InformationCircleIcon";
-import { ReactNode } from "react";
-import { NonIndexRouteObject } from "react-router-dom";
 
+import { NavigationPage } from "./navigation";
 import AboutPage from "./pages/about";
 import ExperiencePage from "./pages/experience";
 import ProjectsPage from "./pages/projects";
@@ -40,10 +39,3 @@ export const navigationPages: NavigationPage[] = [
 		element: <ProjectsPage />,
 	},
 ];
-
-export interface NavigationPage extends NonIndexRouteObject {
-	text: string;
-	path: string;
-	hideText: boolean;
-	icon: (className: string) => ReactNode;
-}

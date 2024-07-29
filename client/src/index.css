@@ -21,3 +21,15 @@
 		opacity: 0;
 	}
 }
+
+body {
+	font-family: "Rubik", sans-serif;
+	font-optical-sizing: auto;
+}
+
+@layer base {
+	:root {
+		/* Default to Chrome scrollbar width */
+		--scrollbar-width: 15px;
+	}
+}

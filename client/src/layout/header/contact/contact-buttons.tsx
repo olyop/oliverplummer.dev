@@ -50,7 +50,12 @@ const ContactShareButton: FC<ButtonProps> = ({ text }) => {
 	);
 };
 
-const ContactActionButton: FC<ContactActionButtonProps> = ({ text, scheme, schemeIcon, schemeDescription }) => (
+const ContactActionButton: FC<ContactActionButtonProps> = ({
+	text,
+	scheme,
+	schemeIcon,
+	schemeDescription,
+}) => (
 	<a href={`${scheme}:${text}`}>
 		<Button
 			className="w-28"
@@ -108,7 +113,15 @@ const ContactCopyButton: FC<ButtonProps> = ({ text }) => {
 			onClick={handleCopy}
 			className="w-28 border"
 			ariaLabel={`Copy ${text} to clipboard`}
-			text={hasCopied === null ? "Copy" : hasCopied ? (hasError ? "Error" : "Copied!") : "Copying"}
+			text={
+				hasCopied === null
+					? "Copy"
+					: hasCopied
+						? hasError
+							? "Error"
+							: "Copied!"
+						: "Copying"
+			}
 			leftIcon={className =>
 				hasCopied === null ? (
 					<ClipboardIcon className={className} />
@@ -139,22 +152,32 @@ export const ContactCopyButtons: FC<ButtonsProps> = ({ text, scheme }) => {
 			scheme={scheme}
 			schemeDescription={scheme === "tel" ? "Phone" : "Mail"}
 			schemeIcon={className =>
-				scheme === "tel" ? <PhoneIcon className={className} /> : <EnvelopeOpenIcon className={className} />
+				scheme === "tel" ? (
+					<PhoneIcon className={className} />
+				) : (
+					<EnvelopeOpenIcon className={className} />
+				)
 			}
 		/>
 	);
 
 	return (
 		<div className="flex flex-col items-center gap-4 py-2">
-			<a href={`${scheme}:${text}`} className="text tracking-wider text-blue-600 hover:underline sm:text-lg">
+			<a
+				href={`${scheme}:${text}`}
+				className="text tracking-wider hover:underline sm:text-lg"
+			>
 				<u>
 					<b>{text}</b>
 				</u>
 			</a>
 			<div className="flex flex-col items-center gap-4 sm:flex-row sm:gap-2">
-				{(breakpoint === Breakpoint.TINY || breakpoint === Breakpoint.SMALL) && actionButtonNode}
+				{(breakpoint === Breakpoint.TINY || breakpoint === Breakpoint.SMALL) &&
+					actionButtonNode}
 				<ContactShareButton text={text} />
-				{breakpoint !== Breakpoint.TINY && breakpoint !== Breakpoint.SMALL && actionButtonNode}
+				{breakpoint !== Breakpoint.TINY &&
+					breakpoint !== Breakpoint.SMALL &&
+					actionButtonNode}
 				<ContactCopyButton text={text} />
 			</div>
 		</div>
