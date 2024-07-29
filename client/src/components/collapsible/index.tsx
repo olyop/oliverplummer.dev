@@ -32,11 +32,11 @@ const Collapsible: FC<Props> = ({
 			open={isOpen}
 			ref={hoverRef}
 			className={clsx(
-				"rounded-2xl border transition-all",
+				"rounded-2xl border transition-colors duration-200",
 				isOpen
-					? "bg-primary dark:bg-primary-dark border-primary-accent dark:border-primary-accent-dark dark:border"
-					: "bg-elevated dark:bg-elevated-dark border-primary dark:border-primary-dark overflow-hidden",
-				isFocusedOrHovering && "bg-hover dark:bg-hover-dark border-primary",
+					? "bg-primary border-primary-accent"
+					: "bg-elevated border-primary overflow-hidden",
+				isFocusedOrHovering && "bg-hover border-primary",
 				className,
 			)}
 		>
@@ -44,8 +44,7 @@ const Collapsible: FC<Props> = ({
 				title={title}
 				ref={focusRef}
 				onClick={handleToggle}
-				style={{ transitionProperty: "background-color, border-radius, border-color" }}
-				className="flex cursor-pointer select-none items-center justify-between px-6 py-4 duration-200 ease-in-out md:px-8"
+				className="flex cursor-pointer select-none items-center justify-between px-6 py-4 md:px-8"
 			>
 				<div className="flex items-start gap-3 sm:gap-6">
 					{imageNode("mt-[0.2rem] sm:mt-[0.4rem]")}
@@ -60,22 +59,18 @@ const Collapsible: FC<Props> = ({
 					<h1 className="mt-1 text-xs uppercase sm:text-lg" id={id}>
 						{isOpen ? "Close" : "Open"}
 					</h1>
-					<ChevronDownIcon
-						className={`size-8 transition-all duration-300 ease-in-out ${isOpen ? "rotate-180" : ""}`}
-					/>
+					<ChevronDownIcon className={`size-8 ${isOpen ? "rotate-180" : ""}`} />
 				</div>
 			</summary>
 			<div
 				className={clsx(
-					"border-t",
-					isOpen
-						? "border-primary-accent dark:border-primary-accent-dark"
-						: "border-primary dark:border-primary-dark",
+					"border-t transition-colors duration-200",
+					isOpen ? "border-primary-accent" : "border-primary",
 				)}
 			>
 				{isOpen && (
 					<div
-						className={`bg-elevated dark:bg-elevated-dark rounded-b-2xl p-4 md:p-8 ${contentClassName ?? ""}`}
+						className={`bg-elevated rounded-b-2xl p-4 md:p-8 ${contentClassName ?? ""}`}
 					>
 						{content}
 					</div>

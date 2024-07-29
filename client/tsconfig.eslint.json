@@ -1,4 +1,10 @@
 {
 	"extends": "./tsconfig.json",
-	"include": ["src", "vite.config.ts", "public/scrollbar-script.js", "tailwind.config.cjs", "postcss.config.cjs"]
+	"include": [
+		"src",
+		"vite.config.ts",
+		"public/initialize.js",
+		"tailwind.config.cjs",
+		"postcss.config.cjs"
+	]
 }

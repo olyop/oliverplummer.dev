@@ -32,7 +32,7 @@ const ShowMoreLess: FC<Props> = ({ text, className }) => {
 			{showButton && (
 				<button
 					type="button"
-					className="text-primary-accent dark:text-primary-accent-dark hover:text-primary dark:hover:text-primary-dark hover:underline"
+					className="text-primary-accent hover:text-primary hover:underline"
 					onClick={handleShowMore}
 					title={buttonText}
 				>

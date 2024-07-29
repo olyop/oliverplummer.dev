@@ -1,9 +1,6 @@
 /* eslint-disable no-undef */
 
-(function scrollbarWidthScript() {
-	/**
-	 * @type {number}
-	 */
+function detectScrollbarWidth() {
 	let scrollbarWidth;
 
 	const element = document.documentElement;
@@ -33,4 +30,37 @@
 		"--scrollbar-width",
 		`${scrollbarWidth.toString()}px`,
 	);
-})();
+}
+
+function detectColorScheme() {
+	let theme = "light"; // default to light
+
+	const themeLocalStorage = localStorage.getItem("theme");
+	const prefersDarkTheme = window.matchMedia("(prefers-color-scheme: dark)");
+
+	// local storage is used to override OS theme settings
+	if (themeLocalStorage) {
+		if (themeLocalStorage === "dark") {
+			theme = "dark";
+		}
+	} else if (prefersDarkTheme.matches) {
+		// OS theme setting detected as dark
+		theme = "dark";
+	}
+
+	// dark theme preferred, set document with a `data-theme` attribute
+	if (theme === "dark") {
+		document.documentElement.dataset.theme = "dark";
+	}
+
+	prefersDarkTheme.addEventListener("change", event => {
+		if (event.matches) {
+			document.documentElement.dataset.theme = "dark";
+		} else {
+			delete document.documentElement.dataset.theme;
+		}
+	});
+}
+
+detectScrollbarWidth();
+detectColorScheme();

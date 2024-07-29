@@ -8,7 +8,12 @@ const VideoExpand: FC<Props> = ({ url, label }) => {
 
 	return (
 		<Fragment>
-			<video src={url} onClick={openModal} aria-hidden className="cursor-pointer transition-opacity hover:opacity-80" />
+			<video
+				src={url}
+				onClick={openModal}
+				aria-hidden
+				className="cursor-pointer hover:opacity-80"
+			/>
 			<Modal
 				isOpen={isModalOpen}
 				onClose={closeModal}

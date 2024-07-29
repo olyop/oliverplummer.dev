@@ -2,34 +2,36 @@
 @tailwind components;
 @tailwind utilities;
 
-.active-pulse {
-	opacity: 0;
-	animation: pulsate 1.5s ease-out;
-	animation-iteration-count: infinite;
+:root {
+	--text: #1a2e05;
+	--background: #ecfccb;
+	--elevated: #f7fee7;
+	--hover: #d9f99d;
+	--primary: #bef264;
+	--primary-accent: #65a30d;
+
+	/* Default to Chrome scrollbar width */
+	--scrollbar-width: 15px;
 }
 
-@keyframes pulsate {
-	0% {
-		transform: scale(0.1, 0.1);
-		opacity: 0;
-	}
-	50% {
-		opacity: 1;
-	}
-	100% {
-		transform: scale(1.2, 1.2);
-		opacity: 0;
-	}
+[data-theme="dark"] {
+	--text: #fee2e2;
+	--background: #1c1917;
+	--elevated: #292524;
+	--hover: #431407;
+	--primary: #9a3412;
+	--primary-accent: #ea580c;
+}
+
+html {
+	overflow-x: hidden;
+	overflow-y: visible;
 }
 
 body {
 	font-family: "Rubik", sans-serif;
 	font-optical-sizing: auto;
-}
-
-@layer base {
-	:root {
-		/* Default to Chrome scrollbar width */
-		--scrollbar-width: 15px;
-	}
+	background-color: var(--background);
+	color: var(--text);
+	transition: 200ms all ease-in-out;
 }

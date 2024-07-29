@@ -40,19 +40,19 @@ const Modal: FC<PropsWithChildren<ModalPropTypes>> = ({
 	return (
 		<div
 			data-test={isLarge}
-			className={`fixed inset-0 z-[100] h-screen w-screen overflow-hidden backdrop-blur-2xl transition-opacity ${
+			className={`fixed inset-0 z-[100] h-screen w-screen overflow-hidden backdrop-blur-2xl ${
 				isOpen ? "visible opacity-100" : "invisible opacity-0"
 			} ${className ?? ""}`}
 		>
 			<div
 				aria-hidden
 				onClick={disableCloseOnEscape ? undefined : onClose}
-				className={`absolute inset-0 z-[110] cursor-pointer transition-opacity ${backgroundClassName ?? ""}`}
+				className={`absolute inset-0 z-[110] cursor-pointer ${backgroundClassName ?? ""}`}
 			/>
 			{isOpen && (
 				<div
 					className={clsx(
-						"bg-elevated dark:bg-elevated-dark absolute left-1/2 top-8 z-[120] flex max-h-[calc(100vh_-_5rem)] w-[calc(100vw_-_3rem)] -translate-x-1/2 flex-col gap-4 rounded-md p-4 shadow-lg md:top-1/2 md:w-[35rem] md:-translate-y-1/2",
+						"bg-elevated absolute left-1/2 top-8 z-[120] flex max-h-[calc(100vh_-_5rem)] w-[calc(100vw_-_3rem)] -translate-x-1/2 flex-col gap-4 rounded-md p-4 shadow-lg md:top-1/2 md:w-[35rem] md:-translate-y-1/2",
 						modalClassName,
 					)}
 				>
@@ -60,7 +60,7 @@ const Modal: FC<PropsWithChildren<ModalPropTypes>> = ({
 						<Button
 							onClick={onClose}
 							ariaLabel={`Close ${title}`}
-							className="bg-primary hover:bg-hover dark:hover:bg-hover-dark absolute -right-4 -top-4"
+							className="bg-primary hover:bg-hover absolute -right-4 -top-4"
 							leftIcon={c => <XMarkIcon className={c} />}
 							text={
 								isMobile ? (
@@ -68,7 +68,7 @@ const Modal: FC<PropsWithChildren<ModalPropTypes>> = ({
 								) : (
 									<div className="flex items-center gap-2">
 										<span className="mt-[2px]">Close</span>
-										<span className="border-primary-accent dark:border-primary-accent-dark rounded border px-1 py-0.5 text-xs">
+										<span className="border-primary-accent rounded border px-1 py-0.5 text-xs">
 											ESC
 										</span>
 									</div>

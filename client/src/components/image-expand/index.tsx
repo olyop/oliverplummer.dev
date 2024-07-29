@@ -12,7 +12,7 @@ const ImageExpand: FC<Props> = ({ url, label }) => {
 				alt={label}
 				onClick={openModal}
 				aria-hidden
-				className="cursor-pointer transition-opacity hover:opacity-80"
+				className="cursor-pointer hover:opacity-80"
 			/>
 			<Modal
 				isOpen={isModalOpen}

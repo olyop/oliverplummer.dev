@@ -23,17 +23,17 @@ const Button: FC<ButtonProps> = ({
 }) => (
 	<button
 		id={id}
-		type={isSubmit ? "submit" : "button"}
-		disabled={disabled}
-		aria-label={ariaLabel}
 		onClick={onClick}
+		disabled={disabled}
 		tabIndex={tabIndex}
+		aria-label={ariaLabel}
+		type={isSubmit ? "submit" : "button"}
 		title={text && typeof text === "string" ? text : ariaLabel}
 		className={clsx(
-			"flex cursor-pointer select-none items-center justify-center gap-2 text-sm font-bold uppercase transition-all duration-200 ease-in-out",
+			"flex cursor-pointer select-none items-center justify-center gap-2 text-sm font-bold uppercase transition-colors duration-200",
 			isTransparent
-				? "hover:bg-hover dark:hover:bg-hover-dark focus:bg-hover dark:focus:bg-hover-dark border-primary dark:border-primary-dark hover:border-primary-accent dark:hover:border-primary-accent-dark focus:border-primary-accent dark:focus:border-primary-accent-dark border bg-transparent"
-				: "bg-primary dark:bg-primary-dark hover:bg-hover dark:hover:bg-hover-dark focus:bg-hover dark:focus:bg-hover-dark shadow",
+				? "hover:bg-hover focus:bg-hover border-primary hover:border-primary-accent focus:border-primary-accent border bg-transparent"
+				: "bg-primary hover:bg-hover focus:bg-hover shadow",
 			text === undefined && (leftIcon !== undefined || rightIcon !== undefined)
 				? "size-9 rounded-full p-2"
 				: "h-9 rounded-xl px-4",
@@ -45,26 +45,32 @@ const Button: FC<ButtonProps> = ({
 				<img
 					alt={ariaLabel}
 					src={leftIcon}
-					className={`${baseIconClassName} ${spanClassName ?? ""} ${iconClassName ?? ""} ${leftIconClassName ?? ""}`}
+					className={clsx(
+						baseIconClassName,
+						spanClassName,
+						iconClassName,
+						leftIconClassName,
+					)}
 				/>
 			) : (
-				leftIcon(
-					`${baseIconClassName} ${spanClassName ?? ""} ${iconClassName ?? ""} ${leftIconClassName ?? ""}`,
-				)
+				leftIcon(clsx(baseIconClassName, spanClassName, iconClassName, leftIconClassName))
 			))}
-		{text && (
-			<span className={`${spanClassName ?? ""} ${textClassName ?? ""}`}>{text}</span>
-		)}
+		{text && <span className={clsx(spanClassName, textClassName)}>{text}</span>}
 		{rightIcon &&
 			(typeof rightIcon === "string" ? (
 				<img
 					alt={ariaLabel}
 					src={rightIcon}
-					className={`${baseIconClassName} ${spanClassName ?? ""} ${iconClassName ?? ""} ${rightIconClassName ?? ""}`}
+					className={clsx(
+						baseIconClassName,
+						spanClassName,
+						iconClassName,
+						rightIconClassName,
+					)}
 				/>
 			) : (
 				rightIcon(
-					`${baseIconClassName} ${spanClassName ?? ""} ${iconClassName ?? ""} ${rightIconClassName ?? ""}`,
+					clsx(baseIconClassName, spanClassName, iconClassName, rightIconClassName),
 				)
 			))}
 	</button>

@@ -16,13 +16,13 @@ const Sidebar: FC<SidebarProps> = ({ sidebar, breakpoint, onToggleSidebar }) => 
 		)}
 		<div
 			className={clsx(
-				"w-sidebar bg-elevated dark:bg-elevated-dark border-primary dark:border-primary-dark top-header fixed z-40 h-screen border-r py-4 shadow duration-200 md:py-8",
+				"w-sidebar bg-elevated border-primary top-header fixed z-40 h-screen border-r py-4 shadow md:py-8",
 				sidebar ? "left-0 opacity-100" : "-left-sidebar opacity-0",
 			)}
 		>
 			<Navigation
 				sidebar
-				className="flex flex-col"
+				className="w-full"
 				onClick={breakpoint === Breakpoint.LARGE ? undefined : onToggleSidebar}
 			/>
 		</div>

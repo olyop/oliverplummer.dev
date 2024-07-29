@@ -26,17 +26,15 @@ const createClassName = (
 	className: string | undefined,
 	disabled: boolean,
 ) =>
-	`border cursor-pointer outline-none ${type === InputType.CHECKBOX ? "mt-[1px] ml-[1px]" : "w-full"} border-primary dark:border-primary-dark ${
-		disabled
-			? "text-gray-400"
-			: "hover:border-primary focus:border-primary-accent dark:focus:border-primary-accent-dark dark:hover:border-primary-dark transition-all"
+	`border cursor-pointer outline-none ${type === InputType.CHECKBOX ? "mt-[1px] ml-[1px]" : "w-full"} border-primary ${
+		disabled ? "text-gray-400" : "hover:border-primary focus:border-primary-accent"
 	} rounded-md py-4 px-3 bg-transparent leading-none ${
 		type === InputType.PRICE ? (value === null ? "pl-[3.25rem]" : "pl-6") : ""
 	} ${type === InputType.TEXTAREA ? "resize-none h-[7rem]" : ""} ${
 		type === InputType.IMAGE
 			? `${
 					typeof value === "string" && value.length > 0 ? "!pt-[12rem]" : ""
-				} file:mr-3 file:bg-primary file:border-none file:text-white file:px-4 file:text-sm file:uppercase file:font-bold file:cursor-pointer file:rounded file:h-10 file:hover:shadow-md file:transition-all`
+				} file:mr-3 file:bg-primary file:border-none file:text-white file:px-4 file:text-sm file:uppercase file:font-bold file:cursor-pointer file:rounded file:h-10 file:hover:shadow-md`
 			: ""
 	} ${className ?? ""}`;
 
@@ -120,7 +118,7 @@ const Input: FC<InputProps> = ({
 					children={optional ? `${name} (optional)` : name}
 					htmlFor={type === InputType.LIST ? `${id}-select` : id}
 					className={clsx(
-						"bg-elevated dark:bg-elevated-dark left-3 z-20 cursor-pointer select-none px-1",
+						"bg-elevated left-3 z-20 cursor-pointer select-none px-1",
 						isCheckboxType
 							? "text-base"
 							: "absolute -top-1.5 text-xs font-bold uppercase",
@@ -142,26 +140,22 @@ const Input: FC<InputProps> = ({
 						}`}
 					>
 						{selectOptions === null ? (
-							<option value="" className="bg-elevated dark:bg-elevated-dark">
+							<option value="" className="bg-elevated">
 								None found
 							</option>
 						) : selectOptions === undefined ? (
-							<option value="" className="bg-elevated dark:bg-elevated-dark">
+							<option value="" className="bg-elevated">
 								Loading...
 							</option>
 						) : (
 							<Fragment>
 								{hideEmptySelectOptions || (
-									<option value="" className="bg-elevated dark:bg-elevated-dark">
+									<option value="" className="bg-elevated">
 										{placeHolder ?? "Please choose"}
 									</option>
 								)}
 								{selectOptions.map(({ optionID, description }) => (
-									<option
-										key={optionID}
-										value={optionID}
-										className="bg-elevated dark:bg-elevated-dark"
-									>
+									<option key={optionID} value={optionID} className="bg-elevated">
 										{capitalizeFirstLetter(description)}
 									</option>
 								))}

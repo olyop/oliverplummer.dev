@@ -27,7 +27,7 @@ const Footer: FC = () => {
 	const { isDarkMode } = useDarkMode();
 	return (
 		<footer className="space-y-4 md:space-y-8">
-			<div className="border-primary dark:border-primary-dark flex flex-col gap-12 rounded-2xl border p-8 sm:flex-row md:gap-24">
+			<div className="border-primary flex flex-col gap-12 rounded-2xl border p-8 sm:flex-row md:gap-24">
 				<FooterSection title="Connect">
 					<FooterExternalLink
 						text="LinkedIn"
@@ -75,7 +75,7 @@ const Footer: FC = () => {
 					<FooterShareButton />
 				</FooterSection>
 			</div>
-			<div className="border-primary dark:border-primary-dark space-y-4 rounded-2xl border p-8 md:space-y-8">
+			<div className="border-primary space-y-4 rounded-2xl border p-8 md:space-y-8">
 				<p className="text-sm">
 					<b>
 						<i>
