@@ -18,7 +18,7 @@ const ExperienceItem: FC<Props> = ({ item, isOpen, onToggle }) => (
 		text={determineDateStarted(item)}
 		textClassName="flex items-center gap-2"
 		imageNode={className => <ContentImage contentItem={item} className={className} />}
-		contentClassName="flex flex-col items-start gap-8"
+		contentClassName="flex flex-col items-start gap-4 md:gap-8"
 		content={
 			<Fragment>
 				<div className="flex w-full flex-col gap-4 sm:flex-row">
