@@ -2,8 +2,9 @@
 import ChevronDownIcon from "@heroicons/react/20/solid/ChevronDownIcon";
 import clsx from "clsx";
 import { useFocus } from "hooks/use-focus";
+import { useHasMounted } from "hooks/use-has-mounted";
 import { useHover } from "hooks/use-hover";
-import { FC, ReactEventHandler, ReactNode } from "react";
+import { FC, ReactEventHandler, ReactNode, useEffect, useRef } from "react";
 
 const Collapsible: FC<Props> = ({
 	id,
@@ -17,6 +18,8 @@ const Collapsible: FC<Props> = ({
 	textClassName,
 	contentClassName,
 }) => {
+	const hasMounted = useHasMounted();
+	const detailsRef = useRef<HTMLDetailsElement>(null);
 	const [focusRef, isFocused] = useFocus<HTMLElement>();
 	const [hoverRef, isHovering] = useHover<HTMLDetailsElement>();
 
@@ -27,12 +30,26 @@ const Collapsible: FC<Props> = ({
 
 	const isFocusedOrHovering = isOpen ? false : isFocused || isHovering;
 
+	useEffect(() => {
+		if (!hasMounted) return;
+		if (!isOpen) return;
+
+		detailsRef.current?.scrollIntoView({
+			behavior: "smooth",
+			block: "start",
+		});
+	}, [isOpen]);
+
 	return (
 		<details
 			open={isOpen}
-			ref={hoverRef}
+			ref={node => {
+				hoverRef(node);
+				// @ts-expect-error
+				detailsRef.current = node;
+			}}
 			className={clsx(
-				"rounded-2xl border transition-colors duration-200",
+				"scroll-mt-[calc(10rem+2rem)] rounded-2xl border transition-colors duration-200 sm:scroll-mt-[calc(5rem+2rem)]",
 				isOpen
 					? "bg-primary border-primary-accent"
 					: "bg-elevated border-primary overflow-hidden",
@@ -57,7 +74,7 @@ const Collapsible: FC<Props> = ({
 						)}
 					</div>
 				</div>
-				<div className="-mt-1 flex flex-col-reverse items-center">
+				<div className="mt-1 flex flex-col items-center">
 					<h1 className="text-xs uppercase sm:text-lg" id={id}>
 						{isOpen ? "Close" : "Open"}
 					</h1>

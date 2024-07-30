@@ -37,5 +37,5 @@ module.exports = {
 			},
 		},
 	},
-	plugins: [scrollbar({ noncompatible: false })],
+	plugins: [scrollbar({ noncompatible: true })],
 };

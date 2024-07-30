@@ -25,9 +25,17 @@
 	--primary-accent: #ea580c;
 }
 
-html {
-	overflow-x: hidden;
-	overflow-y: visible;
+html::-webkit-scrollbar {
+	width: var(--scrollbar-width);
+}
+
+html::-webkit-scrollbar-track {
+	background-color: var(--elevated);
+	border-left: 1px solid var(--primary);
+}
+
+html::-webkit-scrollbar-thumb {
+	background-color: var(--primary);
 }
 
 body {

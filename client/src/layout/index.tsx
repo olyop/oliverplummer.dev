@@ -5,7 +5,7 @@ import Footer from "layout/footer";
 import Header from "layout/header";
 import Pages from "layout/pages";
 import Sidebar from "layout/sidebar";
-import { useEffect, useRef, useState } from "react";
+import { Fragment, useEffect, useRef, useState } from "react";
 import { Location, useLocation } from "react-router-dom";
 
 const SIDEBAR_LOCAL_STORAGE_KEY = "sidebar";
@@ -70,7 +70,7 @@ const Layout = () => {
 	}, [breakpoint]);
 
 	return (
-		<div className="w-screen">
+		<Fragment>
 			<Header sidebar={sidebar} onToggleSidebar={handleToggleSidebar} />
 			<Sidebar
 				sidebar={sidebar}
@@ -83,7 +83,6 @@ const Layout = () => {
 					sidebar === null
 						? "container mx-auto"
 						: clsx(
-								"mr-[var(--scrollbar-width)]",
 								sidebar && breakpoint === Breakpoint.LARGE && "ml-sidebar",
 								sidebar && "mr-[var(--scrollbar-width)]",
 							),
@@ -92,7 +91,7 @@ const Layout = () => {
 				<Pages sidebar={sidebar} />
 				<Footer sidebar={sidebar} />
 			</div>
-		</div>
+		</Fragment>
 	);
 };
 

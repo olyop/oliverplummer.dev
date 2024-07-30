@@ -18,9 +18,7 @@ const Header: FC<HeaderProps> = ({ sidebar, onToggleSidebar }) => (
 		<div
 			className={clsx(
 				"flex h-full items-center justify-between",
-				sidebar === null
-					? "container relative mx-auto px-4 md:px-0"
-					: "px-4 sm:pl-8 sm:pr-16",
+				sidebar === null ? "container relative mx-auto px-4 md:px-0" : "px-4 sm:pl-8",
 			)}
 		>
 			<div className="flex h-full items-center gap-4 md:gap-4">

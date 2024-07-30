@@ -19,7 +19,7 @@ const FooterSection: FC<PropsWithChildren & { title: string }> = ({
 	children,
 }) => (
 	<div className="flex flex-col gap-4">
-		<h3 className="text-xl">{title}</h3>
+		<h3 className="text-xl sm:text-2xl">{title}</h3>
 		<div className="flex flex-col items-start gap-3">{children}</div>
 	</div>
 );
@@ -35,7 +35,7 @@ const Footer: FC<FooterProps> = ({ sidebar }) => {
 		>
 			<div
 				className={clsx(
-					"border-primary flex flex-col gap-12 p-4 sm:flex-row md:gap-24 md:p-16",
+					"border-primary flex flex-col gap-8 p-4 sm:flex-row sm:gap-12 md:gap-24 md:p-16",
 					sidebar === null ? "rounded-2xl border" : "border-b border-t",
 				)}
 			>
