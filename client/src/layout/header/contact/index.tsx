@@ -1,6 +1,6 @@
 // import ArrowPathIcon from "@heroicons/react/24/outline/ArrowPathIcon";
-import EnvelopeIcon from "@heroicons/react/24/outline/EnvelopeIcon";
-import PaperAirplaneIcon from "@heroicons/react/24/outline/PaperAirplaneIcon";
+import { PaperAirplaneIcon } from "@heroicons/react/24/solid";
+import { EnvelopeIcon } from "@heroicons/react/24/solid";
 import Button from "components/button";
 import Modal from "components/modal";
 import { Breakpoint, useBreakpoint } from "hooks/use-breakpoint";

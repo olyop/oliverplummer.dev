@@ -9,12 +9,15 @@ const FooterTechStackButton: FC = () => {
 	const [isModalOpen, openModal, closeModal] = useModal();
 	return (
 		<Fragment>
-			<FooterButton text="Tech Stack" onClick={openModal} leftIcon={className => <Bars4Icon className={className} />} />
+			<FooterButton
+				text="Tech Stack"
+				onClick={openModal}
+				leftIcon={className => <Bars4Icon className={className} />}
+			/>
 			<Modal
 				isOpen={isModalOpen}
 				onClose={closeModal}
 				title="Tech Stack"
-				className="text-black"
 				icon={className => <Bars4Icon className={className} />}
 				subTitle="The tech stack for oliverplummer.com.au"
 			>

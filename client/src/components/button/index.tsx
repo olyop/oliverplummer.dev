@@ -35,7 +35,7 @@ const Button: FC<ButtonProps> = ({
 				? "hover:bg-hover focus:bg-hover border-primary hover:border-primary-accent focus:border-primary-accent border bg-transparent"
 				: "bg-primary hover:bg-hover focus:bg-hover shadow",
 			text === undefined && (leftIcon !== undefined || rightIcon !== undefined)
-				? "size-9 rounded-full p-2"
+				? "size-9 rounded-xl p-2 sm:rounded-full"
 				: "h-9 rounded-xl px-4",
 			className,
 		)}

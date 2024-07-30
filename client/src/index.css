@@ -6,6 +6,7 @@
 	--text: #1a2e05;
 	--background: #ecfccb;
 	--elevated: #f7fee7;
+	--elevated-hsla: hsla(78, 92%, 95%, 0.8);
 	--hover: #d9f99d;
 	--primary: #bef264;
 	--primary-accent: #65a30d;
@@ -18,6 +19,7 @@
 	--text: #fee2e2;
 	--background: #1c1917;
 	--elevated: #292524;
+	--elevated-hsla: hsla(12, 6%, 15%, 0.8);
 	--hover: #431407;
 	--primary: #9a3412;
 	--primary-accent: #ea580c;
@@ -32,6 +34,10 @@ body {
 	font-family: "Rubik", sans-serif;
 	font-optical-sizing: auto;
 	background-color: var(--background);
+}
+
+*,
+*::before,
+*::after {
 	color: var(--text);
-	transition: 200ms all ease-in-out;
 }

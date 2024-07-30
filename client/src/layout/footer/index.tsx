@@ -5,6 +5,7 @@ import githubLogoImagePath from "assets/footer/github.png?background=transparent
 import linkedinImagePath from "assets/footer/linkedin.png?background=transparent&fit=contain&aspect=1:1&w=64&allowUpscale=true&format=png";
 import npmImagePath from "assets/footer/npm.png?background=transparent&fit=contain&aspect=1:1&w=64&allowUpscale=true&format=png";
 import stackOverflowImagePath from "assets/footer/stack-overflow.png?background=transparent&fit=contain&aspect=1:1&w=64&allowUpscale=true&format=png";
+import clsx from "clsx";
 import { navigationPages } from "layout/navigation-config";
 import { FC, PropsWithChildren } from "react";
 import { useDarkMode } from "usehooks-ts";
@@ -23,11 +24,21 @@ const FooterSection: FC<PropsWithChildren & { title: string }> = ({
 	</div>
 );
 
-const Footer: FC = () => {
+const Footer: FC<FooterProps> = ({ sidebar }) => {
 	const { isDarkMode } = useDarkMode();
 	return (
-		<footer className="space-y-4 md:space-y-8">
-			<div className="border-primary flex flex-col gap-12 rounded-2xl border p-8 sm:flex-row md:gap-24">
+		<footer
+			className={clsx(
+				"mr-[var(--scrollbar-width)] w-full",
+				sidebar === null && "space-y-4 pb-8 md:space-y-8",
+			)}
+		>
+			<div
+				className={clsx(
+					"border-primary flex flex-col gap-12 p-4 sm:flex-row md:gap-24 md:p-16",
+					sidebar === null ? "rounded-2xl border" : "border-b border-t",
+				)}
+			>
 				<FooterSection title="Connect">
 					<FooterExternalLink
 						text="LinkedIn"
@@ -75,7 +86,12 @@ const Footer: FC = () => {
 					<FooterShareButton />
 				</FooterSection>
 			</div>
-			<div className="border-primary space-y-4 rounded-2xl border p-8 md:space-y-8">
+			<div
+				className={clsx(
+					"border-primary space-y-32 p-4 sm:space-y-8 sm:p-16",
+					sidebar === null ? "rounded-2xl border" : "mt-8 sm:mt-0",
+				)}
+			>
 				<p className="text-sm">
 					<b>
 						<i>
@@ -85,10 +101,16 @@ const Footer: FC = () => {
 						</i>
 					</b>
 				</p>
-				<p>Copyright © {new Date().getFullYear()} Oliver Plummer</p>
+				<p className="text-primary-accent">
+					Copyright © {new Date().getFullYear()} Oliver Plummer
+				</p>
 			</div>
 		</footer>
 	);
 };
+
+export interface FooterProps {
+	sidebar: boolean | null;
+}
 
 export default Footer;

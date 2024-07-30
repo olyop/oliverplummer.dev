@@ -44,22 +44,24 @@ const Collapsible: FC<Props> = ({
 				title={title}
 				ref={focusRef}
 				onClick={handleToggle}
-				className="flex cursor-pointer select-none items-center justify-between px-6 py-4 md:px-8"
+				className="grid cursor-pointer select-none grid-cols-[1fr,3rem] items-center gap-4 px-4 py-4 sm:px-8"
 			>
 				<div className="flex items-start gap-3 sm:gap-6">
 					{imageNode("mt-[0.2rem] sm:mt-[0.4rem]")}
 					<div className="flex flex-col gap-1 sm:gap-2">
-						<h1 className="text-2xl sm:text-3xl">
+						<h2 className="text-xl sm:text-3xl">
 							<b>{title}</b>
-						</h1>
-						{text && <p className={`font-light ${textClassName ?? ""}`}>{text}</p>}
+						</h2>
+						{text && (
+							<p className={clsx("sm:text text-sm font-light", textClassName)}>{text}</p>
+						)}
 					</div>
 				</div>
-				<div className="flex items-center gap-2">
-					<h1 className="mt-1 text-xs uppercase sm:text-lg" id={id}>
+				<div className="-mt-1 flex flex-col-reverse items-center">
+					<h1 className="text-xs uppercase sm:text-lg" id={id}>
 						{isOpen ? "Close" : "Open"}
 					</h1>
-					<ChevronDownIcon className={`size-8 ${isOpen ? "rotate-180" : ""}`} />
+					<ChevronDownIcon className={clsx("size-6", isOpen && "rotate-180")} />
 				</div>
 			</summary>
 			<div

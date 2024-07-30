@@ -10,6 +10,7 @@ module.exports = {
 			colors: {
 				"background": "var(--background)",
 				"elevated": "var(--elevated)",
+				"elevated-hsla": "var(--elevated-hsla)",
 				"hover": "var(--hover)",
 				"primary": "var(--primary)",
 				"primary-accent": "var(--primary-accent)",

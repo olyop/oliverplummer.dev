@@ -20,6 +20,7 @@
 	"scripts": {
 		"development": "cd client && npm run development && cd ..",
 		"build": "cd client && npm run build && cd ..",
+		"start": "cd client && npm run start && cd ..",
 		"deploy-clear": "aws s3 rm s3://oliverplummer.s3.ap-southeast-2.amazonaws.com --recursive",
 		"deploy-sync": "aws s3 sync --cache-control max-age=31536000 ./client/dist/ s3://oliverplummer.s3.ap-southeast-2.amazonaws.com",
 		"deploy": "npm run build && npm run deploy-clear && npm run deploy-sync && npm run sync",

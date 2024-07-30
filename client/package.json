@@ -19,7 +19,8 @@
 	},
 	"scripts": {
 		"development": "vite",
-		"build": "vite build"
+		"build": "vite build",
+		"start": "vite preview"
 	},
 	"dependencies": {
 		"@heroicons/react": "2.1.5",

@@ -33,9 +33,10 @@ const ExperiencePage: FC = () => {
 	return (
 		<Container
 			title="Experience"
+			url="https://oliverplummer.com.au/experience"
 			icon={iconClassName => <BriefcaseIcon className={iconClassName} />}
-			text="My professional work experience and occupations.."
-			childrenClassName="md:space-y-8 space-y-4"
+			text="My professional work experience and occupations."
+			childrenClassName="space-y-8"
 		>
 			{content.map(item => (
 				<ExperienceItem

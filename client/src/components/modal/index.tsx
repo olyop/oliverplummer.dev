@@ -1,12 +1,15 @@
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import XMarkIcon from "@heroicons/react/24/solid/XMarkIcon";
 import clsx from "clsx";
 import { useKeyPress } from "hooks/use-key-press";
-import { FC, PropsWithChildren, ReactNode, useEffect } from "react";
+import { FC, MouseEvent, PropsWithChildren, ReactNode, useEffect, useRef } from "react";
+import { createPortal } from "react-dom";
 
 import Button from "../button";
 
 // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
 const isMobile =
+	// @ts-expect-error
 	"userAgentData" in navigator ? (navigator.userAgentData.mobile as boolean) : false;
 
 const Modal: FC<PropsWithChildren<ModalPropTypes>> = ({
@@ -22,14 +25,21 @@ const Modal: FC<PropsWithChildren<ModalPropTypes>> = ({
 	modalClassName,
 	contentClassName,
 	buttonClassName,
-	backgroundClassName,
-	isLarge = false,
 	hideTitle = false,
 	centerTitle = false,
 	hideCloseButton = false,
 	disableCloseOnEscape = false,
 }) => {
 	const escapePress = useKeyPress("Escape");
+	const dialogRef = useRef<HTMLDialogElement>(null);
+
+	const handleDialogClick = (event: MouseEvent<HTMLDialogElement>) => {
+		if (event.target !== dialogRef.current) return;
+
+		if (onClose) {
+			onClose();
+		}
+	};
 
 	useEffect(() => {
 		if (escapePress && onClose) {
@@ -37,22 +47,21 @@ const Modal: FC<PropsWithChildren<ModalPropTypes>> = ({
 		}
 	}, [escapePress]);
 
-	return (
-		<div
-			data-test={isLarge}
-			className={`fixed inset-0 z-[100] h-screen w-screen overflow-hidden backdrop-blur-2xl ${
-				isOpen ? "visible opacity-100" : "invisible opacity-0"
-			} ${className ?? ""}`}
+	return createPortal(
+		<dialog
+			open={isOpen}
+			ref={dialogRef}
+			onMouseDown={handleDialogClick}
+			className={clsx(
+				"duration-400 pointer-events-none fixed inset-0 z-[100] m-0 h-screen w-screen max-w-none overflow-y-hidden overscroll-contain bg-transparent opacity-0 backdrop-blur-xl transition-all",
+				"open:pointer-events-auto open:visible open:opacity-100",
+				className,
+			)}
 		>
-			<div
-				aria-hidden
-				onClick={disableCloseOnEscape ? undefined : onClose}
-				className={`absolute inset-0 z-[110] cursor-pointer ${backgroundClassName ?? ""}`}
-			/>
 			{isOpen && (
 				<div
 					className={clsx(
-						"bg-elevated absolute left-1/2 top-8 z-[120] flex max-h-[calc(100vh_-_5rem)] w-[calc(100vw_-_3rem)] -translate-x-1/2 flex-col gap-4 rounded-md p-4 shadow-lg md:top-1/2 md:w-[35rem] md:-translate-y-1/2",
+						"bg-elevated relative left-1/2 top-20 max-h-[calc(100vh-5rem)] w-auto min-w-0 max-w-[calc(100vw-5rem)] -translate-x-1/2 rounded-2xl shadow-lg sm:top-1/2 sm:max-w-[40rem] sm:-translate-y-1/2",
 						modalClassName,
 					)}
 				>
@@ -60,7 +69,7 @@ const Modal: FC<PropsWithChildren<ModalPropTypes>> = ({
 						<Button
 							onClick={onClose}
 							ariaLabel={`Close ${title}`}
-							className="bg-primary hover:bg-hover absolute -right-4 -top-4"
+							className="bg-primary hover:bg-hover absolute -right-2 -top-5 !h-12"
 							leftIcon={c => <XMarkIcon className={c} />}
 							text={
 								isMobile ? (
@@ -78,13 +87,13 @@ const Modal: FC<PropsWithChildren<ModalPropTypes>> = ({
 					)}
 					{!hideTitle && icon && (
 						<div
-							className={`-mt-1 flex gap-2 ${subTitle === undefined ? "items-center" : "items-start"} ${
-								centerTitle ? "justify-center" : "justify-start"
-							} border-b border-b-gray-200 pb-2`}
-						>
-							{icon(
-								`h-5 w-5 ${subTitle === undefined ? "mt-0.5" : "mt-1.5"} select-none`,
+							className={clsx(
+								"border-b-primary flex gap-2 border-b px-6 py-4",
+								subTitle === undefined ? "items-center" : "items-start",
+								centerTitle ? "justify-center" : "justify-start",
 							)}
+						>
+							{icon(`size-5 ${subTitle === undefined ? "mt-0.5" : "mt-1.5"} select-none`)}
 							<div className="flex flex-col gap-1">
 								<h1 className="text-xl md:text-2xl">{title}</h1>
 								{titleContent}
@@ -92,13 +101,16 @@ const Modal: FC<PropsWithChildren<ModalPropTypes>> = ({
 							</div>
 						</div>
 					)}
-					<div className={`overflow-auto py-2 ${contentClassName ?? ""}`}>{children}</div>
+					<div className={`overflow-auto py-2 sm:py-8 ${contentClassName ?? ""}`}>
+						{children}
+					</div>
 					{buttons && (
 						<div className={`flex gap-2 ${buttonClassName ?? ""}`}>{buttons}</div>
 					)}
 				</div>
 			)}
-		</div>
+		</dialog>,
+		document.body,
 	);
 };
 
@@ -109,17 +121,14 @@ interface ModalPropTypes {
 	subTitle?: ReactNode;
 	icon?: (className: string) => ReactNode;
 	onClose?: () => void;
-
 	buttons?: ReactNode;
 	className?: string | undefined;
 	modalClassName?: string;
 	contentClassName?: string;
 	buttonClassName?: string;
-	backgroundClassName?: string;
 	hideTitle?: boolean;
 	centerTitle?: boolean;
 	disableCloseOnEscape?: boolean;
-	isLarge?: boolean;
 	hideCloseButton?: boolean;
 }
 

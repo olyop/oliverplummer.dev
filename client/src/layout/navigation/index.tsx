@@ -1,13 +1,20 @@
 import clsx from "clsx";
 import { navigationPages } from "layout/navigation-config";
-import { FC, Fragment, ReactNode } from "react";
+import { FC, Fragment, ReactNode, useRef } from "react";
 import { NavLink, NonIndexRouteObject, useLocation } from "react-router-dom";
 
 const Navigation: FC<NavigationProps> = ({ className, sidebar = false, onClick }) => {
+	const navRef = useRef<HTMLElement>(null);
+
 	const location = useLocation();
 
+	const locationIndex = calculateUnderlineIndex(location.pathname);
+
 	return (
-		<nav className={clsx("absolute", !sidebar && "flex items-center", className)}>
+		<nav
+			ref={navRef}
+			className={clsx("absolute", !sidebar && "flex items-center", className)}
+		>
 			{navigationPages.map(({ text, icon, path }) => (
 				<NavLink
 					to={path}
@@ -31,10 +38,11 @@ const Navigation: FC<NavigationProps> = ({ className, sidebar = false, onClick }
 				style={
 					sidebar
 						? {
-								top: determineUnderlinePercentage(location.pathname),
+								top: calculateUnderlinePercentage(locationIndex),
 							}
 						: {
-								left: determineUnderlinePercentage(location.pathname),
+								left: calculateUnderlineLeft(navRef.current, locationIndex),
+								width: calculateUnderlineWidth(navRef.current, locationIndex),
 							}
 				}
 				className={clsx(
@@ -48,18 +56,61 @@ const Navigation: FC<NavigationProps> = ({ className, sidebar = false, onClick }
 	);
 };
 
-function determineUnderlinePercentage(path: string) {
+function calculateUnderlineIndex(path: string) {
 	if (path === "/") {
-		return "0%";
+		return 0;
 	} else if (path === "/skills") {
-		return "25%";
+		return 1;
 	} else if (path === "/experience") {
-		return "50%";
+		return 2;
 	} else if (path === "/projects") {
-		return "75%";
+		return 3;
 	} else {
-		return "100%";
+		return 0;
 	}
+}
+
+function calculateUnderlinePercentage(index: number) {
+	switch (index) {
+		case 0:
+			return "0%";
+		case 1:
+			return "25%";
+		case 2:
+			return "50%";
+		case 3:
+			return "75%";
+		default:
+			return "0%";
+	}
+}
+
+function calculateUnderlineLeft(parent: HTMLElement | null, childIndex: number): number {
+	if (parent === null) {
+		return 0;
+	}
+
+	const child = parent.children.item(childIndex) as HTMLElement | null;
+
+	if (child === null) {
+		return 0;
+	}
+
+	return child.offsetLeft;
+}
+
+function calculateUnderlineWidth(parent: HTMLElement | null, childIndex: number): number {
+	if (parent === null) {
+		return 0;
+	}
+
+	const child = parent.children.item(childIndex) as HTMLElement | null;
+
+	if (child === null) {
+		return 0;
+	}
+
+	return child.offsetWidth;
 }
 
 export interface NavigationPage extends NonIndexRouteObject {

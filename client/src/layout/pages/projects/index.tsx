@@ -33,9 +33,10 @@ const ProjectsPage: FC = () => {
 	return (
 		<Container
 			title="Projects"
+			url="https://oliverplummer.com.au/projects"
 			icon={iconClassName => <Bars3CenterLeftIcon className={iconClassName} />}
 			text="Professional and personal projects that I have developed"
-			childrenClassName="md:space-y-8 space-y-4"
+			childrenClassName="space-y-8"
 		>
 			{projects.map(project => (
 				<Project

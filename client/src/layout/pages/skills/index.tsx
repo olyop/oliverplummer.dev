@@ -1,4 +1,4 @@
-import CheckCircleIcon from "@heroicons/react/20/solid/CheckCircleIcon";
+import CheckCircleIcon from "@heroicons/react/24/solid/CheckCircleIcon";
 import { initializeSearchParams, syncSearchParams } from "helpers";
 import { FC, Fragment, useState } from "react";
 import { useSearchParams } from "react-router-dom";
@@ -75,13 +75,14 @@ const SkillsPage: FC = () => {
 	return (
 		<Container
 			title="Skills"
+			url="https://oliverplummer.com.au/skills"
 			icon={iconClassName => <CheckCircleIcon className={iconClassName} />}
 			text={
 				<Fragment>
 					A complete list of all the <b>skills & technologies</b> I have experience with..
 				</Fragment>
 			}
-			childrenClassName="md:space-y-8 space-y-4"
+			childrenClassName="space-y-8"
 		>
 			{skillCategories.map(skillCategory => (
 				<SkillCategory

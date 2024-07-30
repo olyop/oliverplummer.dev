@@ -5,8 +5,8 @@ import Footer from "layout/footer";
 import Header from "layout/header";
 import Pages from "layout/pages";
 import Sidebar from "layout/sidebar";
-import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useEffect, useRef, useState } from "react";
+import { Location, useLocation } from "react-router-dom";
 
 const SIDEBAR_LOCAL_STORAGE_KEY = "sidebar";
 
@@ -36,8 +36,20 @@ const Layout = () => {
 		});
 	};
 
+	const previousLocationRef = useRef<Location | null>(location);
+
 	useEffect(() => {
+		if (!hasMounted) {
+			return;
+		}
+		if (previousLocationRef.current?.pathname === location.pathname) {
+			previousLocationRef.current = location;
+			return;
+		}
+
 		document.documentElement.scrollTo(0, 0);
+
+		previousLocationRef.current = location;
 	}, [location]);
 
 	useEffect(() => {
@@ -67,17 +79,18 @@ const Layout = () => {
 			/>
 			<div
 				className={clsx(
-					"!mt-header mb-header space-y-4 p-4 md:space-y-8 md:p-8",
+					"!pt-header space-y-4 sm:mt-8 md:space-y-8",
 					sidebar === null
 						? "container mx-auto"
 						: clsx(
+								"mr-[var(--scrollbar-width)]",
 								sidebar && breakpoint === Breakpoint.LARGE && "ml-sidebar",
 								sidebar && "mr-[var(--scrollbar-width)]",
 							),
 				)}
 			>
-				<Pages />
-				<Footer />
+				<Pages sidebar={sidebar} />
+				<Footer sidebar={sidebar} />
 			</div>
 		</div>
 	);

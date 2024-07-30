@@ -53,6 +53,8 @@ function detectColorScheme() {
 		document.documentElement.dataset.theme = "dark";
 	}
 
+	document.documentElement.style.transition = "200ms all ease-in-out";
+
 	prefersDarkTheme.addEventListener("change", event => {
 		if (event.matches) {
 			document.documentElement.dataset.theme = "dark";
