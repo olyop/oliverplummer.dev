@@ -32,7 +32,7 @@ const ExperiencePage: FC = () => {
 
 	return (
 		<Page
-			title="Professional Experience"
+			title="Experience"
 			url="https://oliverplummer.com.au/experience"
 			icon={iconClassName => <BriefcaseIcon className={iconClassName} />}
 			text="I have worked in a variety of roles across different industries. Here are some of the highlights."

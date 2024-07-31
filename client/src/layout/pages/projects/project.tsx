@@ -7,12 +7,12 @@ import {
 	EyeIcon,
 	MinusIcon,
 	PhotoIcon,
+	VideoCameraIcon,
 } from "@heroicons/react/24/outline";
 import Button from "components/button";
 import Carousel from "components/carousel";
 import Collapsible from "components/collapsible";
 import ContentImage from "components/content-image";
-import ImageExpand from "components/image-expand";
 import { FC, Fragment, PropsWithChildren, ReactNode } from "react";
 
 import { Project as ProjectType } from "./types";
@@ -129,13 +129,17 @@ const Project: FC<Props> = ({ isOpen, item, onToggle }) => (
 					</ProjectSection>
 				)}
 				{item.screencasts.length > 0 && (
-					<div className="grid grid-cols-1 gap-8 sm:grid-cols-2">
+					<ProjectSection
+						title="Videos"
+						icon={iconClassName => <VideoCameraIcon className={iconClassName} />}
+						className="grid grid-cols-1 gap-8 sm:grid-cols-2"
+					>
 						{item.screencasts.map(screencast => (
 							<video key={screencast} controls className="w-full">
 								<source src={screencast} type="video/webm" />
 							</video>
 						))}
-					</div>
+					</ProjectSection>
 				)}
 			</Fragment>
 		}

@@ -41,7 +41,7 @@ const Footer: FC<FooterProps> = ({ sidebar }) => {
 					"border-primary flex flex-col gap-8 sm:flex-row sm:gap-16",
 					sidebar === null
 						? "rounded-2xl border p-8"
-						: "border-b border-t p-4 sm:p-8 lg:pl-12",
+						: "border-b border-t p-4 sm:p-8 sm:py-12 lg:pl-12",
 				)}
 			>
 				<FooterSection title="Connect">
@@ -101,7 +101,7 @@ const Footer: FC<FooterProps> = ({ sidebar }) => {
 					"border-primary space-y-32 sm:space-y-8",
 					sidebar === null
 						? "rounded-2xl border p-8"
-						: "mt-8 p-4 sm:mt-0 sm:p-8 lg:pl-12",
+						: "mt-8 p-4 sm:mt-0 sm:px-8 sm:py-12 lg:pl-12",
 				)}
 			>
 				<p className="text-sm">

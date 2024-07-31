@@ -46,8 +46,8 @@ const Sidebar: FC<SidebarProps> = ({ sidebar, breakpoint, onToggleSidebar }) => 
 				className={clsx(
 					"sm:w-sidebar bg-elevated-hsla border-primary top-header fixed z-50 h-screen w-[calc(100vw-4rem)] border-r py-4 shadow backdrop-blur-sm backdrop-saturate-[180%] transition-all duration-300",
 					sidebar
-						? "pointer-events-auto left-0"
-						: "pointer-events-none left-[calc((100vw-4rem)*-1)] sm:left-[calc(var(--sidebar-width)*-1)]",
+						? "pointer-events-auto left-0 overflow-visible"
+						: "pointer-events-none left-[calc((100vw-4rem)*-1)] overflow-hidden sm:left-[calc(var(--sidebar-width)*-1)]",
 				)}
 			>
 				<Navigation sidebar className="w-full" onClick={handleToggleSidebar} />
