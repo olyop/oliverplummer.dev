@@ -1,9 +1,9 @@
-import { BriefcaseIcon } from "@heroicons/react/20/solid";
+import { BriefcaseIcon } from "@heroicons/react/24/outline";
 import { initializeSearchParams, syncSearchParams } from "helpers";
 import { FC, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 
-import Container from "../container";
+import Page from "../page";
 import { content, isExperienceCodeValid } from "./content";
 import ExperienceItem from "./experience";
 
@@ -31,7 +31,7 @@ const ExperiencePage: FC = () => {
 	};
 
 	return (
-		<Container
+		<Page
 			title="Experience"
 			url="https://oliverplummer.com.au/experience"
 			icon={iconClassName => <BriefcaseIcon className={iconClassName} />}
@@ -46,7 +46,7 @@ const ExperiencePage: FC = () => {
 					onToggle={handleSectionToggle(item.code)}
 				/>
 			))}
-		</Container>
+		</Page>
 	);
 };
 

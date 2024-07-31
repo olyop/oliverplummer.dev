@@ -1,3 +1,4 @@
+import apolloServerFastifyLogoPath from "assets/projects/apollo-server-fastify/logo.png?background=transparent&fit=contain&aspect=1:1&w=64&allowUpscale=true&format=png";
 import directoryToSpotifyLogoPath from "assets/projects/directory-to-spotify/logo.png?background=transparent&fit=contain&aspect=1:1&w=64&allowUpscale=true&format=png";
 import directoryToSpotifyScreenCastOne from "assets/projects/directory-to-spotify/screencast-1.webm";
 import directoryToSpotifyScreenShotOneLogoPath from "assets/projects/directory-to-spotify/screenshot-1.png";
@@ -17,6 +18,21 @@ import xtremeHipHopScreenShotTwoLogoPath from "assets/projects/xtremehiphop/scre
 import xtremeHipHopScreenShotFourLogoPath from "assets/projects/xtremehiphop/screenshot-4.png";
 import xtremeHipHopScreenShotFiveLogoPath from "assets/projects/xtremehiphop/screenshot-5.png";
 import xtremeHipHopScreenShotSixLogoPath from "assets/projects/xtremehiphop/screenshot-6.png";
+import apolloGraphQLImagePath from "assets/skills/back-end/apollo-graphql.png?background=transparent&fit=contain&aspect=1:1&w=64&allowUpscale=true&format=png";
+import fastifyImagePath from "assets/skills/back-end/fastify.png?background=transparent&fit=contain&aspect=1:1&w=64&allowUpscale=true&format=png";
+import goImagePath from "assets/skills/back-end/go.png?background=transparent&fit=contain&aspect=1:1&w=64&allowUpscale=true&format=png";
+import graphqlImagePath from "assets/skills/back-end/graphql.png?background=transparent&fit=contain&aspect=1:1&w=64&allowUpscale=true&format=png";
+import javaImagePath from "assets/skills/back-end/java.png?background=transparent&fit=contain&aspect=1:1&w=64&allowUpscale=true&format=png";
+import nextImagePath from "assets/skills/back-end/next-js.svg?background=transparent&fit=contain&aspect=1:1&w=64&allowUpscale=true&format=png";
+import nodeImagePath from "assets/skills/back-end/node.png?background=transparent&fit=contain&aspect=1:1&w=64&allowUpscale=true&format=png";
+import springImagePath from "assets/skills/back-end/spring.svg?background=transparent&fit=contain&aspect=1:1&w=64&allowUpscale=true&format=png";
+import auth0ImagePath from "assets/skills/cloud/auth0.png?background=transparent&fit=contain&aspect=1:1&w=64&allowUpscale=true&format=png";
+import lambdaImagePath from "assets/skills/cloud/lambda.png?background=transparent&fit=contain&aspect=1:1&w=64&allowUpscale=true&format=png";
+import stripeImagePath from "assets/skills/cloud/stripe.svg?background=transparent&fit=contain&aspect=1:1&w=64&allowUpscale=true&format=png";
+import viteImagePath from "assets/skills/dev-ops/vite.png?background=transparent&fit=contain&aspect=1:1&w=64&allowUpscale=true&format=png";
+import reactImagePath from "assets/skills/front-end/react.png?background=transparent&fit=contain&aspect=1:1&w=64&allowUpscale=true&format=png";
+import tailwindImagePath from "assets/skills/front-end/tailwind.png?background=transparent&fit=contain&aspect=1:1&w=64&allowUpscale=true&format=png";
+import typescriptImagePath from "assets/skills/front-end/typescript.png?background=transparent&fit=contain&aspect=1:1&w=64&allowUpscale=true&format=png";
 
 import { Project } from "./types";
 
@@ -53,15 +69,41 @@ export const projects: Project[] = [
 			"API written in Go.",
 		],
 		technologies: [
-			"Next.js",
-			"Vercel Hosted",
-			"React",
-			"TailwindCSS",
-			"Heroicons",
-			"React Server Components",
-			"Go HTTP API",
-			"Go AWS Lambda Serverless",
-			"Go Gin",
+			{
+				code: "next-js",
+				label: "Next.js",
+				image: nextImagePath,
+			},
+			{
+				code: "react-js",
+				label: "React.js",
+				image: reactImagePath,
+			},
+			{
+				code: "typescript",
+				label: "TypeScript",
+				image: typescriptImagePath,
+			},
+			{
+				code: "tailwind-css",
+				label: "TailwindCSS",
+				image: tailwindImagePath,
+			},
+			{
+				code: "vite",
+				label: "Vite",
+				image: viteImagePath,
+			},
+			{
+				code: "go",
+				label: "Go",
+				image: goImagePath,
+			},
+			{
+				code: "lambda",
+				label: "AWS Lambda",
+				image: lambdaImagePath,
+			},
 		],
 	},
 	{
@@ -93,18 +135,61 @@ export const projects: Project[] = [
 			"Responsive mobile-first design.",
 		],
 		technologies: [
-			"PWA",
-			"React",
-			"TailwindCSS",
-			"Heroicons",
-			"Apollo Client",
-			"WorkBox",
-			"Spring Boot",
-			"Stripe",
-			"Auth0",
-			"PostgreSQL",
-			"Docker",
-			"AWS: EC2, RDS, Lambda, S3, CloudFront, Route53",
+			{
+				code: "next-js",
+				label: "Next.js",
+				image: nextImagePath,
+			},
+			{
+				code: "react-js",
+				label: "React.js",
+				image: reactImagePath,
+			},
+			{
+				code: "typescript",
+				label: "TypeScript",
+				image: typescriptImagePath,
+			},
+			{
+				code: "tailwind-css",
+				label: "TailwindCSS",
+				image: tailwindImagePath,
+			},
+			{
+				code: "vite",
+				label: "Vite",
+				image: viteImagePath,
+			},
+			{
+				code: "graphql",
+				label: "GraphQL",
+				image: graphqlImagePath,
+			},
+			{
+				code: "java",
+				label: "Java",
+				image: javaImagePath,
+			},
+			{
+				code: "spring",
+				label: "Spring Boot",
+				image: springImagePath,
+			},
+			{
+				code: "auth0",
+				label: "Auth0",
+				image: auth0ImagePath,
+			},
+			{
+				code: "stripe",
+				label: "Stripe",
+				image: stripeImagePath,
+			},
+			{
+				code: "lambda",
+				label: "AWS Lambda",
+				image: lambdaImagePath,
+			},
 		],
 	},
 	{
@@ -116,7 +201,33 @@ export const projects: Project[] = [
 			"Preview songs before adding them.",
 			"Visualize the scanning process.",
 		],
-		technologies: ["React", "TailwindCSS", "Heroicons", "Spotify Web API", "Web Workers", "Redux"],
+		technologies: [
+			{
+				code: "next-js",
+				label: "Next.js",
+				image: nextImagePath,
+			},
+			{
+				code: "react-js",
+				label: "React.js",
+				image: reactImagePath,
+			},
+			{
+				code: "typescript",
+				label: "TypeScript",
+				image: typescriptImagePath,
+			},
+			{
+				code: "tailwind-css",
+				label: "TailwindCSS",
+				image: tailwindImagePath,
+			},
+			{
+				code: "vite",
+				label: "Vite",
+				image: viteImagePath,
+			},
+		],
 		image: directoryToSpotifyLogoPath,
 		screencasts: [directoryToSpotifyScreenCastOne],
 		screenshots: [
@@ -144,6 +255,42 @@ export const projects: Project[] = [
 			It uses the Spotify Web API to add songs to the user's library and playlists.
 		`,
 	},
+	{
+		code: "apollo-server-fastify",
+		label: "Apollo Server Fastify",
+		features: [],
+		text: "This is a simple package that easily allows you to connect your own Fastify server implementation to an Apollo Server instance.",
+		technologies: [
+			{
+				code: "node-js",
+				label: "Node.js",
+				image: nodeImagePath,
+			},
+			{
+				code: "graphql",
+				label: "GraphQL",
+				image: graphqlImagePath,
+			},
+			{
+				code: "fastify",
+				label: "Fastify",
+				image: fastifyImagePath,
+			},
+			{
+				code: "apollo-graphql",
+				label: "Apollo",
+				image: apolloGraphQLImagePath,
+			},
+		],
+		image: apolloServerFastifyLogoPath,
+		screencasts: [],
+		screenshots: [],
+		sourceCodeUrl:
+			"https://github.com/apollo-server-integrations/apollo-server-integration-fastify",
+		url: "https://github.com/apollo-server-integrations/apollo-server-integration-fastify",
+		description: "",
+	},
 ];
 
-export const isProjectCodeValid = (value: string) => projects.some(({ code }) => code === value);
+export const isProjectCodeValid = (value: string) =>
+	projects.some(({ code }) => code === value);

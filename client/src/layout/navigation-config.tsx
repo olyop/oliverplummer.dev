@@ -1,7 +1,9 @@
-import Bars3CenterLeftIcon from "@heroicons/react/20/solid/Bars3CenterLeftIcon";
-import BriefcaseIcon from "@heroicons/react/20/solid/BriefcaseIcon";
-import CheckCircleIcon from "@heroicons/react/20/solid/CheckCircleIcon";
-import InformationCircleIcon from "@heroicons/react/20/solid/InformationCircleIcon";
+import {
+	Bars3CenterLeftIcon,
+	BriefcaseIcon,
+	CheckCircleIcon,
+	InformationCircleIcon,
+} from "@heroicons/react/24/outline";
 
 import { NavigationPage } from "./navigation";
 import AboutPage from "./pages/about";

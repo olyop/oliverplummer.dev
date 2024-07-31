@@ -28,12 +28,12 @@
 		"compile-contact-details": "cd contact-details && tsc && cd .."
 	},
 	"devDependencies": {
-		"@oly_op/cspell-dict": "1.1.14",
+		"@oly_op/cspell-dict": "1.1.16",
 		"@oly_op/eslint-config": "6.7.23",
 		"@oly_op/eslint-config-react": "4.3.11",
 		"@oly_op/prettier-config": "1.9.7",
 		"@oly_op/tsconfig": "1.2.2",
-		"@types/node": "20.14.12",
+		"@types/node": "22.0.0",
 		"npm-check-updates": "16.14.20",
 		"ts-node": "10.9.2"
 	}

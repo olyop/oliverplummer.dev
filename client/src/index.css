@@ -49,3 +49,7 @@ body {
 *::after {
 	color: var(--text);
 }
+
+p {
+	max-width: 50em;
+}

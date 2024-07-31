@@ -20,7 +20,7 @@ const Layout = () => {
 
 	const handleToggleSidebar = () => {
 		setSidebar(prevState => {
-			if (breakpoint === Breakpoint.LARGE) {
+			if (breakpoint === Breakpoint.LARGE || breakpoint === Breakpoint.EXTRA_LARGE) {
 				if (prevState === true) {
 					localStorage.removeItem(SIDEBAR_LOCAL_STORAGE_KEY);
 					return null;
@@ -29,9 +29,7 @@ const Layout = () => {
 					return true;
 				}
 			} else {
-				const newState = !prevState;
-				localStorage.setItem(SIDEBAR_LOCAL_STORAGE_KEY, newState.toString());
-				return newState;
+				return !prevState;
 			}
 		});
 	};
@@ -42,12 +40,16 @@ const Layout = () => {
 		if (!hasMounted) {
 			return;
 		}
+
 		if (previousLocationRef.current?.pathname === location.pathname) {
 			previousLocationRef.current = location;
 			return;
 		}
 
-		document.documentElement.scrollTo(0, 0);
+		document.documentElement.scrollIntoView({
+			behavior: "smooth",
+			block: "start",
+		});
 
 		previousLocationRef.current = location;
 	}, [location]);
@@ -57,34 +59,40 @@ const Layout = () => {
 			return;
 		}
 
-		if (breakpoint === Breakpoint.LARGE) {
-			setSidebar(null);
-			return;
-		}
+		if (breakpoint === Breakpoint.LARGE || breakpoint === Breakpoint.EXTRA_LARGE) {
+			const storageValue = localStorage.getItem(SIDEBAR_LOCAL_STORAGE_KEY);
 
-		if (sidebar !== null) {
-			return;
+			if (storageValue === null) {
+				setSidebar(null);
+			} else {
+				setSidebar(storageValue === "true" ? true : null);
+			}
+		} else {
+			setSidebar(false);
 		}
-
-		setSidebar(false);
 	}, [breakpoint]);
 
 	return (
 		<Fragment>
-			<Header sidebar={sidebar} onToggleSidebar={handleToggleSidebar} />
-			<Sidebar
-				sidebar={sidebar}
+			<Header
 				breakpoint={breakpoint}
+				sidebar={sidebar}
+				onToggleSidebar={handleToggleSidebar}
+			/>
+			<Sidebar
+				breakpoint={breakpoint}
+				sidebar={sidebar}
 				onToggleSidebar={handleToggleSidebar}
 			/>
 			<div
 				className={clsx(
-					"!pt-header space-y-4 sm:mt-8 md:space-y-8",
+					"mt-header space-y-4 md:space-y-8",
 					sidebar === null
-						? "container mx-auto"
+						? "container mx-auto px-4 pt-8"
 						: clsx(
-								sidebar && breakpoint === Breakpoint.LARGE && "ml-sidebar",
-								sidebar && "mr-[var(--scrollbar-width)]",
+								(breakpoint === Breakpoint.LARGE ||
+									breakpoint === Breakpoint.EXTRA_LARGE) &&
+									"ml-sidebar",
 							),
 				)}
 			>
@@ -96,9 +104,16 @@ const Layout = () => {
 };
 
 function determineInitialSidebar(breakpoint: Breakpoint) {
-	if (breakpoint === Breakpoint.LARGE) {
-		const sidebar = localStorage.getItem(SIDEBAR_LOCAL_STORAGE_KEY);
-		return sidebar === "true" ? true : null;
+	const storageValue = localStorage.getItem(SIDEBAR_LOCAL_STORAGE_KEY);
+
+	if (breakpoint === Breakpoint.LARGE || breakpoint === Breakpoint.EXTRA_LARGE) {
+		if (storageValue === null) {
+			return null;
+		}
+
+		return storageValue === "true" ? true : null;
+	} else if (breakpoint === Breakpoint.MEDIUM) {
+		return true;
 	}
 
 	return false;

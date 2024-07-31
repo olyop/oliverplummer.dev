@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions */
-import ChevronDownIcon from "@heroicons/react/20/solid/ChevronDownIcon";
+import { ChevronDownIcon } from "@heroicons/react/24/outline";
 import clsx from "clsx";
 import { useFocus } from "hooks/use-focus";
 import { useHasMounted } from "hooks/use-has-mounted";
@@ -61,7 +61,7 @@ const Collapsible: FC<Props> = ({
 				title={title}
 				ref={focusRef}
 				onClick={handleToggle}
-				className="grid cursor-pointer select-none grid-cols-[1fr,3rem] items-center gap-4 px-4 py-4 sm:px-8"
+				className="grid cursor-pointer select-none grid-cols-[1fr,3rem] items-center gap-4 rounded-2xl px-4 py-4 sm:px-8"
 			>
 				<div className="flex items-start gap-3 sm:gap-6">
 					{imageNode("mt-[0.2rem] sm:mt-[0.4rem]")}
@@ -74,8 +74,8 @@ const Collapsible: FC<Props> = ({
 						)}
 					</div>
 				</div>
-				<div className="mt-1 flex flex-col items-center">
-					<h1 className="text-xs uppercase sm:text-lg" id={id}>
+				<div className="mt-1.5 flex flex-col items-center rounded-2xl">
+					<h1 className="sm:text text-xs uppercase" id={id}>
 						{isOpen ? "Close" : "Open"}
 					</h1>
 					<ChevronDownIcon className={clsx("size-6", isOpen && "rotate-180")} />

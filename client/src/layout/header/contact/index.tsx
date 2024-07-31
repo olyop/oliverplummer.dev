@@ -1,6 +1,5 @@
 // import ArrowPathIcon from "@heroicons/react/24/outline/ArrowPathIcon";
-import { PaperAirplaneIcon } from "@heroicons/react/24/solid";
-import { EnvelopeIcon } from "@heroicons/react/24/solid";
+import { EnvelopeIcon, PaperAirplaneIcon } from "@heroicons/react/24/outline";
 import Button from "components/button";
 import Modal from "components/modal";
 import { Breakpoint, useBreakpoint } from "hooks/use-breakpoint";
@@ -15,7 +14,7 @@ import { ContactCopyButtons } from "./contact-buttons";
 // const INITIAL_RE_CAPTCHA_MESSAGE = "Verifying you are not a robot";
 // const DEFAULT_RE_CAPTCHA_ERROR = "An error occurred while contacting the server";
 
-const Contact: FC = () => {
+const Contact: FC<ContactProps> = ({ sidebar }) => {
 	const breakpoint = useBreakpoint();
 	const [isModalOpen, openModal, closeModal] = useModal(false);
 
@@ -101,7 +100,10 @@ const Contact: FC = () => {
 	// 	}
 	// }, [reCaptchaToken]);
 
-	const shouldCollapse = breakpoint !== Breakpoint.LARGE;
+	const shouldCollapse =
+		sidebar === null
+			? breakpoint !== Breakpoint.EXTRA_LARGE
+			: !(breakpoint === Breakpoint.EXTRA_LARGE || breakpoint === Breakpoint.MEDIUM);
 
 	return (
 		<Fragment>
@@ -119,27 +121,9 @@ const Contact: FC = () => {
 				title="Contact"
 				isOpen={isModalOpen}
 				onClose={closeModal}
-				contentClassName="relative flex flex-col gap-10 py-6"
+				contentClassName="relative flex flex-col gap-10 p-6"
 				icon={className => <PaperAirplaneIcon className={className} />}
 			>
-				{/* {contactDetails === null && (
-					<Fragment>
-						<div className="absolute left-0 top-0 z-10 h-full w-full" />
-						<div className="absolute left-1/2 top-1/2 z-10 flex w-56 -translate-x-1/2 -translate-y-1/2 flex-col items-center gap-4">
-							<p className="p-2 text-center">{reCaptchaError ?? reCaptchaMessage}</p>
-							{reCaptchaError ? (
-								<Button
-									ariaLabel="Retry"
-									text="Retry"
-									onClick={handleRetry}
-									leftIcon={className => <ArrowPathIcon className={className} />}
-								/>
-							) : (
-								<ArrowPathIcon className="h-12 w-12 animate-spin" />
-							)}
-						</div>
-					</Fragment>
-				)} */}
 				<div className="flex flex-col items-center justify-center gap-2">
 					<p className="sm:text text-center text-sm">
 						You can contact
@@ -165,14 +149,18 @@ const Contact: FC = () => {
 	);
 };
 
+interface ContactProps {
+	sidebar: boolean | null;
+}
+
 interface ContactDetails {
 	emailAddress: string;
 	mobileNumber: string;
 }
 
-interface GetContactDetailsResponse {
-	error?: string;
-	contactDetails?: ContactDetails;
-}
+// interface GetContactDetailsResponse {
+// 	error?: string;
+// 	contactDetails?: ContactDetails;
+// }
 
 export default Contact;

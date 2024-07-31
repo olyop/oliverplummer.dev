@@ -8,8 +8,8 @@ const Pages: FC<PagesProps> = ({ sidebar }) => {
 	return (
 		<main
 			className={clsx(
-				"min-h-[calc(100vh-5rem)] w-full sm:min-h-[calc(100vh-5rem-4rem)] md:p-8",
-				sidebar === null && "border-primary rounded-2xl border",
+				"min-h-[calc(100vh-5rem)] w-full",
+				sidebar === null ? "border-primary rounded-2xl border p-8" : "sm:p-8 lg:pl-12",
 			)}
 		>
 			{routes}

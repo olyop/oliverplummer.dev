@@ -1,16 +1,12 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
-import XMarkIcon from "@heroicons/react/24/solid/XMarkIcon";
+import { XMarkIcon } from "@heroicons/react/24/outline";
 import clsx from "clsx";
+import { Breakpoint, useBreakpoint } from "hooks/use-breakpoint";
 import { useKeyPress } from "hooks/use-key-press";
 import { FC, MouseEvent, PropsWithChildren, ReactNode, useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
 
 import Button from "../button";
-
-// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-const isMobile =
-	// @ts-expect-error
-	"userAgentData" in navigator ? (navigator.userAgentData.mobile as boolean) : false;
 
 const Modal: FC<PropsWithChildren<ModalPropTypes>> = ({
 	title,
@@ -30,6 +26,7 @@ const Modal: FC<PropsWithChildren<ModalPropTypes>> = ({
 	hideCloseButton = false,
 	disableCloseOnEscape = false,
 }) => {
+	const breakpoint = useBreakpoint();
 	const escapePress = useKeyPress("Escape");
 	const dialogRef = useRef<HTMLDialogElement>(null);
 
@@ -53,7 +50,7 @@ const Modal: FC<PropsWithChildren<ModalPropTypes>> = ({
 			ref={dialogRef}
 			onMouseDown={handleDialogClick}
 			className={clsx(
-				"duration-400 pointer-events-none fixed inset-0 z-[100] m-0 h-screen w-screen max-w-none overflow-y-hidden overscroll-contain bg-transparent opacity-0 backdrop-blur-xl transition-all",
+				"duration-400 pointer-events-none fixed inset-0 z-[100] m-0 h-screen w-screen max-w-none overflow-y-hidden overscroll-contain bg-transparent opacity-0 backdrop-blur-2xl transition-all",
 				"open:pointer-events-auto open:visible open:opacity-100",
 				className,
 			)}
@@ -69,13 +66,24 @@ const Modal: FC<PropsWithChildren<ModalPropTypes>> = ({
 						<Button
 							onClick={onClose}
 							ariaLabel={`Close ${title}`}
-							className="bg-primary hover:bg-hover absolute -right-2 -top-5 !h-12"
-							leftIcon={c => <XMarkIcon className={c} />}
+							className="bg-primary hover:bg-hover absolute -right-2 -top-2 !h-12 shadow-2xl sm:-right-4 sm:-top-6"
+							leftIcon={iconClassName =>
+								breakpoint === Breakpoint.TINY ||
+								breakpoint === Breakpoint.SMALL ? undefined : (
+									<XMarkIcon className={iconClassName} />
+								)
+							}
+							rightIcon={iconClassName =>
+								breakpoint === Breakpoint.SMALL || breakpoint === Breakpoint.TINY ? (
+									<XMarkIcon className={iconClassName} />
+								) : undefined
+							}
+							textClassName="ml-1 mt-0.5 sm:mt-0 sm:pl-0"
 							text={
-								isMobile ? (
+								breakpoint === Breakpoint.SMALL || breakpoint === Breakpoint.TINY ? (
 									"Close"
 								) : (
-									<div className="flex items-center gap-2">
+									<div className="flex items-center gap-3">
 										<span className="mt-[2px]">Close</span>
 										<span className="border-primary-accent rounded border px-1 py-0.5 text-xs">
 											ESC
@@ -101,9 +109,7 @@ const Modal: FC<PropsWithChildren<ModalPropTypes>> = ({
 							</div>
 						</div>
 					)}
-					<div className={`overflow-auto py-2 sm:py-8 ${contentClassName ?? ""}`}>
-						{children}
-					</div>
+					<div className={`overflow-auto py-8 ${contentClassName ?? ""}`}>{children}</div>
 					{buttons && (
 						<div className={`flex gap-2 ${buttonClassName ?? ""}`}>{buttons}</div>
 					)}

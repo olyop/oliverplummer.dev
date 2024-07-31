@@ -1,7 +1,7 @@
 import { FC } from "react";
 
 const AboutPage: FC = () => (
-	<div className="flex flex-col gap-4 text-center">
+	<div className="flex flex-col justify-center gap-16 text-center">
 		<h2 className="text-xl">
 			<b>
 				👋 Hello! 👋
@@ -10,7 +10,7 @@ const AboutPage: FC = () => (
 				<br />
 			</b>
 		</h2>
-		<div className="flex flex-col gap-8">
+		<div className="flex flex-col items-center gap-8">
 			<p className="text">
 				I am a <b>fullstack</b> software developer
 				<br />

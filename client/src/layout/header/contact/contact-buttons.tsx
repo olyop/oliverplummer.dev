@@ -1,10 +1,10 @@
-import ArrowPathIcon from "@heroicons/react/20/solid/ArrowPathIcon";
-import CheckIcon from "@heroicons/react/20/solid/CheckIcon";
-import ClipboardIcon from "@heroicons/react/20/solid/ClipboardIcon";
-import EnvelopeOpenIcon from "@heroicons/react/20/solid/EnvelopeOpenIcon";
-import ExclamationTriangleIcon from "@heroicons/react/20/solid/ExclamationTriangleIcon";
-import PhoneIcon from "@heroicons/react/20/solid/PhoneIcon";
-import ShareIcon from "@heroicons/react/20/solid/ShareIcon";
+import { ClipboardIcon } from "@heroicons/react/24/outline";
+import { CheckIcon } from "@heroicons/react/24/outline";
+import { ExclamationTriangleIcon } from "@heroicons/react/24/outline";
+import { ArrowPathIcon } from "@heroicons/react/24/outline";
+import { EnvelopeOpenIcon } from "@heroicons/react/24/outline";
+import { PhoneIcon } from "@heroicons/react/24/outline";
+import { ShareIcon } from "@heroicons/react/24/outline";
 import Button from "components/button";
 import { Breakpoint, useBreakpoint } from "hooks/use-breakpoint";
 import { useShare } from "hooks/use-share";

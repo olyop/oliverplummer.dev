@@ -1,21 +1,31 @@
-import ArrowPathIcon from "@heroicons/react/20/solid/ArrowPathIcon";
-import CheckIcon from "@heroicons/react/20/solid/CheckIcon";
-import ClipboardIcon from "@heroicons/react/20/solid/ClipboardIcon";
-import ExclamationTriangleIcon from "@heroicons/react/20/solid/ExclamationTriangleIcon";
-import ShareIcon from "@heroicons/react/20/solid/ShareIcon";
+import {
+	ArrowPathIcon,
+	CheckIcon,
+	ClipboardIcon,
+	ExclamationTriangleIcon,
+	ShareIcon,
+} from "@heroicons/react/24/outline";
 import Button from "components/button";
+import { Breakpoint, useBreakpoint } from "hooks/use-breakpoint";
 import { useShare } from "hooks/use-share";
 import { FC } from "react";
 
-const HeaderShareButton: FC<HeaderShareButtonProps> = ({ url }) => {
+const ShareButton: FC<ShareButtonProps> = ({ url }) => {
+	const breakpoint = useBreakpoint();
+
 	const [handleShare, { hasShared, hasCopiedShared, hasError }] = useShare(url);
+
+	const shouldCollapse = !(
+		breakpoint === Breakpoint.EXTRA_LARGE || breakpoint === Breakpoint.MEDIUM
+	);
 
 	return (
 		<Button
 			isTransparent
-			className="!size-12"
-			iconClassName="!size-6"
 			onClick={handleShare}
+			iconClassName="!size-6"
+			text={shouldCollapse ? undefined : "Share"}
+			className={shouldCollapse ? "!size-12" : "!h-12"}
 			leftIcon={className =>
 				hasShared === null ? (
 					<ShareIcon className={className} />
@@ -48,8 +58,8 @@ const HeaderShareButton: FC<HeaderShareButtonProps> = ({ url }) => {
 	);
 };
 
-export interface HeaderShareButtonProps {
+interface ShareButtonProps {
 	url: string;
 }
 
-export default HeaderShareButton;
+export default ShareButton;

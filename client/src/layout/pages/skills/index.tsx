@@ -1,9 +1,9 @@
-import CheckCircleIcon from "@heroicons/react/24/solid/CheckCircleIcon";
+import { CheckCircleIcon } from "@heroicons/react/24/outline";
 import { initializeSearchParams, syncSearchParams } from "helpers";
 import { FC, Fragment, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 
-import Container from "../container";
+import Page from "../page";
 import { skillCategories } from "./content";
 import SkillCategory from "./skill-category";
 import {
@@ -73,7 +73,7 @@ const SkillsPage: FC = () => {
 	};
 
 	return (
-		<Container
+		<Page
 			title="Skills"
 			url="https://oliverplummer.com.au/skills"
 			icon={iconClassName => <CheckCircleIcon className={iconClassName} />}
@@ -96,7 +96,7 @@ const SkillsPage: FC = () => {
 					onSortByDirectionChange={handleSortByDirectionChange}
 				/>
 			))}
-		</Container>
+		</Page>
 	);
 };
 

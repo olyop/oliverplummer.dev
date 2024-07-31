@@ -6,7 +6,11 @@ export interface Project extends ContentItem {
 	sourceCodeUrl: string | null;
 	description: string;
 	features: string[];
-	technologies: string[];
+	technologies: ProjectTechnology[];
 	screencasts: string[];
 	screenshots: string[];
+}
+
+export interface ProjectTechnology extends ContentItem {
+	code: string;
 }

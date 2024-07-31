@@ -1,9 +1,11 @@
-import BriefcaseIcon from "@heroicons/react/20/solid/BriefcaseIcon";
-import BuildingLibraryIcon from "@heroicons/react/20/solid/BuildingLibraryIcon";
-import CodeBracketIcon from "@heroicons/react/20/solid/CodeBracketIcon";
-import FaceSmileIcon from "@heroicons/react/20/solid/FaceSmileIcon";
-import UserIcon from "@heroicons/react/20/solid/UserIcon";
-import LifebuoyIcon from "@heroicons/react/24/outline/LifebuoyIcon";
+import {
+	BriefcaseIcon,
+	BuildingLibraryIcon,
+	CodeBracketIcon,
+	FaceSmileIcon,
+	LifebuoyIcon,
+	UserIcon,
+} from "@heroicons/react/24/outline";
 import auroraHotelImagePath from "assets/experience/aurora-hotel.png?background=transparent&fit=contain&aspect=1:1&w=64&allowUpscale=true&format=png";
 import readyTechImagePath from "assets/experience/readytech.png?background=transparent&fit=contain&aspect=1:1&w=64&allowUpscale=true&format=png";
 import wheelEasyImagePath from "assets/experience/wheeleasy.png?background=transparent&fit=contain&aspect=1:1&w=64&allowUpscale=true&format=png";
@@ -16,7 +18,7 @@ export const content: Experience[] = [
 		label: "Ready Tech",
 		image: readyTechImagePath,
 		dateStarted: new Date(2022, 6, 1),
-		dateEnded: null,
+		dateEnded: new Date(2024, 1, 1),
 		role: "Software Developer",
 		roleIcon: className => <CodeBracketIcon className={className} />,
 		industry: "Justice",
@@ -195,4 +197,5 @@ export const content: Experience[] = [
 	},
 ];
 
-export const isExperienceCodeValid = (experience: string) => content.map(({ code }) => code).includes(experience);
+export const isExperienceCodeValid = (experience: string) =>
+	content.map(({ code }) => code).includes(experience);

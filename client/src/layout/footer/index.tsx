@@ -1,7 +1,8 @@
-import CodeBracketIcon from "@heroicons/react/20/solid/CodeBracketIcon";
+import { CodeBracketIcon } from "@heroicons/react/24/outline";
 import buyMeACoffeeImagePath from "assets/footer/buy-me-a-coffee.png?background=transparent&fit=contain&aspect=1:1&w=64&allowUpscale=true&format=png";
 import githubLogoDarkImagePath from "assets/footer/github-dark.png?background=transparent&fit=contain&aspect=1:1&w=64&allowUpscale=true&format=png";
 import githubLogoImagePath from "assets/footer/github.png?background=transparent&fit=contain&aspect=1:1&w=64&allowUpscale=true&format=png";
+import instagramImagePath from "assets/footer/instagram.webp?background=transparent&fit=contain&aspect=1:1&w=64&allowUpscale=true&format=png";
 import linkedinImagePath from "assets/footer/linkedin.png?background=transparent&fit=contain&aspect=1:1&w=64&allowUpscale=true&format=png";
 import npmImagePath from "assets/footer/npm.png?background=transparent&fit=contain&aspect=1:1&w=64&allowUpscale=true&format=png";
 import stackOverflowImagePath from "assets/footer/stack-overflow.png?background=transparent&fit=contain&aspect=1:1&w=64&allowUpscale=true&format=png";
@@ -19,7 +20,9 @@ const FooterSection: FC<PropsWithChildren & { title: string }> = ({
 	children,
 }) => (
 	<div className="flex flex-col gap-4">
-		<h3 className="text-xl sm:text-2xl">{title}</h3>
+		<h3 className="text-xl sm:text-2xl">
+			<b>{title}</b>
+		</h3>
 		<div className="flex flex-col items-start gap-3">{children}</div>
 	</div>
 );
@@ -35,8 +38,10 @@ const Footer: FC<FooterProps> = ({ sidebar }) => {
 		>
 			<div
 				className={clsx(
-					"border-primary flex flex-col gap-8 p-4 sm:flex-row sm:gap-12 md:gap-24 md:p-16",
-					sidebar === null ? "rounded-2xl border" : "border-b border-t",
+					"border-primary flex flex-col gap-8 sm:flex-row sm:gap-12 md:gap-24",
+					sidebar === null
+						? "rounded-2xl border p-8"
+						: "border-b border-t p-4 sm:p-8 lg:pl-12",
 				)}
 			>
 				<FooterSection title="Connect">
@@ -54,6 +59,11 @@ const Footer: FC<FooterProps> = ({ sidebar }) => {
 						text="npm"
 						leftIcon={npmImagePath}
 						url="https://www.npmjs.com/~oly_op"
+					/>
+					<FooterExternalLink
+						text="Instagram"
+						leftIcon={instagramImagePath}
+						url="https://www.instagram.com/oly_op/"
 					/>
 					<FooterExternalLink
 						text="Stack Overflow"
@@ -88,8 +98,8 @@ const Footer: FC<FooterProps> = ({ sidebar }) => {
 			</div>
 			<div
 				className={clsx(
-					"border-primary space-y-32 p-4 sm:space-y-8 sm:p-16",
-					sidebar === null ? "rounded-2xl border" : "mt-8 sm:mt-0",
+					"border-primary space-y-32 sm:space-y-8",
+					sidebar === null ? "rounded-2xl border" : "mt-8 p-4 sm:mt-0 sm:p-8 lg:pl-12",
 				)}
 			>
 				<p className="text-sm">

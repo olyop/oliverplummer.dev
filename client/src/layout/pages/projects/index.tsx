@@ -1,9 +1,9 @@
-import { Bars3CenterLeftIcon } from "@heroicons/react/20/solid";
+import { Bars3CenterLeftIcon } from "@heroicons/react/24/outline";
 import { initializeSearchParams, syncSearchParams } from "helpers";
 import { FC, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 
-import Container from "../container";
+import Page from "../page";
 import { isProjectCodeValid, projects } from "./content";
 import Project from "./project";
 
@@ -31,7 +31,7 @@ const ProjectsPage: FC = () => {
 	};
 
 	return (
-		<Container
+		<Page
 			title="Projects"
 			url="https://oliverplummer.com.au/projects"
 			icon={iconClassName => <Bars3CenterLeftIcon className={iconClassName} />}
@@ -46,7 +46,7 @@ const ProjectsPage: FC = () => {
 					onToggle={handleSectionToggle(project.code)}
 				/>
 			))}
-		</Container>
+		</Page>
 	);
 };
 

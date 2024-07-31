@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import ChevronDownIcon from "@heroicons/react/24/solid/ChevronDownIcon";
+import { ChevronDownIcon } from "@heroicons/react/24/outline";
 import clsx from "clsx";
 import { ChangeEventHandler, FC, Fragment, ReactNode } from "react";
 

@@ -1,8 +1,10 @@
-import ArrowPathIcon from "@heroicons/react/20/solid/ArrowPathIcon";
-import CheckIcon from "@heroicons/react/20/solid/CheckIcon";
-import ClipboardIcon from "@heroicons/react/20/solid/ClipboardIcon";
-import ExclamationTriangleIcon from "@heroicons/react/20/solid/ExclamationTriangleIcon";
-import ShareIcon from "@heroicons/react/20/solid/ShareIcon";
+import {
+	ArrowPathIcon,
+	CheckIcon,
+	ClipboardIcon,
+	ExclamationTriangleIcon,
+	ShareIcon,
+} from "@heroicons/react/24/outline";
 import { useShare } from "hooks/use-share";
 import { FC } from "react";
 

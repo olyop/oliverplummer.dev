@@ -1,4 +1,4 @@
-import ArrowTopRightOnSquareIcon from "@heroicons/react/20/solid/ArrowTopRightOnSquareIcon";
+import { ArrowTopRightOnSquareIcon } from "@heroicons/react/24/outline";
 import { FC } from "react";
 import { NavLink } from "react-router-dom";
 

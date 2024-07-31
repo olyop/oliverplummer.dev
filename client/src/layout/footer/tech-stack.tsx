@@ -1,4 +1,4 @@
-import Bars4Icon from "@heroicons/react/20/solid/Bars4Icon";
+import { Bars4Icon } from "@heroicons/react/24/outline";
 import Modal from "components/modal";
 import { useModal } from "hooks/use-modal";
 import { FC, Fragment } from "react";
@@ -20,6 +20,7 @@ const FooterTechStackButton: FC = () => {
 				title="Tech Stack"
 				icon={className => <Bars4Icon className={className} />}
 				subTitle="The tech stack for oliverplummer.com.au"
+				contentClassName="p-6"
 			>
 				<ol>
 					<li>React</li>

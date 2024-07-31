@@ -1,8 +1,10 @@
-import CircleStackIcon from "@heroicons/react/16/solid/CircleStackIcon";
-import CloudIcon from "@heroicons/react/20/solid/CloudIcon";
-import CodeBracketIcon from "@heroicons/react/20/solid/CodeBracketIcon";
-import CommandLineIcon from "@heroicons/react/20/solid/CommandLineIcon";
-import ServerIcon from "@heroicons/react/20/solid/ServerIcon";
+import {
+	CircleStackIcon,
+	CloudIcon,
+	CodeBracketIcon,
+	CommandLineIcon,
+	ServerIcon,
+} from "@heroicons/react/24/outline";
 import fastifyImagePath from "assets/skills/back-end/fastify.png?background=transparent&fit=contain&aspect=1:1&w=64&allowUpscale=true&format=png";
 import goImagePath from "assets/skills/back-end/go.png?background=transparent&fit=contain&aspect=1:1&w=64&allowUpscale=true&format=png";
 import graphqlImagePath from "assets/skills/back-end/graphql.png?background=transparent&fit=contain&aspect=1:1&w=64&allowUpscale=true&format=png";

@@ -4,9 +4,8 @@ import { FC, Fragment, ReactNode, useRef } from "react";
 import { NavLink, NonIndexRouteObject, useLocation } from "react-router-dom";
 
 const Navigation: FC<NavigationProps> = ({ className, sidebar = false, onClick }) => {
-	const navRef = useRef<HTMLElement>(null);
-
 	const location = useLocation();
+	const navRef = useRef<HTMLElement>(null);
 
 	const locationIndex = calculateUnderlineIndex(location.pathname);
 
@@ -23,7 +22,7 @@ const Navigation: FC<NavigationProps> = ({ className, sidebar = false, onClick }
 					className={({ isActive }) =>
 						clsx(
 							"hover:bg-hover focus:bg-hover group relative flex h-full items-center gap-4 text-2xl font-bold lowercase transition-colors duration-200",
-							sidebar ? "justify-start px-4 py-4 md:px-8" : "justify-center px-4 md:px-6",
+							sidebar ? "justify-start px-4 py-4 sm:px-6" : "justify-center px-4 xl:px-6",
 							isActive && "!bg-primary",
 						)
 					}

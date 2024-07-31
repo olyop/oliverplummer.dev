@@ -5,6 +5,7 @@ export enum Breakpoint {
 	SMALL,
 	MEDIUM,
 	LARGE,
+	EXTRA_LARGE,
 }
 
 const determineBreakpoint = (): Breakpoint => {
@@ -14,8 +15,10 @@ const determineBreakpoint = (): Breakpoint => {
 		return Breakpoint.SMALL;
 	} else if (window.innerWidth < 1024) {
 		return Breakpoint.MEDIUM;
-	} else {
+	} else if (window.innerWidth < 1280) {
 		return Breakpoint.LARGE;
+	} else {
+		return Breakpoint.EXTRA_LARGE;
 	}
 };
 
