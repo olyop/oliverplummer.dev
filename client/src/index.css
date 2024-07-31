@@ -3,6 +3,10 @@
 @tailwind utilities;
 
 :root {
+	--header-height: 5rem;
+	--sidebar-width: 20rem;
+	--scrollbar-width: 15px; /* Default to Chrome scrollbar width */
+
 	--text: #1a2e05;
 	--background: #ecfccb;
 	--elevated: #f7fee7;
@@ -10,9 +14,6 @@
 	--hover: #d9f99d;
 	--primary: #bef264;
 	--primary-accent: #65a30d;
-
-	/* Default to Chrome scrollbar width */
-	--scrollbar-width: 15px;
 }
 
 [data-theme="dark"] {

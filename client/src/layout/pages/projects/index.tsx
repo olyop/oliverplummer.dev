@@ -1,4 +1,4 @@
-import { Bars3CenterLeftIcon } from "@heroicons/react/24/outline";
+import { NumberedListIcon } from "@heroicons/react/24/outline";
 import { initializeSearchParams, syncSearchParams } from "helpers";
 import { FC, useState } from "react";
 import { useSearchParams } from "react-router-dom";
@@ -34,9 +34,9 @@ const ProjectsPage: FC = () => {
 		<Page
 			title="Projects"
 			url="https://oliverplummer.com.au/projects"
-			icon={iconClassName => <Bars3CenterLeftIcon className={iconClassName} />}
-			text="Professional and personal projects that I have developed"
+			icon={iconClassName => <NumberedListIcon className={iconClassName} />}
 			childrenClassName="space-y-8"
+			text="I have worked on a variety of projects, ranging from small personal projects to large commercial projects. Here are some of the highlights."
 		>
 			{projects.map(project => (
 				<Project

@@ -32,13 +32,13 @@ const Footer: FC<FooterProps> = ({ sidebar }) => {
 	return (
 		<footer
 			className={clsx(
-				"mr-[var(--scrollbar-width)] w-full",
+				"mr-[var(--scrollbar-width)] w-full pb-[calc(2*var(--header-height))]",
 				sidebar === null && "space-y-4 pb-8 md:space-y-8",
 			)}
 		>
 			<div
 				className={clsx(
-					"border-primary flex flex-col gap-8 sm:flex-row sm:gap-12 md:gap-24",
+					"border-primary flex flex-col gap-8 sm:flex-row sm:gap-16",
 					sidebar === null
 						? "rounded-2xl border p-8"
 						: "border-b border-t p-4 sm:p-8 lg:pl-12",
@@ -99,7 +99,9 @@ const Footer: FC<FooterProps> = ({ sidebar }) => {
 			<div
 				className={clsx(
 					"border-primary space-y-32 sm:space-y-8",
-					sidebar === null ? "rounded-2xl border" : "mt-8 p-4 sm:mt-0 sm:p-8 lg:pl-12",
+					sidebar === null
+						? "rounded-2xl border p-8"
+						: "mt-8 p-4 sm:mt-0 sm:p-8 lg:pl-12",
 				)}
 			>
 				<p className="text-sm">

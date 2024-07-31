@@ -1,11 +1,15 @@
 /* eslint-disable jsx-a11y/media-has-caption */
 import {
 	ArrowTopRightOnSquareIcon,
+	BeakerIcon,
 	BoltIcon,
 	CodeBracketIcon,
 	EyeIcon,
+	MinusIcon,
+	PhotoIcon,
 } from "@heroicons/react/24/outline";
 import Button from "components/button";
+import Carousel from "components/carousel";
 import Collapsible from "components/collapsible";
 import ContentImage from "components/content-image";
 import ImageExpand from "components/image-expand";
@@ -44,10 +48,12 @@ const Project: FC<Props> = ({ isOpen, item, onToggle }) => (
 		isOpen={isOpen}
 		imageNode={className => <ContentImage contentItem={item} className={className} />}
 		text={item.text}
-		contentClassName="space-y-16"
+		contentClassName="space-y-12"
 		content={
 			<Fragment>
-				<p className="text-lg">{item.description}</p>
+				<p>
+					<i>{item.description}</i>
+				</p>
 				<ProjectSection
 					title="Technologies"
 					icon={iconClassName => <BoltIcon className={iconClassName} />}
@@ -67,24 +73,31 @@ const Project: FC<Props> = ({ isOpen, item, onToggle }) => (
 						</div>
 					))}
 				</ProjectSection>
-				<p className="text">{item.description}</p>
-				<div>
-					<h3 className="mb-2 text-lg">
-						<b>Features</b>
-					</h3>
-					<ul className="list-disc pl-8">
+				{item.features.length > 0 && (
+					<ProjectSection
+						title="Features"
+						icon={iconClassName => <BeakerIcon className={iconClassName} />}
+						className="ml-[0.1rem] flex flex-col items-start justify-center gap-2 pl-0.5 sm:ml-0"
+					>
 						{item.features.map(feature => (
-							<li key={feature}>{feature}</li>
+							<div
+								key={feature}
+								className="flex items-center gap-[0.8rem] sm:gap-[1.375rem]"
+							>
+								<MinusIcon className="size-4" />
+								<p className="text-sm">{feature}</p>
+							</div>
 						))}
-					</ul>
-				</div>
+					</ProjectSection>
+				)}
 				<div className="flex w-full flex-col items-stretch justify-stretch gap-4 sm:flex-row">
 					{item.url && (
 						<a href={item.url} target="_blank" rel="noreferrer">
 							<Button
 								text="View Project"
 								ariaLabel="View Project"
-								className="w-full gap-4 sm:w-[unset]"
+								className="h-12 w-full gap-4 px-8 sm:w-[unset]"
+								textClassName="mt-0.5"
 								leftIcon={className => <EyeIcon className={className} />}
 								rightIcon={className => (
 									<ArrowTopRightOnSquareIcon className={className} />
@@ -97,7 +110,8 @@ const Project: FC<Props> = ({ isOpen, item, onToggle }) => (
 							<Button
 								text="Source Code"
 								ariaLabel="Source Code"
-								className="w-full gap-4 sm:w-[unset]"
+								className="h-12 w-full gap-4 px-8 sm:w-[unset]"
+								textClassName="mt-0.5"
 								leftIcon={className => <CodeBracketIcon className={className} />}
 								rightIcon={className => (
 									<ArrowTopRightOnSquareIcon className={className} />
@@ -106,18 +120,23 @@ const Project: FC<Props> = ({ isOpen, item, onToggle }) => (
 						</a>
 					)}
 				</div>
-				<div className="grid grid-cols-1 gap-8 p-4 shadow-2xl sm:grid-cols-2">
-					{item.screencasts.map(screencast => (
-						<video key={screencast} controls className="w-full">
-							<source src={screencast} type="video/webm" />
-						</video>
-					))}
-				</div>
-				<div className="grid grid-cols-1 gap-8 p-4 shadow-2xl sm:grid-cols-2">
-					{item.screenshots.map(screeshot => (
-						<ImageExpand key={screeshot} url={screeshot} label={item.label} />
-					))}
-				</div>
+				{item.screenshots.length > 0 && (
+					<ProjectSection
+						title="Screenshots"
+						icon={iconClassName => <PhotoIcon className={iconClassName} />}
+					>
+						<Carousel images={item.screenshots} />
+					</ProjectSection>
+				)}
+				{item.screencasts.length > 0 && (
+					<div className="grid grid-cols-1 gap-8 sm:grid-cols-2">
+						{item.screencasts.map(screencast => (
+							<video key={screencast} controls className="w-full">
+								<source src={screencast} type="video/webm" />
+							</video>
+						))}
+					</div>
+				)}
 			</Fragment>
 		}
 	/>

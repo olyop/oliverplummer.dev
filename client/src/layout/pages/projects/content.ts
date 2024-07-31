@@ -29,87 +29,25 @@ import springImagePath from "assets/skills/back-end/spring.svg?background=transp
 import auth0ImagePath from "assets/skills/cloud/auth0.png?background=transparent&fit=contain&aspect=1:1&w=64&allowUpscale=true&format=png";
 import lambdaImagePath from "assets/skills/cloud/lambda.png?background=transparent&fit=contain&aspect=1:1&w=64&allowUpscale=true&format=png";
 import stripeImagePath from "assets/skills/cloud/stripe.svg?background=transparent&fit=contain&aspect=1:1&w=64&allowUpscale=true&format=png";
+import postgresqlImagePath from "assets/skills/database/postgresql.png?background=transparent&fit=contain&aspect=1:1&w=64&allowUpscale=true&format=png";
 import viteImagePath from "assets/skills/dev-ops/vite.png?background=transparent&fit=contain&aspect=1:1&w=64&allowUpscale=true&format=png";
 import reactImagePath from "assets/skills/front-end/react.png?background=transparent&fit=contain&aspect=1:1&w=64&allowUpscale=true&format=png";
 import tailwindImagePath from "assets/skills/front-end/tailwind.png?background=transparent&fit=contain&aspect=1:1&w=64&allowUpscale=true&format=png";
 import typescriptImagePath from "assets/skills/front-end/typescript.png?background=transparent&fit=contain&aspect=1:1&w=64&allowUpscale=true&format=png";
+import webWorkerImagePath from "assets/skills/front-end/web-worker.webp?background=transparent&fit=contain&aspect=1:1&w=64&allowUpscale=true&format=png";
 
 import { Project } from "./types";
 
 export const projects: Project[] = [
 	{
-		code: "go-warriors",
-		label: "Go Warriors",
-		text: "An application for viewing NBA games and statistics.",
-		image: goWarriorsLogoPath,
-		description: `
-			I developed this application to learn new web technologies Next.js App Router and Go as a backend API.
-			The front end is written in React Server Components (RSC) and I really tried to write the code for the
-			application in the 'App Router' way so I could understand how this technology works and the pros & cons
-			of this approach. I also really wanted to learn Go and to see what it was like writing a HTTP API in Go.  
-		`,
-		url: "https://go-warriors.vercel.app/",
-		sourceCodeUrl: "https://github.com/olyop/go-warriors",
-		screencasts: [],
-		screenshots: [
-			goWarriorsScreenShotOneLogoPath,
-			goWarriorsScreenShotTwoLogoPath,
-			goWarriorsScreenShotThreeLogoPath,
-			goWarriorsScreenShotFourLogoPath,
-		],
-		features: [
-			"View NBA games and statistics.",
-			"View player statistics.",
-			"View team statistics.",
-			"View game statistics.",
-			"Dark mode.",
-			"Responsive mobile-first design.",
-			"Server-side rendering.",
-			"Caching at the page level using RSC",
-			"API written in Go.",
-		],
-		technologies: [
-			{
-				code: "next-js",
-				label: "Next.js",
-				image: nextImagePath,
-			},
-			{
-				code: "react-js",
-				label: "React.js",
-				image: reactImagePath,
-			},
-			{
-				code: "typescript",
-				label: "TypeScript",
-				image: typescriptImagePath,
-			},
-			{
-				code: "tailwind-css",
-				label: "TailwindCSS",
-				image: tailwindImagePath,
-			},
-			{
-				code: "vite",
-				label: "Vite",
-				image: viteImagePath,
-			},
-			{
-				code: "go",
-				label: "Go",
-				image: goImagePath,
-			},
-			{
-				code: "lambda",
-				label: "AWS Lambda",
-				image: lambdaImagePath,
-			},
-		],
-	},
-	{
 		code: "xtremehiphop",
 		label: "Xtreme Hip-Hop",
-		text: "A class booking application to browse classes, book and pay online, also buy merchandise.",
+		text: `
+			A booking application for Xtreme Hip-Hop with Tash. The system allows 
+			people to book classes by browsing a schedule, buy merchandise in a interactive single-page 
+			style web application. I built the system from the ground up across the stack with only 
+			delegating authentication to Auth0
+		`,
 		image: xtremeHipHopLogoPath,
 		url: "https://xtremehiphopwithtash.com",
 		sourceCodeUrl: "https://github.com/olyop/xtremehiphopwithtash",
@@ -122,17 +60,23 @@ export const projects: Project[] = [
 			xtremeHipHopScreenShotSixLogoPath,
 		],
 		description: `
-			I developed the booking system for Xtreme Hip-Hop with Tash. This system is used by
-			over 200 users to book classes. I continue to maintain and develop new features for this system.
+			Xtreme Hip-Hop with Tash is a web application that allows people to book classes by browsing a schedule,
+			buy merchandise in a interactive single-page style web application.
+			I built the system from the ground up across the stack with only  delegating authentication to Auth0.
+			Over 200 users booking classes with an efficient payment system using Stripe. 
 		`,
 		features: [
-			"Account creation and management for users and administrators.",
-			"Class booking and interface for administrators to manage classes.",
-			"Payment processing.",
-			"Email notifications.",
-			"Intergrations with Auth0 and Stripe.js for authentication and payment processing.",
-			"Offline PWA support.",
-			"Responsive mobile-first design.",
+			"Browse classes using a calendar",
+			"Book and pay for classes card or cash",
+			"Merchandise store",
+			"Admin dashboard",
+			"Responsive mobile-first design",
+			"Progessive Web App (PWA) support",
+			"Account management dashboard",
+			"Refunds and cancellations",
+			"Spam protected using Google reCAPTCHA",
+			"Seamless account setup with Auth0 integration",
+			"Stripe integration",
 		],
 		technologies: [
 			{
@@ -176,6 +120,11 @@ export const projects: Project[] = [
 				image: springImagePath,
 			},
 			{
+				code: "postgresql",
+				label: "PostgreSQL",
+				image: postgresqlImagePath,
+			},
+			{
 				code: "auth0",
 				label: "Auth0",
 				image: auth0ImagePath,
@@ -192,20 +141,93 @@ export const projects: Project[] = [
 			},
 		],
 	},
+
 	{
-		code: "directorytospotify",
-		label: "Directory to Spotify",
+		code: "go-warriors",
+		label: "Go Warriors",
+		text: "An application for viewing NBA games and statistics.",
+		image: goWarriorsLogoPath,
+		description: `
+			I developed this application to learn new web technologies Next.js App Router and Go as a backend API.
+			The front end is written in React Server Components (RSC) and I really tried to write the code for the
+			application in the 'App Router' way so I could understand how this technology works and the pros & cons
+			of this approach. I also really wanted to learn Go and to see what it was like writing a HTTP API in Go.  
+		`,
+		url: "https://go-warriors.vercel.app/",
+		sourceCodeUrl: "https://github.com/olyop/go-warriors",
+		screencasts: [],
+		screenshots: [
+			goWarriorsScreenShotOneLogoPath,
+			goWarriorsScreenShotTwoLogoPath,
+			goWarriorsScreenShotThreeLogoPath,
+			goWarriorsScreenShotFourLogoPath,
+		],
 		features: [
-			"Scan a directory of music files.",
-			"Add songs to liked songs or playlists on Spotify.",
-			"Preview songs before adding them.",
-			"Visualize the scanning process.",
+			"View NBA games and statistics",
+			"View NBA player statistics",
+			"View NBA team statistics",
+			"View NBA game statistics",
+			"Dark mode",
+			"Responsive mobile-first design",
+			"Server-side rendering",
+			"Caching at the page level using RSC",
+			"Super fast API written in Go",
 		],
 		technologies: [
 			{
 				code: "next-js",
 				label: "Next.js",
 				image: nextImagePath,
+			},
+			{
+				code: "react-js",
+				label: "React.js",
+				image: reactImagePath,
+			},
+			{
+				code: "typescript",
+				label: "TypeScript",
+				image: typescriptImagePath,
+			},
+			{
+				code: "tailwind-css",
+				label: "TailwindCSS",
+				image: tailwindImagePath,
+			},
+			{
+				code: "vite",
+				label: "Vite",
+				image: viteImagePath,
+			},
+			{
+				code: "go",
+				label: "Go",
+				image: goImagePath,
+			},
+			{
+				code: "lambda",
+				label: "AWS Lambda",
+				image: lambdaImagePath,
+			},
+		],
+	},
+	{
+		code: "directorytospotify",
+		label: "Directory to Spotify",
+		features: [
+			"Scan a directory of music files.",
+			"Add songs to liked songs or playlists on Spotify with the click of a button.",
+			"Preview songs before adding them.",
+			"Visualize the scanning process.",
+			"100% client-side, no server required.",
+			"Responsive mobile-first design.",
+			"Dark mode.",
+		],
+		technologies: [
+			{
+				code: "web-worker",
+				label: "Web Worker",
+				image: webWorkerImagePath,
 			},
 			{
 				code: "react-js",
@@ -287,8 +309,13 @@ export const projects: Project[] = [
 		screenshots: [],
 		sourceCodeUrl:
 			"https://github.com/apollo-server-integrations/apollo-server-integration-fastify",
-		url: "https://github.com/apollo-server-integrations/apollo-server-integration-fastify",
-		description: "",
+		url: null,
+		description: `
+			A while back I built a simple service layer in between Node.js and Apollo Server. The package 
+			translates an incoming request to an internal GraphQL query then returns the JSON with 
+			streaming. After I built the package I contacted the Apollo foundation and they added it to 
+			their official integrations list. Currently it gets nearly 50,000 weekly downloads
+		`,
 	},
 ];
 

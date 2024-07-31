@@ -23,17 +23,17 @@ module.exports = {
 				"primary-accent": "var(--primary-accent)",
 			},
 			spacing: {
-				"header": "5rem",
-				"sidebar": "20rem",
+				"header": "var(--header-height)",
+				"sidebar": "var(--sidebar-width)",
 			},
 			height: {
-				"header": "5rem",
+				"header": "var(--header-height)",
 			},
 			margin: {
-				"header": "5rem",
+				"header": "var(--header-height)",
 			},
 			width: {
-				"sidebar": "20rem",
+				"sidebar": "var(--sidebar-width)",
 			},
 		},
 	},

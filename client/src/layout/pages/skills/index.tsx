@@ -74,15 +74,11 @@ const SkillsPage: FC = () => {
 
 	return (
 		<Page
-			title="Skills"
+			title="Technical Skills"
 			url="https://oliverplummer.com.au/skills"
 			icon={iconClassName => <CheckCircleIcon className={iconClassName} />}
-			text={
-				<Fragment>
-					A complete list of all the <b>skills & technologies</b> I have experience with..
-				</Fragment>
-			}
 			childrenClassName="space-y-8"
+			text="I have experience with a wide range of technologies, tools, and languages. Here are some of the key ones I have used."
 		>
 			{skillCategories.map(skillCategory => (
 				<SkillCategory

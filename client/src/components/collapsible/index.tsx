@@ -49,11 +49,11 @@ const Collapsible: FC<Props> = ({
 				detailsRef.current = node;
 			}}
 			className={clsx(
-				"scroll-mt-[calc(10rem+2rem)] rounded-2xl border transition-colors duration-200 sm:scroll-mt-[calc(5rem+2rem)]",
+				"sm:scroll-mt-[var(--header-height)+2rem)] scroll-mt-[calc(10rem+2rem)] rounded-2xl border transition-all duration-200",
 				isOpen
-					? "bg-primary border-primary-accent"
+					? "bg-primary border-primary-accent shadow-lg"
 					: "bg-elevated border-primary overflow-hidden",
-				isFocusedOrHovering && "bg-hover border-primary",
+				isFocusedOrHovering && "bg-hover border-primary shadow-lg",
 				className,
 			)}
 		>
@@ -61,12 +61,15 @@ const Collapsible: FC<Props> = ({
 				title={title}
 				ref={focusRef}
 				onClick={handleToggle}
-				className="grid cursor-pointer select-none grid-cols-[1fr,3rem] items-center gap-4 rounded-2xl px-4 py-4 sm:px-8"
+				className={clsx(
+					"grid cursor-pointer select-none grid-cols-[1fr,3rem] gap-4 rounded-2xl px-4 py-4 sm:px-6",
+					text === undefined ? "items-center" : "items-start",
+				)}
 			>
 				<div className="flex items-start gap-3 sm:gap-6">
 					{imageNode("mt-[0.2rem] sm:mt-[0.4rem]")}
 					<div className="flex flex-col gap-1 sm:gap-2">
-						<h2 className="text-xl sm:text-3xl">
+						<h2 className="text-2xl sm:text-3xl">
 							<b>{title}</b>
 						</h2>
 						{text && (
@@ -75,9 +78,9 @@ const Collapsible: FC<Props> = ({
 					</div>
 				</div>
 				<div className="mt-1.5 flex flex-col items-center rounded-2xl">
-					<h1 className="sm:text text-xs uppercase" id={id}>
+					<p className="sm:text text-xs uppercase" id={id}>
 						{isOpen ? "Close" : "Open"}
-					</h1>
+					</p>
 					<ChevronDownIcon className={clsx("size-6", isOpen && "rotate-180")} />
 				</div>
 			</summary>

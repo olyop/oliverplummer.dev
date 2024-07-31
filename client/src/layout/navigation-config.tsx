@@ -1,8 +1,8 @@
 import {
-	Bars3CenterLeftIcon,
 	BriefcaseIcon,
 	CheckCircleIcon,
 	InformationCircleIcon,
+	NumberedListIcon,
 } from "@heroicons/react/24/outline";
 
 import { NavigationPage } from "./navigation";
@@ -37,7 +37,7 @@ export const navigationPages: NavigationPage[] = [
 		text: "Projects",
 		path: "projects",
 		hideText: false,
-		icon: className => <Bars3CenterLeftIcon className={className} />,
+		icon: className => <NumberedListIcon className={className} />,
 		element: <ProjectsPage />,
 	},
 ];
