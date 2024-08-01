@@ -7,7 +7,7 @@ const CarouselButton: FC<CarouselButtonProps> = ({ left, onClick }) => (
 		type="button"
 		onClick={onClick}
 		className={clsx(
-			"bg-primary absolute top-1/2 -translate-y-1/2 transform px-1 py-4 opacity-0 shadow-lg transition-all duration-300 group-hover:opacity-100",
+			"bg-primary absolute top-1/2 hidden -translate-y-1/2 transform px-1 py-4 opacity-0 shadow-lg transition-all duration-300 group-hover:opacity-100 sm:block",
 			left === "left" ? "left-0" : "right-0",
 		)}
 	>

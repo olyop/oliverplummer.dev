@@ -33,10 +33,11 @@ const Collapsible: FC<Props> = ({
 	useEffect(() => {
 		if (!hasMounted) return;
 		if (!isOpen) return;
+		if (!detailsRef.current) return;
 
-		detailsRef.current?.scrollIntoView({
+		detailsRef.current.scrollIntoView({
 			behavior: "smooth",
-			block: "start",
+			block: "nearest",
 		});
 	}, [isOpen]);
 
@@ -66,8 +67,8 @@ const Collapsible: FC<Props> = ({
 					text === undefined ? "items-center" : "items-start",
 				)}
 			>
-				<div className="flex items-start gap-3 sm:gap-6">
-					{imageNode("mt-[0.2rem] sm:mt-[0.4rem]")}
+				<div className="flex items-center gap-3 sm:items-start sm:gap-6">
+					{imageNode("size-7 sm:size-10")}
 					<div className="flex flex-col gap-1 sm:gap-2">
 						<h2 className="text-2xl sm:text-3xl">
 							<b>{title}</b>

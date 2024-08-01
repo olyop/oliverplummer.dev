@@ -58,7 +58,7 @@ const Modal: FC<PropsWithChildren<ModalPropTypes>> = ({
 			{isOpen && (
 				<div
 					className={clsx(
-						"bg-elevated relative left-1/2 top-20 max-h-[calc(100vh-var(--header-height))] w-auto min-w-0 max-w-[calc(100vw-var(--header-height))] -translate-x-1/2 rounded-2xl shadow-lg sm:top-1/2 sm:max-w-[40rem] sm:-translate-y-1/2",
+						"bg-elevated relative left-1/2 top-20 max-h-[calc(100vh-10rem)] w-auto min-w-0 max-w-[calc(100vw-var(--header-height))] -translate-x-1/2 rounded-2xl shadow-lg sm:top-1/2 sm:max-h-[calc(100vh-var(--header-height))] sm:max-w-[40rem] sm:-translate-y-1/2",
 						modalClassName,
 					)}
 				>

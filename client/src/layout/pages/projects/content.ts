@@ -42,12 +42,7 @@ export const projects: Project[] = [
 	{
 		code: "xtremehiphop",
 		label: "Xtreme Hip-Hop",
-		text: `
-			A booking application for Xtreme Hip-Hop with Tash. The system allows 
-			people to book classes by browsing a schedule, buy merchandise in a interactive single-page 
-			style web application. I built the system from the ground up across the stack with only 
-			delegating authentication to Auth0
-		`,
+		text: "An application for booking gym classes and buying merchandise.",
 		image: xtremeHipHopLogoPath,
 		url: "https://xtremehiphopwithtash.com",
 		sourceCodeUrl: "https://github.com/olyop/xtremehiphopwithtash",
@@ -309,7 +304,7 @@ export const projects: Project[] = [
 		screenshots: [],
 		sourceCodeUrl:
 			"https://github.com/apollo-server-integrations/apollo-server-integration-fastify",
-		url: null,
+		url: "https://www.npmjs.com/package/@as-integrations/fastify",
 		description: `
 			A while back I built a simple service layer in between Node.js and Apollo Server. The package 
 			translates an incoming request to an internal GraphQL query then returns the JSON with 

@@ -51,7 +51,7 @@ const Project: FC<Props> = ({ isOpen, item, onToggle }) => (
 		contentClassName="space-y-12"
 		content={
 			<Fragment>
-				<p>
+				<p className="text-lg">
 					<i>{item.description}</i>
 				</p>
 				<ProjectSection
@@ -64,11 +64,7 @@ const Project: FC<Props> = ({ isOpen, item, onToggle }) => (
 							key={technology.code}
 							className="border-primary flex items-center justify-center gap-2 rounded-xl border px-2 py-1 shadow-sm"
 						>
-							{typeof technology.image === "string" ? (
-								<img src={technology.image} alt={technology.label} className="size-4" />
-							) : (
-								technology.image("size-4")
-							)}
+							<ContentImage contentItem={technology} className="size-4" />
 							<p className="text-nowrap text-sm">{technology.label}</p>
 						</div>
 					))}
@@ -125,14 +121,14 @@ const Project: FC<Props> = ({ isOpen, item, onToggle }) => (
 						title="Screenshots"
 						icon={iconClassName => <PhotoIcon className={iconClassName} />}
 					>
-						<Carousel images={item.screenshots} />
+						<Carousel images={item.screenshots} className="h-[30rem] sm:h-[50rem]" />
 					</ProjectSection>
 				)}
 				{item.screencasts.length > 0 && (
 					<ProjectSection
 						title="Videos"
 						icon={iconClassName => <VideoCameraIcon className={iconClassName} />}
-						className="grid grid-cols-1 gap-8 sm:grid-cols-2"
+						className="flex flex-col"
 					>
 						{item.screencasts.map(screencast => (
 							<video key={screencast} controls className="w-full">
