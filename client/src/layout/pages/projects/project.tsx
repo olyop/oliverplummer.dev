@@ -131,7 +131,7 @@ const Project: FC<Props> = ({ isOpen, item, onToggle }) => (
 						className="flex flex-col"
 					>
 						{item.screencasts.map(screencast => (
-							<video key={screencast} controls className="w-full">
+							<video key={screencast} controls className="w-full rounded-2xl">
 								<source src={screencast} type="video/webm" />
 							</video>
 						))}

@@ -48,6 +48,23 @@ body {
 *,
 *::before,
 *::after {
+	transition: 200ms ease-in-out all;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a,
+li,
+span,
+svg,
+button,
+input,
+i {
 	color: var(--text);
 }
 

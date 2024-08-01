@@ -1,5 +1,4 @@
 import Layout from "layout";
-import ReCaptcha from "providers/re-captcha";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import "tailwindcss/tailwind.css";
@@ -11,8 +10,6 @@ const root = createRoot(container);
 
 root.render(
 	<BrowserRouter>
-		<ReCaptcha>
-			<Layout />
-		</ReCaptcha>
+		<Layout />
 	</BrowserRouter>,
 );

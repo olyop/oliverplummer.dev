@@ -5,7 +5,7 @@ import { NavLink, NonIndexRouteObject, useLocation } from "react-router-dom";
 
 const Navigation: FC<NavigationProps> = ({ className, sidebar = false, onClick }) => {
 	const location = useLocation();
-	const navRef = useRef<HTMLElement>(null);
+	const navRef = useRef<HTMLElement | null>(null);
 
 	const locationIndex = calculateUnderlineIndex(location.pathname);
 

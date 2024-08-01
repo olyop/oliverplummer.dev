@@ -2,6 +2,7 @@
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import clsx from "clsx";
 import { Breakpoint, useBreakpoint } from "hooks/use-breakpoint";
+import { useHasMounted } from "hooks/use-has-mounted";
 import { useKeyPress } from "hooks/use-key-press";
 import { FC, MouseEvent, PropsWithChildren, ReactNode, useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
@@ -26,6 +27,7 @@ const Modal: FC<PropsWithChildren<ModalPropTypes>> = ({
 	hideCloseButton = false,
 	disableCloseOnEscape = false,
 }) => {
+	const hasMounted = useHasMounted();
 	const breakpoint = useBreakpoint();
 	const escapePress = useKeyPress("Escape");
 	const dialogRef = useRef<HTMLDialogElement>(null);
@@ -44,13 +46,23 @@ const Modal: FC<PropsWithChildren<ModalPropTypes>> = ({
 		}
 	}, [escapePress]);
 
+	useEffect(() => {
+		if (!hasMounted) return;
+
+		if (isOpen) {
+			document.documentElement.style.overflowY = "hidden";
+		} else {
+			document.documentElement.style.overflowY = "visible";
+		}
+	}, [isOpen]);
+
 	return createPortal(
 		<dialog
 			open={isOpen}
 			ref={dialogRef}
 			onMouseDown={handleDialogClick}
 			className={clsx(
-				"duration-400 pointer-events-none fixed inset-0 z-[100] m-0 h-screen w-screen max-w-none overflow-y-hidden overscroll-contain bg-transparent opacity-0 backdrop-blur-2xl transition-all",
+				"pointer-events-none fixed inset-0 z-[100] m-0 h-screen w-screen max-w-none overflow-y-hidden overscroll-contain bg-transparent backdrop-blur-2xl",
 				"open:pointer-events-auto open:visible open:opacity-100",
 				className,
 			)}

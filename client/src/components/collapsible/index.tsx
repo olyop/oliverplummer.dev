@@ -50,7 +50,7 @@ const Collapsible: FC<Props> = ({
 				detailsRef.current = node;
 			}}
 			className={clsx(
-				"sm:scroll-mt-[var(--header-height)+2rem)] scroll-mt-[calc(10rem+2rem)] rounded-2xl border transition-all duration-200",
+				"sm:scroll-mt-[var(--header-height)+2rem)] scroll-mt-[calc(10rem+2rem)] rounded-2xl border transition-colors duration-200",
 				isOpen
 					? "bg-primary border-primary-accent shadow-lg"
 					: "bg-elevated border-primary overflow-hidden",
@@ -63,8 +63,9 @@ const Collapsible: FC<Props> = ({
 				ref={focusRef}
 				onClick={handleToggle}
 				className={clsx(
-					"grid cursor-pointer select-none grid-cols-[1fr,3rem] gap-4 rounded-2xl px-4 py-4 sm:px-6",
+					"grid cursor-pointer select-none grid-cols-[1fr,3rem] gap-4 px-4 py-4 sm:px-6",
 					text === undefined ? "items-center" : "items-start",
+					isOpen ? "rounded-t-2xl" : "rounded-2xl",
 				)}
 			>
 				<div className="flex items-center gap-3 sm:items-start sm:gap-6">
@@ -78,7 +79,7 @@ const Collapsible: FC<Props> = ({
 						)}
 					</div>
 				</div>
-				<div className="mt-1.5 flex flex-col items-center rounded-2xl">
+				<div className="mt-1.5 flex flex-col items-center">
 					<p className="sm:text text-xs uppercase" id={id}>
 						{isOpen ? "Close" : "Open"}
 					</p>
