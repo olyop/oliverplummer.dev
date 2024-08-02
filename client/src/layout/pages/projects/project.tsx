@@ -121,7 +121,7 @@ const Project: FC<Props> = ({ isOpen, item, onToggle }) => (
 						title="Screenshots"
 						icon={iconClassName => <PhotoIcon className={iconClassName} />}
 					>
-						<Carousel images={item.screenshots} className="h-[30rem] sm:h-[50rem]" />
+						<Carousel images={item.screenshots} className="h-[30rem] sm:h-[45rem]" />
 					</ProjectSection>
 				)}
 				{item.screencasts.length > 0 && (
@@ -131,7 +131,11 @@ const Project: FC<Props> = ({ isOpen, item, onToggle }) => (
 						className="flex flex-col"
 					>
 						{item.screencasts.map(screencast => (
-							<video key={screencast} controls className="w-full rounded-2xl">
+							<video
+								key={screencast}
+								controls
+								className="h-[30rem] w-full rounded-2xl object-cover sm:h-[50rem]"
+							>
 								<source src={screencast} type="video/webm" />
 							</video>
 						))}

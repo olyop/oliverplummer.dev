@@ -4,7 +4,7 @@ const Title: FC = () => (
 	<a
 		href="/"
 		id="title"
-		className="group relative flex h-full items-center pt-[2px] text-3xl font-light lowercase tracking-[0.6rem] sm:text-[2.75rem]"
+		className="group relative flex h-full items-center pt-[2px] text-2xl font-light lowercase tracking-[0.6rem] sm:text-3xl"
 	>
 		<span className="group-hover:!text-primary-accent group-focus:!text-primary-accent mb-1.5">
 			Oliver

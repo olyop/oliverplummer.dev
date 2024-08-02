@@ -41,6 +41,7 @@ const Header: FC<HeaderProps> = ({ breakpoint, sidebar, onToggleSidebar }) => (
 				{sidebar === null && breakpoint === Breakpoint.LARGE ? null : <Title />}
 			</div>
 			<Navigation
+				sidebar={sidebar}
 				className={clsx(
 					"absolute left-1/2 top-1/2 flex h-full -translate-x-1/2 -translate-y-1/2 items-center",
 					sidebar === null ? "pointer-events-auto visible" : "pointer-events-none hidden",

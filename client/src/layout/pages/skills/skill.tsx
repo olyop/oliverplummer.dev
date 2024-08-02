@@ -33,7 +33,7 @@ const determineDateStartedLabel = (dateStarted: SkillType["dateStarted"]) => {
 };
 
 const Skill: FC<Props> = ({ skill }) => (
-	<div className="hover:border-primary-accent border-primary flex flex-col items-center gap-4 rounded-lg border px-4 pb-4 pt-5 sm:px-8 sm:pb-8">
+	<div className="hover:border-primary-accent border-primary flex flex-col items-center gap-4 rounded-lg border px-4 pb-4 pt-5 transition-all duration-300 sm:px-8 sm:pb-8">
 		<ContentImage contentItem={skill} className="!h-12 !w-12" />
 		<h2 className="text-xl sm:text-2xl">
 			<b>{skill.label}</b>

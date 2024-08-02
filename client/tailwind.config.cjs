@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 /** @type {import('tailwindcss').Config} */
-const scrollbar = require("tailwind-scrollbar");
 
 module.exports = {
-	darkMode: "selector",
+	// eslint-disable-next-line @typescript-eslint/quotes
+	darkMode: ["selector", '[data-theme="dark"]'],
 	content: ["./src/**/*.{js,ts,jsx,tsx}"],
 	theme: {
 		extend: {
@@ -37,5 +37,4 @@ module.exports = {
 			},
 		},
 	},
-	plugins: [scrollbar({ noncompatible: true })],
 };

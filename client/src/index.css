@@ -45,12 +45,6 @@ body {
 	background-color: var(--background);
 }
 
-*,
-*::before,
-*::after {
-	transition: 200ms ease-in-out all;
-}
-
 h1,
 h2,
 h3,
@@ -64,6 +58,8 @@ span,
 svg,
 button,
 input,
+select,
+label,
 i {
 	color: var(--text);
 }

@@ -9,9 +9,9 @@ import stackOverflowImagePath from "assets/footer/stack-overflow.png?background=
 import clsx from "clsx";
 import { navigationPages } from "layout/navigation-config";
 import { FC, PropsWithChildren } from "react";
-import { useDarkMode } from "usehooks-ts";
 
-import { FooterExternalLink, FooterNavLink } from "./footer-links";
+import FooterContactButton from "./contact-button";
+import { FooterExternalLink, FooterNavLink } from "./links";
 import FooterShareButton from "./share-button";
 import FooterTechStackButton from "./tech-stack";
 
@@ -20,28 +20,27 @@ const FooterSection: FC<PropsWithChildren & { title: string }> = ({
 	children,
 }) => (
 	<div className="flex flex-col gap-4">
-		<h3 className="text-xl sm:text-2xl">
+		<h3 className="text-center text-xl sm:text-left sm:text-2xl">
 			<b>{title}</b>
 		</h3>
-		<div className="flex flex-col items-start gap-3">{children}</div>
+		<div className="flex flex-col items-center gap-3 sm:items-start">{children}</div>
 	</div>
 );
 
 const Footer: FC<FooterProps> = ({ sidebar }) => {
-	const { isDarkMode } = useDarkMode();
 	return (
 		<footer
 			className={clsx(
-				"mr-[var(--scrollbar-width)] w-full pb-[calc(2*var(--header-height))]",
+				"mr-[var(--scrollbar-width)] w-full",
 				sidebar === null && "space-y-4 pb-8 md:space-y-8",
 			)}
 		>
 			<div
 				className={clsx(
-					"border-primary flex flex-col gap-8 sm:flex-row sm:gap-16",
+					"border-primary flex flex-col gap-8 sm:flex-row sm:gap-16 md:gap-24",
 					sidebar === null
 						? "rounded-2xl border p-8"
-						: "border-b border-t p-4 sm:p-8 sm:py-12 lg:pl-12",
+						: "border-b border-t p-4 py-8 sm:p-8 sm:py-16 lg:pl-16",
 				)}
 			>
 				<FooterSection title="Connect">
@@ -53,7 +52,14 @@ const Footer: FC<FooterProps> = ({ sidebar }) => {
 					<FooterExternalLink
 						text="GitHub"
 						url="https://github.com/olyop/"
-						leftIcon={isDarkMode ? githubLogoDarkImagePath : githubLogoImagePath}
+						leftIcon={githubLogoImagePath}
+						className="dark:hidden"
+					/>
+					<FooterExternalLink
+						text="GitHub"
+						url="https://github.com/olyop/"
+						leftIcon={githubLogoDarkImagePath}
+						className="hidden dark:block"
 					/>
 					<FooterExternalLink
 						text="npm"
@@ -87,6 +93,7 @@ const Footer: FC<FooterProps> = ({ sidebar }) => {
 					))}
 				</FooterSection>
 				<FooterSection title="About">
+					<FooterContactButton />
 					<FooterExternalLink
 						text="Source Code"
 						url="https://github.com/olyop/olyop.com"
@@ -101,7 +108,7 @@ const Footer: FC<FooterProps> = ({ sidebar }) => {
 					"border-primary space-y-32 sm:space-y-8",
 					sidebar === null
 						? "rounded-2xl border p-8"
-						: "mt-8 p-4 sm:mt-0 sm:px-8 sm:py-12 lg:pl-12",
+						: "mt-8 p-4 sm:mt-0 sm:px-8 sm:py-16 lg:pl-16",
 				)}
 			>
 				<p className="text-sm">

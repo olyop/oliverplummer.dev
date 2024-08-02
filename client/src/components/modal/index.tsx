@@ -78,7 +78,7 @@ const Modal: FC<PropsWithChildren<ModalPropTypes>> = ({
 						<Button
 							onClick={onClose}
 							ariaLabel={`Close ${title}`}
-							className="bg-primary hover:bg-hover absolute -right-2 -top-2 !h-12 shadow-2xl sm:-right-4 sm:-top-6"
+							className="absolute -right-2 -top-2 !h-12 shadow-2xl sm:-right-4 sm:-top-6"
 							leftIcon={iconClassName =>
 								breakpoint === Breakpoint.TINY ||
 								breakpoint === Breakpoint.SMALL ? undefined : (

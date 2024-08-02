@@ -72,6 +72,14 @@ const Layout = () => {
 		}
 	}, [breakpoint]);
 
+	useEffect(() => {
+		if (!hasMounted) {
+			return;
+		}
+
+		addTransitionStyles();
+	}, []);
+
 	return (
 		<Fragment>
 			<Header
@@ -86,10 +94,11 @@ const Layout = () => {
 			/>
 			<div
 				className={clsx(
-					"mt-header space-y-4 md:space-y-8",
+					"mt-header",
 					sidebar === null
-						? "container mx-auto px-4 pt-8"
+						? "container mx-auto space-y-8 px-4 pt-8"
 						: clsx(
+								"space-y-[calc(3*var(--header-height))]",
 								(breakpoint === Breakpoint.LARGE ||
 									breakpoint === Breakpoint.EXTRA_LARGE) &&
 									"ml-sidebar",
@@ -117,6 +126,20 @@ function determineInitialSidebar(breakpoint: Breakpoint) {
 	}
 
 	return false;
+}
+
+function addTransitionStyles() {
+	const style = document.createElement("style");
+
+	style.textContent = `
+		*,
+    *::before,
+    *::after {
+    	transition: 200ms ease-in-out all;
+    }
+  `;
+
+	document.head.append(style);
 }
 
 export default Layout;

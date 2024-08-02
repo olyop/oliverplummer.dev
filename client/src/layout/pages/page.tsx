@@ -23,7 +23,7 @@ const Page: FC<PropsWithChildren<PageProps>> = ({
 			</div>
 			<ShareButton url={url} />
 		</div>
-		<div className="mt-header mb-header sm:mt-auto sm:space-y-12">
+		<div className="mt-header sm:mt-auto sm:space-y-12">
 			{text && (
 				<p className="px-8 py-12 text-center text-lg sm:max-w-[75%] sm:px-0 sm:py-0 sm:text-left lg:text-xl">
 					{text}

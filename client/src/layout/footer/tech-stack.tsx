@@ -3,7 +3,7 @@ import Modal from "components/modal";
 import { useModal } from "hooks/use-modal";
 import { FC, Fragment } from "react";
 
-import FooterButton from "./footer-button";
+import FooterButton from "./button";
 
 const FooterTechStackButton: FC = () => {
 	const [isModalOpen, openModal, closeModal] = useModal();

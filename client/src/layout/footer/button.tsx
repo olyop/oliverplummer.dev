@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import Button, { ButtonProps } from "components/button";
 import { FC } from "react";
 
@@ -7,6 +8,7 @@ const FooterButton: FC<FooterButtonProps> = ({
 	rightIcon,
 	onClick,
 	tabIndex,
+	className,
 }) => (
 	<Button
 		text={text}
@@ -19,7 +21,7 @@ const FooterButton: FC<FooterButtonProps> = ({
 		iconClassName="!size-4"
 		leftIconClassName="mb-[0.1rem] mr-[0.1rem]"
 		textClassName="font-normal group-hover:underline"
-		className="group h-auto border-0 !bg-transparent !p-0 normal-case"
+		className={clsx("group h-auto border-0 !bg-transparent !p-0 normal-case", className)}
 	/>
 );
 
@@ -27,6 +29,7 @@ export interface FooterButtonProps extends Pick<ButtonProps, "leftIcon" | "right
 	text: string;
 	tabIndex?: number;
 	onClick?: () => void;
+	className?: string | undefined;
 }
 
 export default FooterButton;

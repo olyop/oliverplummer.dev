@@ -8,10 +8,10 @@ const Pages: FC<PagesProps> = ({ sidebar }) => {
 	return (
 		<main
 			className={clsx(
-				"min-h-[calc(100vh-var(--header-height))] w-full",
+				"border-primary min-h-[calc(100vh-var(--header-height))] w-full",
 				sidebar === null
-					? "border-primary rounded-2xl border p-8"
-					: "sm:p-8 lg:p-12 lg:pr-8",
+					? "rounded-2xl border sm:p-8"
+					: "sm:p-8 lg:py-16 lg:pl-16 lg:pr-8",
 			)}
 		>
 			{routes}

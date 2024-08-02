@@ -30,10 +30,10 @@ const Button: FC<ButtonProps> = ({
 		type={isSubmit ? "submit" : "button"}
 		title={text && typeof text === "string" ? text : ariaLabel}
 		className={clsx(
-			"flex cursor-pointer select-none items-center justify-center gap-2 text-sm font-bold uppercase transition-colors duration-200",
+			"hover:bg-primary focus:bg-primary flex cursor-pointer select-none items-center justify-center gap-2 border text-sm font-bold uppercase transition-colors duration-200",
 			isTransparent
-				? "hover:bg-hover focus:bg-hover border-primary hover:border-primary-accent focus:border-primary-accent border bg-transparent"
-				: "bg-primary hover:bg-hover focus:bg-hover shadow",
+				? "border-primary hover:border-primary-accent focus:border-primary-accent bg-transparent"
+				: "bg-hover hover:bg-primary focus:bg-primary border-primary-accent border",
 			text === undefined && (leftIcon !== undefined || rightIcon !== undefined)
 				? "size-9 rounded-xl p-2 sm:rounded-full"
 				: "h-9 rounded-xl px-4",

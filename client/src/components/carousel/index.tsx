@@ -32,7 +32,7 @@ const Carousel: FC<CarouselProps> = ({ images, className }) => {
 		<div
 			ref={containerRef}
 			className={clsx(
-				"group relative cursor-pointer overflow-hidden rounded-2xl",
+				"group relative cursor-pointer overflow-hidden rounded-2xl shadow-xl",
 				className,
 			)}
 		>

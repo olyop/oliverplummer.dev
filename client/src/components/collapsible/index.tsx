@@ -20,48 +20,50 @@ const Collapsible: FC<Props> = ({
 }) => {
 	const hasMounted = useHasMounted();
 	const detailsRef = useRef<HTMLDetailsElement>(null);
-	const [focusRef, isFocused] = useFocus<HTMLElement>();
-	const [hoverRef, isHovering] = useHover<HTMLDetailsElement>();
+	const [summaryHoverRef, isSummaryHovering] = useHover<HTMLElement>();
+	const [summaryFocusRef, isSummaryFocused] = useFocus<HTMLElement>();
+	const [detailsHoverRef, isDetailsHovering] = useHover<HTMLElement>();
 
 	const handleToggle: ReactEventHandler<HTMLElement> = event => {
 		event.preventDefault();
 		onToggle(!isOpen);
 	};
 
-	const isFocusedOrHovering = isOpen ? false : isFocused || isHovering;
+	const isFocusedOrHovering =
+		isSummaryHovering || isOpen
+			? isSummaryHovering || isSummaryFocused
+			: isDetailsHovering;
 
 	useEffect(() => {
 		if (!hasMounted) return;
 		if (!isOpen) return;
 		if (!detailsRef.current) return;
 
-		detailsRef.current.scrollIntoView({
-			behavior: "smooth",
-			block: "nearest",
-		});
+		detailsRef.current.scrollIntoView(true);
 	}, [isOpen]);
 
 	return (
 		<details
 			open={isOpen}
 			ref={node => {
-				hoverRef(node);
+				detailsHoverRef(node);
 				// @ts-expect-error
 				detailsRef.current = node;
 			}}
 			className={clsx(
-				"sm:scroll-mt-[var(--header-height)+2rem)] scroll-mt-[calc(10rem+2rem)] rounded-2xl border transition-colors duration-200",
-				isOpen
-					? "bg-primary border-primary-accent shadow-lg"
-					: "bg-elevated border-primary overflow-hidden",
-				isFocusedOrHovering && "bg-hover border-primary shadow-lg",
+				"sm:scroll-mt-[var(--header-height)+2rem)] scroll-mt-[calc(10rem+2rem)] rounded-2xl border shadow-lg transition-colors duration-200",
+				isOpen ? "border-primary-accent bg-hover" : "border-primary bg-elevated",
+				isFocusedOrHovering && "bg-primary",
 				className,
 			)}
 		>
 			<summary
 				title={title}
-				ref={focusRef}
 				onClick={handleToggle}
+				ref={node => {
+					summaryFocusRef(node);
+					summaryHoverRef(node);
+				}}
 				className={clsx(
 					"grid cursor-pointer select-none grid-cols-[1fr,3rem] gap-4 px-4 py-4 sm:px-6",
 					text === undefined ? "items-center" : "items-start",

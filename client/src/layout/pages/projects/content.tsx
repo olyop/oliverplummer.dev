@@ -1,3 +1,4 @@
+import { Cog6ToothIcon } from "@heroicons/react/24/outline";
 import apolloServerFastifyLogoPath from "assets/projects/apollo-server-fastify/logo.png?background=transparent&fit=contain&aspect=1:1&w=64&allowUpscale=true&format=png";
 import directoryToSpotifyLogoPath from "assets/projects/directory-to-spotify/logo.png?background=transparent&fit=contain&aspect=1:1&w=64&allowUpscale=true&format=png";
 import directoryToSpotifyScreenCastOne from "assets/projects/directory-to-spotify/screencast-1.webm";
@@ -23,6 +24,7 @@ import fastifyImagePath from "assets/skills/back-end/fastify.png?background=tran
 import goImagePath from "assets/skills/back-end/go.png?background=transparent&fit=contain&aspect=1:1&w=64&allowUpscale=true&format=png";
 import graphqlImagePath from "assets/skills/back-end/graphql.png?background=transparent&fit=contain&aspect=1:1&w=64&allowUpscale=true&format=png";
 import javaImagePath from "assets/skills/back-end/java.png?background=transparent&fit=contain&aspect=1:1&w=64&allowUpscale=true&format=png";
+import nextDarkImagePath from "assets/skills/back-end/next-js-dark.png?background=transparent&fit=contain&aspect=1:1&w=64&allowUpscale=true&format=png";
 import nextImagePath from "assets/skills/back-end/next-js.svg?background=transparent&fit=contain&aspect=1:1&w=64&allowUpscale=true&format=png";
 import nodeImagePath from "assets/skills/back-end/node.png?background=transparent&fit=contain&aspect=1:1&w=64&allowUpscale=true&format=png";
 import springImagePath from "assets/skills/back-end/spring.svg?background=transparent&fit=contain&aspect=1:1&w=64&allowUpscale=true&format=png";
@@ -34,7 +36,6 @@ import viteImagePath from "assets/skills/dev-ops/vite.png?background=transparent
 import reactImagePath from "assets/skills/front-end/react.png?background=transparent&fit=contain&aspect=1:1&w=64&allowUpscale=true&format=png";
 import tailwindImagePath from "assets/skills/front-end/tailwind.png?background=transparent&fit=contain&aspect=1:1&w=64&allowUpscale=true&format=png";
 import typescriptImagePath from "assets/skills/front-end/typescript.png?background=transparent&fit=contain&aspect=1:1&w=64&allowUpscale=true&format=png";
-import webWorkerImagePath from "assets/skills/front-end/web-worker.webp?background=transparent&fit=contain&aspect=1:1&w=64&allowUpscale=true&format=png";
 
 import { Project } from "./types";
 
@@ -74,11 +75,6 @@ export const projects: Project[] = [
 			"Stripe integration",
 		],
 		technologies: [
-			{
-				code: "next-js",
-				label: "Next.js",
-				image: nextImagePath,
-			},
 			{
 				code: "react-js",
 				label: "React.js",
@@ -173,6 +169,7 @@ export const projects: Project[] = [
 				code: "next-js",
 				label: "Next.js",
 				image: nextImagePath,
+				imageDark: nextDarkImagePath,
 			},
 			{
 				code: "react-js",
@@ -222,7 +219,7 @@ export const projects: Project[] = [
 			{
 				code: "web-worker",
 				label: "Web Worker",
-				image: webWorkerImagePath,
+				image: iconClassName => <Cog6ToothIcon className={iconClassName} />,
 			},
 			{
 				code: "react-js",

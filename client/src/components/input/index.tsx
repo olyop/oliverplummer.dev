@@ -26,8 +26,8 @@ const createClassName = (
 	className: string | undefined,
 	disabled: boolean,
 ) =>
-	`border cursor-pointer outline-none ${type === InputType.CHECKBOX ? "mt-[1px] ml-[1px]" : "w-full"} border-primary ${
-		disabled ? "text-gray-400" : "hover:border-primary focus:border-primary-accent"
+	`border cursor-pointer outline-none transition-all duration-300 ${type === InputType.CHECKBOX ? "mt-[1px] ml-[1px]" : "w-full"} border-primary ${
+		disabled ? "text-gray-400" : "hover:border-primary-accent focus:border-primary-accent"
 	} rounded-md py-4 px-3 bg-transparent leading-none ${
 		type === InputType.PRICE ? (value === null ? "pl-[3.25rem]" : "pl-6") : ""
 	} ${type === InputType.TEXTAREA ? "resize-none h-[7rem]" : ""} ${

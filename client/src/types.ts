@@ -7,4 +7,5 @@ export interface ContentItemCode {
 export interface ContentItem extends ContentItemCode {
 	label: string;
 	image: string | ((className: string) => ReactNode);
+	imageDark?: string | ((className: string) => ReactNode);
 }

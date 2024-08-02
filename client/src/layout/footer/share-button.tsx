@@ -8,7 +8,7 @@ import {
 import { useShare } from "hooks/use-share";
 import { FC } from "react";
 
-import FooterButton from "./footer-button";
+import FooterButton from "./button";
 
 const WEBSITE_URL = "https://oliverplummer.com.au";
 

@@ -3,7 +3,9 @@ import { navigationPages } from "layout/navigation-config";
 import { FC, Fragment, ReactNode, useRef } from "react";
 import { NavLink, NonIndexRouteObject, useLocation } from "react-router-dom";
 
-const Navigation: FC<NavigationProps> = ({ className, sidebar = false, onClick }) => {
+import "./index.css";
+
+const Navigation: FC<NavigationProps> = ({ className, sidebar, onClick }) => {
 	const location = useLocation();
 	const navRef = useRef<HTMLElement | null>(null);
 
@@ -21,9 +23,18 @@ const Navigation: FC<NavigationProps> = ({ className, sidebar = false, onClick }
 					onClick={onClick}
 					className={({ isActive }) =>
 						clsx(
-							"hover:bg-hover focus:bg-hover group relative flex h-full items-center gap-4 text-2xl font-bold lowercase transition-colors duration-200",
-							sidebar ? "justify-start px-4 py-4 sm:px-6" : "justify-center px-4 xl:px-6",
-							isActive && "!bg-primary",
+							"nav-link",
+							"border-hover:!bg-primary focus:!bg-primary group relative flex h-full items-center gap-4 border-transparent bg-transparent text-2xl font-bold lowercase duration-300",
+							sidebar === null
+								? "justify-center border-x px-4 xl:px-6"
+								: "justify-start border-y px-4 py-4 sm:px-6",
+							isActive &&
+								clsx(
+									"!bg-hover",
+									sidebar === null
+										? ""
+										: "!border-primary-accent hover:border-primary-accent focus:border-primary-accent",
+								),
 						)
 					}
 				>
@@ -47,7 +58,7 @@ const Navigation: FC<NavigationProps> = ({ className, sidebar = false, onClick }
 				className={clsx(
 					"bg-primary-accent absolute origin-center transition-all duration-200 group-hover:visible group-hover:scale-x-100 group-focus:scale-x-100",
 					sidebar
-						? "right-[calc(-0.5rem/2)] top-0 h-[25%] w-2 scale-y-100"
+						? "right-[calc(-0.5rem)] top-0 h-[25%] w-2 scale-y-100 rounded-r-[0.5rem]"
 						: "bottom-[calc(-0.5rem/2)] left-0 h-2 w-[25%] scale-x-100",
 				)}
 			/>
@@ -121,7 +132,7 @@ export interface NavigationPage extends NonIndexRouteObject {
 
 export interface NavigationProps {
 	className?: string | undefined;
-	sidebar?: boolean;
+	sidebar: boolean | null;
 	onClick?: (() => void) | undefined;
 }
 

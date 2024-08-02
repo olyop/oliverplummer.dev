@@ -37,20 +37,20 @@ const Sidebar: FC<SidebarProps> = ({ sidebar, breakpoint, onToggleSidebar }) => 
 					<div
 						tabIndex={0}
 						role="button"
-						onClick={handleToggleSidebar}
-						onKeyDown={handleToggleSidebar}
+						onClick={onToggleSidebar}
+						onKeyDown={onToggleSidebar}
 						className="fixed z-30 h-screen w-screen bg-transparent backdrop-blur-lg"
 					/>
 				)}
 			<div
 				className={clsx(
-					"sm:w-sidebar bg-elevated-hsla border-primary top-header fixed z-50 h-screen w-[calc(100vw-4rem)] border-r py-4 shadow backdrop-blur-sm backdrop-saturate-[180%] transition-all duration-300",
+					"sm:w-sidebar bg-elevated-hsla border-primary top-header fixed z-50 h-screen w-[calc(100vw-6rem)] border-r py-4 shadow backdrop-blur-sm backdrop-saturate-[180%] transition-all duration-300",
 					sidebar
 						? "pointer-events-auto visible left-0 overflow-visible"
 						: "pointer-events-none left-[calc((100vw-4rem)*-1)] hidden overflow-hidden sm:left-[calc(var(--sidebar-width)*-1)]",
 				)}
 			>
-				<Navigation sidebar className="w-full" onClick={handleToggleSidebar} />
+				<Navigation sidebar={sidebar} className="w-full" onClick={handleToggleSidebar} />
 			</div>
 		</Fragment>
 	);
