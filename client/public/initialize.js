@@ -51,9 +51,8 @@ function detectColorScheme() {
 	// dark theme preferred, set document with a `data-theme` attribute
 	if (theme === "dark") {
 		document.documentElement.dataset.theme = "dark";
+		document.querySelector("meta[name=theme-color]").setAttribute("content", "#292524");
 	}
-
-	document.documentElement.style.transition = "200ms all ease-in-out";
 
 	prefersDarkTheme.addEventListener("change", event => {
 		if (event.matches) {
