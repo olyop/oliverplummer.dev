@@ -2,13 +2,16 @@ import {
 	CircleStackIcon,
 	CloudIcon,
 	CodeBracketIcon,
+	Cog6ToothIcon,
 	CommandLineIcon,
 	ServerIcon,
 } from "@heroicons/react/24/outline";
+import fastifyDarkImagePath from "assets/skills/back-end/fastify-dark.png?background=transparent&fit=contain&aspect=1:1&w=64&allowUpscale=true&format=png";
 import fastifyImagePath from "assets/skills/back-end/fastify.png?background=transparent&fit=contain&aspect=1:1&w=64&allowUpscale=true&format=png";
 import goImagePath from "assets/skills/back-end/go.png?background=transparent&fit=contain&aspect=1:1&w=64&allowUpscale=true&format=png";
 import graphqlImagePath from "assets/skills/back-end/graphql.png?background=transparent&fit=contain&aspect=1:1&w=64&allowUpscale=true&format=png";
 import javaImagePath from "assets/skills/back-end/java.png?background=transparent&fit=contain&aspect=1:1&w=64&allowUpscale=true&format=png";
+import nextDarkImagePath from "assets/skills/back-end/next-js-dark.png?background=transparent&fit=contain&aspect=1:1&w=64&allowUpscale=true&format=png";
 import nextjsImagePath from "assets/skills/back-end/next-js.svg?background=transparent&fit=contain&aspect=1:1&w=64&allowUpscale=true&format=png";
 import nodeImagePath from "assets/skills/back-end/node.png?background=transparent&fit=contain&aspect=1:1&w=64&allowUpscale=true&format=png";
 import springImagePath from "assets/skills/back-end/spring.svg?background=transparent&fit=contain&aspect=1:1&w=64&allowUpscale=true&format=png";
@@ -40,7 +43,6 @@ import reduxImagePath from "assets/skills/front-end/redux.png?background=transpa
 import tailwindImagePath from "assets/skills/front-end/tailwind.png?background=transparent&fit=contain&aspect=1:1&w=64&allowUpscale=true&format=png";
 import typescriptImagePath from "assets/skills/front-end/typescript.png?background=transparent&fit=contain&aspect=1:1&w=64&allowUpscale=true&format=png";
 import vueImagePath from "assets/skills/front-end/vue.png?background=transparent&fit=contain&aspect=1:1&w=64&allowUpscale=true&format=png";
-import webWorkerImagePath from "assets/skills/front-end/web-worker.webp?background=transparent&fit=contain&aspect=1:1&w=64&allowUpscale=true&format=png";
 import workboxImagePath from "assets/skills/front-end/workbox.png?background=transparent&fit=contain&aspect=1:1&w=64&allowUpscale=true&format=png";
 
 import { SkillCategory } from "./types";
@@ -172,7 +174,7 @@ export const skillCategories: SkillCategory[] = [
 			{
 				code: "web-worker",
 				label: "Web Worker",
-				image: webWorkerImagePath,
+				image: iconClassName => <Cog6ToothIcon className={iconClassName} />,
 				level: 4,
 				dateStarted: new Date(2024, 0, 1),
 				description: `
@@ -208,6 +210,7 @@ export const skillCategories: SkillCategory[] = [
 				code: "express",
 				label: "Fastify/Express",
 				image: fastifyImagePath,
+				imageDark: fastifyDarkImagePath,
 				level: 4,
 				dateStarted: new Date(2020, 0, 1),
 				description: `
@@ -220,6 +223,7 @@ export const skillCategories: SkillCategory[] = [
 				code: "next",
 				label: "Next.js",
 				image: nextjsImagePath,
+				imageDark: nextDarkImagePath,
 				level: 3,
 				dateStarted: new Date(2022, 0, 1),
 				description: `

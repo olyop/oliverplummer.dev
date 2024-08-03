@@ -20,10 +20,10 @@ const FooterSection: FC<PropsWithChildren & { title: string }> = ({
 	children,
 }) => (
 	<div className="flex flex-col gap-4">
-		<h3 className="text-center text-xl sm:text-left sm:text-2xl">
+		<h3 className="text-xl sm:text-2xl">
 			<b>{title}</b>
 		</h3>
-		<div className="flex flex-col items-center gap-3 sm:items-start">{children}</div>
+		<div className="flex flex-col items-start gap-3">{children}</div>
 	</div>
 );
 

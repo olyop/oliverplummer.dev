@@ -8,7 +8,7 @@ const CarouselButton: FC<CarouselButtonProps> = ({ left, onClick }) => (
 		onClick={onClick}
 		ariaLabel={left === "left" ? "Previous" : "Next"}
 		className={clsx(
-			"absolute top-1/2 !h-20 !w-auto -translate-y-1/2 !rounded-none px-2 py-4 opacity-100 shadow-2xl sm:block",
+			"absolute top-1/2 hidden !h-20 !w-auto -translate-y-1/2 !rounded-none px-2 py-4 opacity-100 shadow-2xl sm:block",
 			left === "left" ? "left-0" : "right-0",
 		)}
 		leftIcon={iconClassName =>

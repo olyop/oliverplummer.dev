@@ -25,12 +25,14 @@ module.exports = {
 			spacing: {
 				"header": "var(--header-height)",
 				"sidebar": "var(--sidebar-width)",
+				"scrollbar": "var(--scrollbar-width)",
 			},
 			height: {
 				"header": "var(--header-height)",
 			},
 			margin: {
 				"header": "var(--header-height)",
+				"scrollbar": "var(--scrollbar-width)",
 			},
 			width: {
 				"sidebar": "var(--sidebar-width)",

@@ -42,16 +42,21 @@ const Sidebar: FC<SidebarProps> = ({ sidebar, breakpoint, onToggleSidebar }) => 
 						className="fixed z-30 h-screen w-screen bg-transparent backdrop-blur-lg"
 					/>
 				)}
-			<div
+			<aside
 				className={clsx(
-					"sm:w-sidebar bg-elevated-hsla border-primary top-header fixed z-50 h-screen w-[calc(100vw-6rem)] border-r py-4 shadow backdrop-blur-sm backdrop-saturate-[180%] transition-all duration-300",
-					sidebar
-						? "pointer-events-auto visible left-0 overflow-visible"
-						: "pointer-events-none left-[calc((100vw-4rem)*-1)] hidden overflow-hidden sm:left-[calc(var(--sidebar-width)*-1)]",
+					"sm:w-sidebar bg-elevated-hsla border-primary top-header fixed z-50 h-[calc(100vh-var(--header-height))] w-[calc(100vw-6rem)] border-r py-4 shadow backdrop-blur-sm backdrop-saturate-[180%] transition-all duration-300",
+					sidebar === null ? "pointer-events-none" : "pointer-events-auto",
+					sidebar === true ? "left-0" : "sm:-left-sidebar -left-[calc(100vw-6rem)]",
 				)}
 			>
-				<Navigation sidebar={sidebar} className="w-full" onClick={handleToggleSidebar} />
-			</div>
+				{sidebar === true && (
+					<Navigation
+						sidebar={sidebar}
+						className="w-full"
+						onClick={handleToggleSidebar}
+					/>
+				)}
+			</aside>
 		</Fragment>
 	);
 };

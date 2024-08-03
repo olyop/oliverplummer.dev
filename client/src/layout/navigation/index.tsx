@@ -1,65 +1,57 @@
 import clsx from "clsx";
 import { navigationPages } from "layout/navigation-config";
-import { FC, Fragment, ReactNode, useRef } from "react";
+import { CSSProperties, FC, ReactNode, useRef } from "react";
 import { NavLink, NonIndexRouteObject, useLocation } from "react-router-dom";
-
-import "./index.css";
 
 const Navigation: FC<NavigationProps> = ({ className, sidebar, onClick }) => {
 	const location = useLocation();
 	const navRef = useRef<HTMLElement | null>(null);
+
+	const handleClick = () => {
+		document.documentElement.scrollIntoView(true);
+
+		if (onClick) {
+			onClick();
+		}
+	};
 
 	const locationIndex = calculateUnderlineIndex(location.pathname);
 
 	return (
 		<nav
 			ref={navRef}
-			className={clsx("absolute", !sidebar && "flex items-center", className)}
+			className={clsx(
+				"relative grid",
+				sidebar === null ? "grid-cols-4" : "grid-rows-4",
+				className,
+			)}
 		>
 			{navigationPages.map(({ text, icon, path }) => (
 				<NavLink
 					to={path}
 					key={path}
-					onClick={onClick}
+					onClick={handleClick}
 					className={({ isActive }) =>
 						clsx(
-							"nav-link",
-							"border-hover:!bg-primary focus:!bg-primary group relative flex h-full items-center gap-4 border-transparent bg-transparent text-2xl font-bold lowercase duration-300",
-							sidebar === null
-								? "justify-center border-x px-4 xl:px-6"
-								: "justify-start border-y px-4 py-4 sm:px-6",
-							isActive &&
-								clsx(
-									"!bg-hover",
-									sidebar === null
-										? ""
-										: "!border-primary-accent hover:border-primary-accent focus:border-primary-accent",
-								),
+							"hover:bg-primary focus:bg-primary flex h-[calc(var(--header-height)-1px)] items-center justify-start gap-4 text-2xl",
+							sidebar === null ? "justify-center px-4 xl:px-6" : "px-4 py-4 sm:px-6",
+							isActive && "bg-hover",
 						)
 					}
 				>
-					<Fragment>
-						{icon("size-5")}
-						<span>{text}</span>
-					</Fragment>
+					{icon("size-5")}
+					<span className="text-2xl lowercase">
+						<b>{text}</b>
+					</span>
 				</NavLink>
 			))}
 			<div
-				style={
-					sidebar
-						? {
-								top: calculateUnderlinePercentage(locationIndex),
-							}
-						: {
-								left: calculateUnderlineLeft(navRef.current, locationIndex),
-								width: calculateUnderlineWidth(navRef.current, locationIndex),
-							}
-				}
+				style={calculateUnderlineStyle(sidebar, locationIndex)}
 				className={clsx(
-					"bg-primary-accent absolute origin-center transition-all duration-200 group-hover:visible group-hover:scale-x-100 group-focus:scale-x-100",
-					sidebar
-						? "right-[calc(-0.5rem)] top-0 h-[25%] w-2 scale-y-100 rounded-r-[0.5rem]"
-						: "bottom-[calc(-0.5rem/2)] left-0 h-2 w-[25%] scale-x-100",
+					"border-primary-accent pointer-events-none absolute bg-transparent",
+					sidebar === null
+						? "h-[calc(var(--header-height)+4px)] border-b-8"
+						: "left-0 w-[calc(100vw-6rem+7px)] rounded-r-[8px] border-b-2 border-r-8 border-t-2 sm:w-[calc(var(--sidebar-width)+7px)]",
 				)}
 			/>
 		</nav>
@@ -80,47 +72,21 @@ function calculateUnderlineIndex(path: string) {
 	}
 }
 
-function calculateUnderlinePercentage(index: number) {
-	switch (index) {
-		case 0:
-			return "0%";
-		case 1:
-			return "25%";
-		case 2:
-			return "50%";
-		case 3:
-			return "75%";
-		default:
-			return "0%";
+function calculateUnderlineStyle(
+	sidebar: boolean | null,
+	locationIndex: number,
+): CSSProperties {
+	if (sidebar === null) {
+		return {
+			left: `calc(${String(locationIndex)} * 25%)`,
+			width: "25%",
+		};
+	} else {
+		return {
+			top: `calc((var(--header-height) - 1px) * ${String(locationIndex)})`,
+			height: "25%",
+		};
 	}
-}
-
-function calculateUnderlineLeft(parent: HTMLElement | null, childIndex: number): number {
-	if (parent === null) {
-		return 0;
-	}
-
-	const child = parent.children.item(childIndex) as HTMLElement | null;
-
-	if (child === null) {
-		return 0;
-	}
-
-	return child.offsetLeft;
-}
-
-function calculateUnderlineWidth(parent: HTMLElement | null, childIndex: number): number {
-	if (parent === null) {
-		return 0;
-	}
-
-	const child = parent.children.item(childIndex) as HTMLElement | null;
-
-	if (child === null) {
-		return 0;
-	}
-
-	return child.offsetWidth;
 }
 
 export interface NavigationPage extends NonIndexRouteObject {

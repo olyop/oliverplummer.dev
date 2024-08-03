@@ -5,17 +5,16 @@ import Footer from "layout/footer";
 import Header from "layout/header";
 import Pages from "layout/pages";
 import Sidebar from "layout/sidebar";
-import { Fragment, useEffect, useRef, useState } from "react";
-import { Location, useLocation } from "react-router-dom";
+import { Fragment, useEffect, useState } from "react";
 
 const SIDEBAR_LOCAL_STORAGE_KEY = "sidebar";
 
 const Layout = () => {
-	const location = useLocation();
 	const hasMounted = useHasMounted();
 	const breakpoint = useBreakpoint();
 
 	const initialSidebar = determineInitialSidebar(breakpoint);
+
 	const [sidebar, setSidebar] = useState<boolean | null>(initialSidebar);
 
 	const handleToggleSidebar = () => {
@@ -25,7 +24,7 @@ const Layout = () => {
 					localStorage.removeItem(SIDEBAR_LOCAL_STORAGE_KEY);
 					return null;
 				} else {
-					localStorage.setItem(SIDEBAR_LOCAL_STORAGE_KEY, "true");
+					localStorage.setItem(SIDEBAR_LOCAL_STORAGE_KEY, String(true));
 					return true;
 				}
 			} else {
@@ -34,26 +33,7 @@ const Layout = () => {
 		});
 	};
 
-	const previousLocationRef = useRef<Location | null>(location);
-
-	useEffect(() => {
-		if (!hasMounted) {
-			return;
-		}
-
-		if (previousLocationRef.current?.pathname === location.pathname) {
-			previousLocationRef.current = location;
-			return;
-		}
-
-		document.documentElement.scrollIntoView({
-			behavior: "smooth",
-			block: "start",
-		});
-
-		previousLocationRef.current = location;
-	}, [location]);
-
+	// Set sidebar state based on breakpoint
 	useEffect(() => {
 		if (!hasMounted) {
 			return;
@@ -72,12 +52,9 @@ const Layout = () => {
 		}
 	}, [breakpoint]);
 
+	// Add transition to all elements
 	useEffect(() => {
-		if (!hasMounted) {
-			return;
-		}
-
-		addTransitionStyles();
+		addTransition();
 	}, []);
 
 	return (
@@ -94,15 +71,10 @@ const Layout = () => {
 			/>
 			<div
 				className={clsx(
-					"mt-header",
+					"pt-header",
 					sidebar === null
 						? "container mx-auto space-y-8 px-4 pt-8"
-						: clsx(
-								"space-y-[calc(3*var(--header-height))]",
-								(breakpoint === Breakpoint.LARGE ||
-									breakpoint === Breakpoint.EXTRA_LARGE) &&
-									"ml-sidebar",
-							),
+						: "lg:pl-sidebar space-y-[calc(3*var(--header-height))]",
 				)}
 			>
 				<Pages sidebar={sidebar} />
@@ -121,14 +93,12 @@ function determineInitialSidebar(breakpoint: Breakpoint) {
 		}
 
 		return storageValue === "true" ? true : null;
-	} else if (breakpoint === Breakpoint.MEDIUM) {
-		return true;
+	} else {
+		return false;
 	}
-
-	return false;
 }
 
-function addTransitionStyles() {
+function addTransition() {
 	const style = document.createElement("style");
 
 	style.textContent = `
