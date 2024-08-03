@@ -1,11 +1,11 @@
 import { CodeBracketIcon } from "@heroicons/react/24/outline";
-import buyMeACoffeeImagePath from "assets/footer/buy-me-a-coffee.png?background=transparent&fit=contain&aspect=1:1&w=64&allowUpscale=true&format=png";
-import githubLogoDarkImagePath from "assets/footer/github-dark.png?background=transparent&fit=contain&aspect=1:1&w=64&allowUpscale=true&format=png";
-import githubLogoImagePath from "assets/footer/github.png?background=transparent&fit=contain&aspect=1:1&w=64&allowUpscale=true&format=png";
-import instagramImagePath from "assets/footer/instagram.webp?background=transparent&fit=contain&aspect=1:1&w=64&allowUpscale=true&format=png";
-import linkedinImagePath from "assets/footer/linkedin.png?background=transparent&fit=contain&aspect=1:1&w=64&allowUpscale=true&format=png";
-import npmImagePath from "assets/footer/npm.png?background=transparent&fit=contain&aspect=1:1&w=64&allowUpscale=true&format=png";
-import stackOverflowImagePath from "assets/footer/stack-overflow.png?background=transparent&fit=contain&aspect=1:1&w=64&allowUpscale=true&format=png";
+import buyMeACoffeeImagePath from "assets/footer/buy-me-a-coffee.png?background=transparent&fit=contain&aspect=1:1&w=16&allowUpscale=true&format=png";
+import githubLogoDarkImagePath from "assets/footer/github-dark.png?background=transparent&fit=contain&aspect=1:1&w=16&allowUpscale=true&format=png";
+import githubLogoImagePath from "assets/footer/github.png?background=transparent&fit=contain&aspect=1:1&w=16&allowUpscale=true&format=png";
+import instagramImagePath from "assets/footer/instagram.webp?background=transparent&fit=contain&aspect=1:1&w=16&allowUpscale=true&format=png";
+import linkedinImagePath from "assets/footer/linkedin.png?background=transparent&fit=contain&aspect=1:1&w=16&allowUpscale=true&format=png";
+import npmImagePath from "assets/footer/npm.png?background=transparent&fit=contain&aspect=1:1&w=16&allowUpscale=true&format=png";
+import stackOverflowImagePath from "assets/footer/stack-overflow.png?background=transparent&fit=contain&aspect=1:1&w=16&allowUpscale=true&format=png";
 import clsx from "clsx";
 import { navigationPages } from "layout/navigation-config";
 import { FC, PropsWithChildren } from "react";

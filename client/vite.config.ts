@@ -21,31 +21,13 @@ const determineContentSecurityPolicy = (mode: string) => {
 
 	return contentSecurityPolicyBuilder({
 		directives: {
-			defaultSrc: ["'self'"],
-			scriptSrc: [
-				"'self'",
-				"https://*.google.com",
-				"https://*.gstatic.com",
-				"https://*.googleapis.com",
-				isProduction ? "" : "'unsafe-inline'",
-			],
-			styleSrc: [
-				"'self'",
-				isProduction ? "" : "'unsafe-inline'",
-				" https://*.googleapis.com",
-			],
-			objectSrc: ["'none'"],
-			connectSrc: [
-				"'self'",
-				"https://api.oliverplummer.com.au",
-				"https://dgc7bvfucv5j2j275d33oizt4i0somts.lambda-url.ap-southeast-2.on.aws",
-			],
-			fontSrc: ["'self'", "https://*.gstatic.com"],
-			frameSrc: ["'self'", "https://*.google.com"],
-			imgSrc: ["'self'", "data:"],
-			manifestSrc: ["'none'"],
-			mediaSrc: ["'self'"],
-			workerSrc: ["'none'"],
+			"default-src": ["'self'"],
+			"script-src": ["'self'", isProduction ? "" : "'unsafe-inline'"],
+			"style-src": ["'self'", "'unsafe-inline'"],
+			"font-src": ["'self'"],
+			"connect-src": ["'self'"],
+			"img-src": ["'self'"],
+			"media-src": ["'self'"],
 		},
 	});
 };
@@ -54,7 +36,7 @@ export default defineConfig(async ({ mode }) => ({
 	plugins: [
 		reactSwc(),
 		tsconfigPaths(),
-		html({ "VITE_CONTENT_SECURITY_POLICY": determineContentSecurityPolicy(mode) }),
+		html({ "VITE_CSP": determineContentSecurityPolicy(mode) }),
 		imagetools(),
 	],
 	server: {

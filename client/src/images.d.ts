@@ -3,6 +3,11 @@ declare module "*.png?background=transparent&fit=contain&aspect=1:1&w=64&allowUp
 	export default content;
 }
 
+declare module "*.png?background=transparent&fit=contain&aspect=1:1&w=16&allowUpscale=true&format=png" {
+	const content: string;
+	export default content;
+}
+
 declare module "*.jpg?background=transparent&fit=contain&aspect=1:1&w=64&allowUpscale=true&format=png" {
 	const content: string;
 	export default content;
@@ -19,6 +24,11 @@ declare module "*.svg?background=transparent&fit=contain&aspect=1:1&w=64&allowUp
 }
 
 declare module "*.webp?background=transparent&fit=contain&aspect=1:1&w=64&allowUpscale=true&format=png" {
+	const content: string;
+	export default content;
+}
+
+declare module "*.webp?background=transparent&fit=contain&aspect=1:1&w=16&allowUpscale=true&format=png" {
 	const content: string;
 	export default content;
 }

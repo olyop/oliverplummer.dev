@@ -40,7 +40,7 @@ html::-webkit-scrollbar-thumb {
 }
 
 body {
-	font-family: "Rubik", sans-serif;
+	font-family: "Rubik Variable", sans-serif;
 	font-optical-sizing: auto;
 	background-color: var(--background);
 }

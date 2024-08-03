@@ -9,5 +9,6 @@
 		"client/dist": true,
 		"client/node_modules": true,
 		"contact-details/node_modules": true
-	}
+	},
+	"typescript.tsdk": "node_modules/typescript/lib"
 }

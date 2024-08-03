@@ -4,7 +4,7 @@
 module.exports = {
 	// eslint-disable-next-line @typescript-eslint/quotes
 	darkMode: ["selector", '[data-theme="dark"]'],
-	content: ["./src/**/*.{js,ts,jsx,tsx}"],
+	content: ["./src/**/*.{ts,tsx}"],
 	theme: {
 		extend: {
 			colors: {
