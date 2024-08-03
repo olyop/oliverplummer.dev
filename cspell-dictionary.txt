@@ -8,6 +8,7 @@ linkedin
 olyop
 postgres
 postgresql
+rubik
 Sono
 spotify
 Tash
