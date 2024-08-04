@@ -26,6 +26,10 @@
 	--primary-accent: #ea580c;
 }
 
+html {
+	overflow-x: hidden;
+}
+
 html::-webkit-scrollbar {
 	width: var(--scrollbar-width);
 }

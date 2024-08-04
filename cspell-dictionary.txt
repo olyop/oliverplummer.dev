@@ -6,6 +6,7 @@ iemobile
 JWT's
 linkedin
 olyop
+optimise
 postgres
 postgresql
 rubik

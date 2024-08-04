@@ -1,6 +1,6 @@
-import clsx from "clsx";
 import { Breakpoint, useBreakpoint } from "hooks/use-breakpoint";
 import { useHasMounted } from "hooks/use-has-mounted";
+import Content from "layout/content";
 import Footer from "layout/footer";
 import Header from "layout/header";
 import Pages from "layout/pages";
@@ -69,17 +69,10 @@ const Layout = () => {
 				sidebar={sidebar}
 				onToggleSidebar={handleToggleSidebar}
 			/>
-			<div
-				className={clsx(
-					"pt-header",
-					sidebar === null
-						? "container mx-auto space-y-8 px-4 pt-8"
-						: "lg:pl-sidebar space-y-[calc(3*var(--header-height))]",
-				)}
-			>
+			<Content sidebar={sidebar}>
 				<Pages sidebar={sidebar} />
 				<Footer sidebar={sidebar} />
-			</div>
+			</Content>
 		</Fragment>
 	);
 };
@@ -103,11 +96,11 @@ function addTransition() {
 
 	style.textContent = `
 		*,
-    *::before,
-    *::after {
-    	transition: 200ms ease-in-out all;
-    }
-  `;
+		*::before,
+		*::after {
+			transition: 200ms ease-in-out all;
+		}
+	`;
 
 	document.head.append(style);
 }

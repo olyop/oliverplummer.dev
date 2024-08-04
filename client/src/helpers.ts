@@ -1,25 +1,5 @@
 import { SetURLSearchParams } from "react-router-dom";
 
-export const verifyBooleanString = (value: string) => {
-	if (value === "true") {
-		return true;
-	} else if (value === "false") {
-		return true;
-	} else {
-		return false;
-	}
-};
-
-export const stringToBoolean = (value: string) => {
-	if (value === "true") {
-		return true;
-	} else if (value === "false") {
-		return false;
-	} else {
-		throw new Error(`Invalid boolean string: ${value}`);
-	}
-};
-
 export const syncSearchParams = (
 	key: string,
 	value: string | boolean | number | null | undefined,

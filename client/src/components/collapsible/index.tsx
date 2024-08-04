@@ -65,13 +65,18 @@ const Collapsible: FC<Props> = ({
 					summaryHoverRef(node);
 				}}
 				className={clsx(
-					"grid cursor-pointer select-none grid-cols-[1fr,3rem] gap-4 px-4 py-4 sm:px-6",
+					"flex cursor-pointer select-none justify-between gap-2 px-4 py-4 sm:gap-4 sm:px-6",
 					text === undefined ? "items-center" : "items-start",
 					isOpen ? "rounded-t-2xl" : "rounded-2xl",
 				)}
 			>
-				<div className="flex items-center gap-3 sm:items-start sm:gap-6">
-					{imageNode("size-7 sm:size-10")}
+				<div
+					className={clsx(
+						"flex gap-2 sm:gap-6",
+						text === undefined ? "items-center" : "items-start",
+					)}
+				>
+					{imageNode(clsx("size-7 sm:size-10", text !== undefined && "mt-1"))}
 					<div className="flex flex-col gap-1 sm:gap-2">
 						<h2 className="text-2xl sm:text-3xl">
 							<b>{title}</b>
@@ -81,7 +86,9 @@ const Collapsible: FC<Props> = ({
 						)}
 					</div>
 				</div>
-				<div className="mt-1.5 flex flex-col items-center">
+				<div
+					className={clsx("flex flex-col items-center", text !== undefined && "mt-1.5")}
+				>
 					<p className="sm:text text-xs uppercase" id={id}>
 						{isOpen ? "Close" : "Open"}
 					</p>

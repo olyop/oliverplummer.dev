@@ -51,7 +51,7 @@ const Navigation: FC<NavigationProps> = ({ className, sidebar, onClick }) => {
 					"border-primary-accent pointer-events-none absolute bg-transparent",
 					sidebar === null
 						? "h-[calc(var(--header-height)+4px)] border-b-8"
-						: "left-0 w-[calc(100vw-6rem+7px)] rounded-r-[8px] border-b-2 border-r-8 border-t-2 sm:w-[calc(var(--sidebar-width)+7px)]",
+						: "left-0 w-[calc(100vw-6rem+4px)] border-b-2 border-r-8 border-t-2 sm:w-[calc(var(--sidebar-width)+4px)]",
 				)}
 			/>
 		</nav>

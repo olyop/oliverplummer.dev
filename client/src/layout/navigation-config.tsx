@@ -27,7 +27,7 @@ export const navigationPages: NavigationPage[] = [
 		element: <SkillsPage />,
 	},
 	{
-		text: "Experience",
+		text: "Exp.",
 		path: "experience",
 		hideText: false,
 		icon: className => <BriefcaseIcon className={className} />,
