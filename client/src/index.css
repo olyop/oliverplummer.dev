@@ -10,6 +10,7 @@
 	--text: #1a2e05;
 	--background: #ecfccb;
 	--elevated: #f7fee7;
+	--elevated-hsla-low: hsla(78, 92%, 95%, 0.5);
 	--elevated-hsla: hsla(78, 92%, 95%, 0.8);
 	--hover: #d9f99d;
 	--primary: #a3e635;
@@ -20,6 +21,7 @@
 	--text: #fee2e2;
 	--background: #1c1917;
 	--elevated: #292524;
+	--elevated-hsla-low: hsla(12, 6%, 15%, 0.4);
 	--elevated-hsla: hsla(12, 6%, 15%, 0.8);
 	--hover: #431407;
 	--primary: #9a3412;

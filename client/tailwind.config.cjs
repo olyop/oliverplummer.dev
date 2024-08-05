@@ -11,6 +11,7 @@ module.exports = {
 				"background": "var(--background)",
 				"elevated": "var(--elevated)",
 				"elevated-hsla": "var(--elevated-hsla)",
+				"elevated-hsla-low": "var(--elevated-hsla-low)",
 				"hover": "var(--hover)",
 				"primary": "var(--primary)",
 				"primary-accent": "var(--primary-accent)",
@@ -18,6 +19,8 @@ module.exports = {
 			borderColor: {
 				"background": "var(--background)",
 				"elevated": "var(--elevated)",
+				"elevated-hsla": "var(--elevated-hsla)",
+				"elevated-hsla-low": "var(--elevated-hsla-low)",
 				"hover": "var(--hover)",
 				"primary": "var(--primary)",
 				"primary-accent": "var(--primary-accent)",
