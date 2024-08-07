@@ -22,7 +22,7 @@
 		"npm": "10.8.1"
 	},
 	"scripts": {
-		"development": "vite",
+		"dev": "vite",
 		"build": "vite build",
 		"start": "vite preview"
 	},

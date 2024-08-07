@@ -18,7 +18,7 @@
 		"npm": "10.8.1"
 	},
 	"scripts": {
-		"development": "cd client && npm run development && cd ..",
+		"dev": "cd client && npm run dev && cd ..",
 		"build": "cd client && npm run build && cd ..",
 		"start": "cd client && npm run build && npm run start && cd ..",
 		"deploy-clear": "aws s3 rm s3://oliverplummer.s3.ap-southeast-2.amazonaws.com --recursive",
@@ -34,7 +34,7 @@
 		"@oly_op/prettier-config": "1.9.7",
 		"@oly_op/tsconfig": "1.2.3",
 		"@types/node": "22.1.0",
-		"npm-check-updates": "17.0.1",
+		"npm-check-updates": "17.0.3",
 		"ts-node": "10.9.2"
 	}
 }

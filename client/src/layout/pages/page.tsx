@@ -1,5 +1,8 @@
+import { ArrowLeftIcon } from "@heroicons/react/24/outline";
 import clsx from "clsx";
+import Button from "components/button";
 import { FC, PropsWithChildren, ReactNode } from "react";
+import { NavLink } from "react-router-dom";
 
 import ShareButton from "./share-button";
 
@@ -7,16 +10,22 @@ const Page: FC<PropsWithChildren<PageProps>> = ({
 	title,
 	url,
 	text,
-	icon,
 	children,
 	childrenClassName,
 }) => (
 	<div className="flex w-full flex-col gap-4 lg:gap-8">
 		<div className="h-header top-header bg-elevated-hsla border-primary sm:bg-background fixed z-20 m-0 flex w-full items-center justify-between gap-2 border-b px-4 backdrop-blur-sm backdrop-saturate-[180%] sm:static sm:top-0 sm:z-auto sm:h-auto sm:gap-4 sm:border-0 sm:px-0 sm:backdrop-blur-none sm:backdrop-saturate-0">
-			<div className="flex items-center gap-4">
-				<div className="border-primary flex size-12 items-center justify-center rounded-xl border sm:rounded-full">
-					{icon("size-6 sm:size-8")}
-				</div>
+			<div className="flex flex-row items-center gap-2 sm:gap-1">
+				<NavLink to="/" className="block sm:hidden">
+					<Button
+						text={<span className="hidden sm:inline">Back</span>}
+						ariaLabel="To Home"
+						className="sm:border-primary h-8 !gap-0 rounded-full border-0 bg-transparent !px-1 sm:!h-5 sm:!gap-2 sm:!border sm:!px-2.5"
+						iconClassName="size-4 sm:size-3.5"
+						textClassName="text-xs"
+						leftIcon={iconClassName => <ArrowLeftIcon className={iconClassName} />}
+					/>
+				</NavLink>
 				<h1 className="text-center text-2xl font-bold sm:text-left sm:text-4xl">
 					{title}
 				</h1>

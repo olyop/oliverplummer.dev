@@ -62,7 +62,7 @@ const Modal: FC<PropsWithChildren<ModalPropTypes>> = ({
 			ref={dialogRef}
 			onMouseDown={handleDialogClick}
 			className={clsx(
-				"pointer-events-none fixed inset-0 z-[100] m-0 h-screen w-screen max-w-none overflow-y-hidden overscroll-contain bg-transparent backdrop-blur-2xl",
+				"pointer-events-none fixed inset-0 z-[100] m-0 h-screen w-screen max-w-none overflow-y-hidden overscroll-contain bg-transparent backdrop-blur-3xl",
 				"open:pointer-events-auto open:visible open:opacity-100",
 				className,
 			)}

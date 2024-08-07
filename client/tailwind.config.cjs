@@ -1,10 +1,19 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-/** @type {import('tailwindcss').Config} */
+const plugin = require("tailwindcss/plugin");
 
+/**
+ * @type {import('tailwindcss').Config}
+ * */
 module.exports = {
 	// eslint-disable-next-line @typescript-eslint/quotes
 	darkMode: ["selector", '[data-theme="dark"]'],
 	content: ["./src/**/*.{ts,tsx}"],
+	plugins: [
+		plugin(({ addVariant }) => {
+			addVariant("page", "&:where([data-page='true'], [data-page='true'] *)");
+			addVariant("sidebar", "&:where([data-sidebar='true'], [data-sidebar='true'] *)");
+		}),
+	],
 	theme: {
 		extend: {
 			colors: {

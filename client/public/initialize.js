@@ -1,5 +1,13 @@
 /* eslint-disable no-undef */
 
+detectColorScheme();
+detectScrollbarWidth();
+detectPageView();
+
+addEventListener("load", () => {
+	addTransition();
+});
+
 function detectScrollbarWidth() {
 	let scrollbarWidth;
 
@@ -62,5 +70,22 @@ function detectColorScheme() {
 	});
 }
 
-detectScrollbarWidth();
-detectColorScheme();
+function detectPageView() {
+	const pageView = localStorage.getItem("page");
+
+	document.documentElement.dataset.page = pageView === "true";
+}
+
+function addTransition() {
+	const style = document.createElement("style");
+
+	style.textContent = `
+		*,
+		*::before,
+		*::after {
+			transition: 200ms ease-in-out all;
+		}
+	`;
+
+	document.head.append(style);
+}

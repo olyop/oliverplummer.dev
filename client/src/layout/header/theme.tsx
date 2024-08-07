@@ -1,11 +1,8 @@
 import { ComputerDesktopIcon, MoonIcon, SunIcon } from "@heroicons/react/24/outline";
 import Button from "components/button";
-import { Breakpoint, useBreakpoint } from "hooks/use-breakpoint";
 import { FC, useState } from "react";
 
-const ThemeButton: FC<ThemeButtonProps> = ({ sidebar }) => {
-	const breakpoint = useBreakpoint();
-
+const ThemeButton: FC = () => {
 	const [theme, setTheme] = useState(getInitialTheme());
 
 	const handleThemeChange = () => {
@@ -34,19 +31,13 @@ const ThemeButton: FC<ThemeButtonProps> = ({ sidebar }) => {
 		});
 	};
 
-	const shouldCollapse =
-		sidebar === null
-			? breakpoint !== Breakpoint.EXTRA_LARGE
-			: !(breakpoint === Breakpoint.LARGE || breakpoint === Breakpoint.EXTRA_LARGE);
-
 	return (
 		<Button
 			isTransparent
 			ariaLabel="Theme toggle"
 			iconClassName="size-10"
-			className={shouldCollapse ? "!size-12" : "!h-12"}
+			className="!size-12"
 			onClick={handleThemeChange}
-			text={shouldCollapse ? undefined : "Theme"}
 			leftIcon={iconClassName =>
 				theme === "light" ? (
 					<SunIcon className={iconClassName} />
@@ -59,10 +50,6 @@ const ThemeButton: FC<ThemeButtonProps> = ({ sidebar }) => {
 		/>
 	);
 };
-
-interface ThemeButtonProps {
-	sidebar: boolean | null;
-}
 
 function getInitialTheme(): Theme {
 	const themeLocalStorage = localStorage.getItem("theme");

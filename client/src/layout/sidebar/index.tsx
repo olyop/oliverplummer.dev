@@ -1,66 +1,31 @@
-import clsx from "clsx";
-import { Breakpoint } from "hooks/use-breakpoint";
-import { useKeyPress } from "hooks/use-key-press";
 import Navigation from "layout/navigation";
-import { FC, Fragment, useEffect } from "react";
+import { FC, Fragment } from "react";
 
-const Sidebar: FC<SidebarProps> = ({ sidebar, breakpoint, onToggleSidebar }) => {
-	const escapePress = useKeyPress("Escape");
+const Sidebar: FC = () => (
+	<Fragment>
+		<aside className="sm:w-sidebar bg-elevated-hsla border-primary top-header lg:page:-left-sidebar sidebar:left-0 fixed -left-[calc(100vw-6rem)] z-50 h-[calc(100vh-var(--header-height))] w-[calc(100vw-6rem)] border-r py-4 shadow backdrop-blur-lg transition-all duration-300 lg:left-0">
+			<Navigation />
+		</aside>
+		<div
+			role="button"
+			tabIndex={0}
+			onClick={closeSidebar}
+			onKeyDown={closeSidebar}
+			className="sidebar:visible sidebar:opacity-100 invisible fixed z-30 h-screen w-screen bg-transparent opacity-0 backdrop-blur-lg lg:hidden"
+		/>
+	</Fragment>
+);
 
-	const handleToggleSidebar = () => {
-		if (breakpoint === Breakpoint.LARGE || breakpoint === Breakpoint.EXTRA_LARGE) {
-			return;
-		}
+function closeSidebar() {
+	const sidebarAttribute = document.documentElement.dataset["sidebar"];
 
-		setTimeout(() => {
-			onToggleSidebar();
-		}, 300);
-	};
-
-	useEffect(() => {
-		if (breakpoint === Breakpoint.LARGE || breakpoint === Breakpoint.EXTRA_LARGE) {
-			return;
-		}
-
-		if (!escapePress) {
-			return;
-		}
-
-		onToggleSidebar();
-	}, [escapePress]);
-
-	return (
-		<Fragment>
-			{sidebar === true &&
-				breakpoint !== Breakpoint.LARGE &&
-				breakpoint !== Breakpoint.EXTRA_LARGE && (
-					<div
-						tabIndex={0}
-						role="button"
-						onClick={onToggleSidebar}
-						onKeyDown={onToggleSidebar}
-						className="fixed z-30 h-screen w-screen bg-transparent backdrop-blur-lg"
-					/>
-				)}
-			<aside
-				className={clsx(
-					"sm:w-sidebar sm:max-w-sidebar bg-elevated-hsla border-primary top-header fixed z-50 h-[calc(100vh-var(--header-height))] w-[calc(100vw-6rem)] max-w-[calc(100vw-6rem)] border-r py-4 shadow backdrop-blur-sm backdrop-saturate-[180%] transition-all duration-300",
-					sidebar === null ? "pointer-events-none" : "pointer-events-auto",
-					sidebar === true ? "left-0" : "sm:-left-sidebar -left-[calc(100vw-6rem)]",
-				)}
-			>
-				{sidebar === true && (
-					<Navigation sidebar={sidebar} onClick={handleToggleSidebar} />
-				)}
-			</aside>
-		</Fragment>
-	);
-};
-
-export interface SidebarProps {
-	sidebar: boolean | null;
-	breakpoint: Breakpoint;
-	onToggleSidebar: () => void;
+	if (sidebarAttribute === "true") {
+		document.documentElement.style.overflowY = "visible";
+		document.documentElement.dataset["sidebar"] = "false";
+	} else {
+		document.documentElement.style.overflowY = "hidden";
+		document.documentElement.dataset["sidebar"] = "true";
+	}
 }
 
 export default Sidebar;

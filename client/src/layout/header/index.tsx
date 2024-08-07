@@ -1,60 +1,56 @@
-import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+import { MinusIcon } from "@heroicons/react/24/outline";
 import clsx from "clsx";
-import Button from "components/button";
-import { Breakpoint } from "hooks/use-breakpoint";
-import Navigation from "layout/navigation";
-import { FC } from "react";
+import { navigationPages } from "layout/navigation-config";
+import { FC, Fragment } from "react";
+import { NavLink } from "react-router-dom";
 
 import Contact from "./contact";
+import HeaderMenuButton from "./menu";
 import ThemeButton from "./theme";
-import Title from "./title";
+import HeaderUnderline from "./underline";
 
-const Header: FC<HeaderProps> = ({ breakpoint, sidebar, onToggleSidebar }) => (
+const Header: FC = () => (
 	<header className="border-primary h-header xl bg-elevated-hsla pr-scrollbar fixed left-0 top-0 z-50 m-0 w-screen border-b backdrop-blur-sm backdrop-saturate-[180%] sm:shadow">
-		<div
-			className={clsx(
-				"flex h-full items-center justify-between",
-				sidebar === null
-					? "container relative mx-auto px-4"
-					: "px-4 md:pl-8 md:pr-8 lg:pl-4",
-			)}
-		>
-			<div className="relative flex h-full items-center gap-4 md:gap-4">
-				<Button
-					ariaLabel="Menu"
-					iconClassName="size-10"
-					className="!size-12"
-					onClick={onToggleSidebar}
-					leftIcon={iconClassName =>
-						sidebar ? (
-							<XMarkIcon className={iconClassName} />
-						) : (
-							<Bars3Icon className={iconClassName} />
-						)
-					}
-				/>
-				{sidebar === null && breakpoint === Breakpoint.LARGE ? null : <Title />}
-			</div>
-			<div
-				className={clsx(
-					"absolute left-1/2 top-1/2 flex h-full -translate-x-1/2 -translate-y-1/2",
-					sidebar === null ? "pointer-events-auto visible" : "pointer-events-none hidden",
-				)}
-			>
-				<Navigation sidebar={sidebar} />
+		<div className="lg:page:container lg:page:mx-auto lg:page:px-4 flex h-full items-center justify-between px-4 sm:px-8 md:pl-8 md:pr-8 lg:pl-4">
+			<div className="flex h-full items-center gap-4">
+				<HeaderMenuButton />
+				<div className="relative flex h-full items-center gap-6">
+					{navigationPages.map(page => (
+						<Fragment key={page.text}>
+							<NavLink
+								to={page.path}
+								id={`nav-${page.path}`}
+								className={clsx(
+									"group flex h-full items-center justify-start gap-4 py-4",
+									page.path !== "" && "lg:page:flex hidden",
+								)}
+							>
+								{({ isActive }) => (
+									<span
+										className={clsx(
+											"group-hover:text-primary-accent group-focus:text-primary-accent lowercase",
+											page.path === ""
+												? "text-2xl tracking-widest sm:text-3xl"
+												: "text-2xl",
+											isActive && "lg:page:text-primary-accent",
+										)}
+									>
+										{page.path === "" ? <b>oliver</b> : page.text}
+									</span>
+								)}
+							</NavLink>
+							{page.path === "" && <MinusIcon className="lg:page:block hidden size-6" />}
+						</Fragment>
+					))}
+					<HeaderUnderline />
+				</div>
 			</div>
 			<div className="flex items-center gap-4">
-				<ThemeButton sidebar={sidebar} />
-				<Contact sidebar={sidebar} />
+				<ThemeButton />
+				<Contact />
 			</div>
 		</div>
 	</header>
 );
-
-export interface HeaderProps {
-	breakpoint: Breakpoint;
-	sidebar: boolean | null;
-	onToggleSidebar: () => void;
-}
 
 export default Header;

@@ -1,6 +1,6 @@
 import { CheckCircleIcon } from "@heroicons/react/24/outline";
 import { initializeSearchParams, syncSearchParams } from "helpers";
-import { FC, Fragment, useState } from "react";
+import { FC, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 
 import Page from "../page";
