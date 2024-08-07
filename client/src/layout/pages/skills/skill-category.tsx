@@ -13,12 +13,10 @@ import {
 } from "./sort-by";
 import { SkillCategory as SkillCategoryType } from "./types";
 
-const SkillCategory: FC<Props> = ({
+const SkillCategory: FC<SkillCategoryProps> = ({
 	skillCategory,
-	isOpen,
 	sortByField,
 	sortByDirection,
-	onToggle,
 	onSortByFieldChange,
 	onSortByDirectionChange,
 }) => {
@@ -36,8 +34,6 @@ const SkillCategory: FC<Props> = ({
 
 	return (
 		<Collapsible
-			isOpen={isOpen}
-			onToggle={onToggle}
 			id={skillCategory.code}
 			title={skillCategory.label}
 			imageNode={className => (
@@ -79,12 +75,10 @@ const SkillCategory: FC<Props> = ({
 	);
 };
 
-interface Props {
+interface SkillCategoryProps {
 	skillCategory: SkillCategoryType;
-	isOpen: boolean;
 	sortByField: SortByKey;
 	sortByDirection: SortByDirection;
-	onToggle: (value: boolean) => void;
 	onSortByFieldChange: (value: SortByKey) => void;
 	onSortByDirectionChange: (value: SortByDirection) => void;
 }

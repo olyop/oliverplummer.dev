@@ -8,13 +8,11 @@ import { determineDateStarted } from "./determine-date-started";
 import ExperienceItemChip from "./experience-chip";
 import { Experience } from "./types";
 
-const ExperienceItem: FC<Props> = ({ item, isOpen, onToggle }) => (
+const ExperienceItem: FC<ExperienceItemProps> = ({ item }) => (
 	<Collapsible
 		id={item.code}
 		key={item.code}
-		isOpen={isOpen}
 		title={item.label}
-		onToggle={onToggle}
 		text={determineDateStarted(item)}
 		textClassName="flex items-center gap-2"
 		imageNode={imageClassName => (
@@ -89,10 +87,8 @@ const ExperienceItem: FC<Props> = ({ item, isOpen, onToggle }) => (
 	/>
 );
 
-interface Props {
+interface ExperienceItemProps {
 	item: Experience;
-	isOpen: boolean;
-	onToggle: (value: boolean) => void;
 }
 
 export default ExperienceItem;

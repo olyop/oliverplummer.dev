@@ -4,7 +4,7 @@ import { Fragment } from "react";
 import { Experience } from "./types";
 
 const formatDate = (date: Date) =>
-	`${date.toLocaleString(undefined, { month: "long" })} ${date.getFullYear()}`;
+	`${date.toLocaleString(undefined, { month: "long" })} ${date.getFullYear().toString()}`;
 
 export const determineDateStarted = ({ dateStarted, dateEnded }: Experience) => (
 	<Fragment>

@@ -40,12 +40,10 @@ interface ProjectSectionProps {
 	className?: string;
 }
 
-const Project: FC<Props> = ({ isOpen, item, onToggle }) => (
+const Project: FC<ProjectProps> = ({ item }) => (
 	<Collapsible
 		id={item.code}
 		title={item.label}
-		onToggle={onToggle}
-		isOpen={isOpen}
 		imageNode={className => <ContentImage contentItem={item} className={className} />}
 		text={item.text}
 		contentClassName="space-y-12"
@@ -146,10 +144,8 @@ const Project: FC<Props> = ({ isOpen, item, onToggle }) => (
 	/>
 );
 
-interface Props {
+interface ProjectProps {
 	item: ProjectType;
-	isOpen: boolean;
-	onToggle: (value: boolean) => void;
 }
 
 export default Project;

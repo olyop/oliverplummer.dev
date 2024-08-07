@@ -1,4 +1,4 @@
-import { MinusIcon } from "@heroicons/react/24/outline";
+import { SlashIcon } from "@heroicons/react/24/outline";
 import clsx from "clsx";
 import { navigationPages } from "layout/navigation-config";
 import { FC, Fragment } from "react";
@@ -12,7 +12,7 @@ import HeaderUnderline from "./underline";
 const Header: FC = () => (
 	<header className="border-primary h-header xl bg-elevated-hsla pr-scrollbar fixed left-0 top-0 z-50 m-0 w-screen border-b backdrop-blur-sm backdrop-saturate-[180%] sm:shadow">
 		<div className="lg:page:container lg:page:mx-auto lg:page:px-4 flex h-full items-center justify-between px-4 sm:px-8 md:pl-8 md:pr-8 lg:pl-4">
-			<div className="flex h-full items-center gap-4">
+			<div className="flex h-full items-center gap-6">
 				<HeaderMenuButton />
 				<div className="relative flex h-full items-center gap-6">
 					{navigationPages.map(page => (
@@ -39,7 +39,7 @@ const Header: FC = () => (
 									</span>
 								)}
 							</NavLink>
-							{page.path === "" && <MinusIcon className="lg:page:block hidden size-6" />}
+							{page.path === "" && <SlashIcon className="lg:page:block hidden size-6" />}
 						</Fragment>
 					))}
 					<HeaderUnderline />

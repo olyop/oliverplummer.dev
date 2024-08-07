@@ -1,18 +1,26 @@
-import { CSSProperties, FC } from "react";
+import { CSSProperties, FC, useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 
 const HeaderUnderline: FC = () => {
 	const location = useLocation();
 
+	const [style, setStyle] = useState<CSSProperties | null>(null);
+
+	useEffect(() => {
+		setStyle(calculateStyle(location.pathname));
+	}, [location.pathname]);
+
+	if (!style) return null;
+
 	return (
 		<div
-			style={calculateStyle(location.pathname)}
+			style={style}
 			className="bg-primary-accent lg:page:block absolute -bottom-1 hidden h-2"
 		/>
 	);
 };
 
-function calculateStyle(path: string): CSSProperties {
+function calculateStyle(path: string): CSSProperties | null {
 	if (path === "/") {
 		const element = document.getElementById("nav-");
 
@@ -42,10 +50,7 @@ function calculateStyle(path: string): CSSProperties {
 			width: element?.clientWidth,
 		};
 	} else {
-		return {
-			left: 0,
-			width: 0,
-		};
+		return null;
 	}
 }
 
