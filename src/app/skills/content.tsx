@@ -2,7 +2,6 @@ import {
 	CircleStackIcon,
 	CloudIcon,
 	CodeBracketIcon,
-	Cog6ToothIcon,
 	CommandLineIcon,
 	ServerIcon,
 } from "@heroicons/react/24/outline";
