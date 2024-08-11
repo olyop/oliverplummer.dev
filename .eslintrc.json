@@ -1,0 +1,10 @@
+{
+	"extends": ["@oly_op/eslint-config", "@oly_op/eslint-config-react"],
+	"rules": {
+		"react/react-in-jsx-scope": "off",
+		"react/jsx-fragments": "off"
+	},
+	"parserOptions": {
+		"project": "./tsconfig.eslint.json"
+	}
+}

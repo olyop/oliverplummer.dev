@@ -1,0 +1,5 @@
+*,
+*::before,
+*::after {
+	transition: 200ms ease-in-out all;
+}

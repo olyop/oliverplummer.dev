@@ -1,0 +1,10 @@
+{
+	"extends": "./tsconfig.json",
+	"include": [
+		"src",
+		"tailwind.config.cjs",
+		"next-env.d.ts",
+		"postcss.config.cjs",
+		"next.config.mjs"
+	]
+}

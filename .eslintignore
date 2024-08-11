@@ -1,6 +1,4 @@
 .git
 node_modules
-client/dist
-client/node_modules
-contact-details/node_modules
-contact-details/dist
+dist
+client
