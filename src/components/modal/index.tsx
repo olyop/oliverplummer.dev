@@ -76,7 +76,7 @@ export function Modal({
 			{isOpen && (
 				<div
 					className={clsx(
-						"relative left-1/2 top-20 max-h-[calc(100vh-10rem)] w-auto min-w-0 max-w-[calc(100vw-var(--header-height))] -translate-x-1/2 rounded-2xl bg-elevated shadow-lg sm:top-1/2 sm:max-h-[calc(100vh-var(--header-height))] sm:max-w-[40rem] sm:-translate-y-1/2",
+						"relative left-1/2 top-16 max-h-[calc(100vh-8rem)] w-auto min-w-0 max-w-[calc(100vw-var(--header-height))] -translate-x-1/2 rounded-2xl bg-elevated shadow-lg sm:top-1/2 sm:max-h-[calc(100vh-var(--header-height))] sm:max-w-[40rem] sm:-translate-y-1/2",
 						modalClassName,
 					)}
 				>
@@ -113,7 +113,7 @@ export function Modal({
 					{!hideTitle && icon && (
 						<div
 							className={clsx(
-								"flex gap-2 border-b border-b-primary px-6 py-4",
+								"flex h-14 gap-2 border-b border-b-primary px-6 py-4 sm:h-auto",
 								subTitle === undefined ? "items-center" : "items-start",
 								centerTitle ? "justify-center" : "justify-start",
 							)}
@@ -126,7 +126,11 @@ export function Modal({
 							</div>
 						</div>
 					)}
-					<div className={`overflow-auto py-8 ${contentClassName ?? ""}`}>{children}</div>
+					<div
+						className={`overflow-hidden overflow-y-auto py-8 ${contentClassName ?? ""}`}
+					>
+						{children}
+					</div>
 					{buttons && (
 						<div className={`flex gap-2 ${buttonClassName ?? ""}`}>{buttons}</div>
 					)}

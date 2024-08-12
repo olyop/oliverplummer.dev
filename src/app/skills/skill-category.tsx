@@ -8,6 +8,7 @@ export function SkillCategory({ skillCategory }: SkillCategoryProps) {
 		<Collapsible
 			id={skillCategory.code}
 			title={skillCategory.label}
+			text={skillCategory.description}
 			imageNode={imageClassName => skillCategory.image(imageClassName)}
 			contentClassName="space-y-4 md:space-y-8"
 			content={<SkillCategoryGrid skills={skillCategory.skills} />}

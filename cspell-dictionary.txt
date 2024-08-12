@@ -1,6 +1,7 @@
 Comfortaa
 directorytospotify
 goroutines
+Grotesk
 hsla
 iemobile
 JWT's

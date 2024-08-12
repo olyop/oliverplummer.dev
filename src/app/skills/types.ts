@@ -7,5 +7,6 @@ export interface Skill extends ContentItem {
 }
 
 export interface SkillCategory extends ContentItem {
+	description: string;
 	skills: Skill[];
 }

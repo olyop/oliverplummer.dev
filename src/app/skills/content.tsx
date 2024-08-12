@@ -55,6 +55,7 @@ export const skillCategories: SkillCategory[] = [
 	{
 		code: "frontend",
 		label: "Front End",
+		description: "Browser technologies and tools",
 		image: className => <CodeBracketIcon className={className} />,
 		skills: [
 			{
@@ -283,6 +284,7 @@ export const skillCategories: SkillCategory[] = [
 	{
 		code: "backend",
 		label: "Back End",
+		description: "Server-side, systems, API's, frameworks",
 		image: className => <ServerIcon className={className} />,
 		skills: [
 			{
@@ -357,7 +359,7 @@ export const skillCategories: SkillCategory[] = [
 						src={nextDarkLogo}
 					/>
 				),
-				level: 3,
+				level: 4,
 				dateStarted: new Date(2022, 0, 1),
 				description: removeNewLines`
 					Solid understanding of Next.js and how to use it to create server-side rendered applications.
@@ -472,6 +474,7 @@ export const skillCategories: SkillCategory[] = [
 	{
 		code: "cloud",
 		label: "Cloud",
+		description: "Cloud platforms, services, and related tools",
 		image: className => <CloudIcon className={className} />,
 		skills: [
 			{
@@ -576,6 +579,7 @@ export const skillCategories: SkillCategory[] = [
 	{
 		code: "database",
 		label: "Database",
+		description: "Database technologies, tools, and systems",
 		image: className => <CircleStackIcon className={className} />,
 		skills: [
 			{
@@ -644,6 +648,7 @@ export const skillCategories: SkillCategory[] = [
 	{
 		code: "devops",
 		label: "Dev Ops & Tools",
+		description: "Development operations, tools, and systems",
 		image: className => <CommandLineIcon className={className} />,
 		skills: [
 			{

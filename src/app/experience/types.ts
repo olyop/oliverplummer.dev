@@ -1,8 +1,8 @@
 import { ReactNode } from "react";
 
-import { ContentItem, ContentItemCode } from "@/types";
+import { ContentItem, ContentItemBase } from "@/types";
 
-export interface ExperienceItem extends ContentItemCode {
+export interface ExperienceItem extends ContentItemBase {
 	label: string;
 	description: string;
 }

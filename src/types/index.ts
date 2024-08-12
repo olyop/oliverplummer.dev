@@ -1,13 +1,15 @@
 import { ReactNode } from "react";
 
-export interface ContentItem extends ContentItemCode {
-	image: ContentTypeImage;
-	imageDark?: ContentTypeImage;
-}
+export type Theme = "light" | "dark" | "system";
 
-export interface ContentItemCode {
+export interface ContentItemBase {
 	code: string;
 	label: string;
+}
+
+export interface ContentItem extends ContentItemBase {
+	image: ContentTypeImage;
+	imageDark?: ContentTypeImage;
 }
 
 export type ContentTypeImage = (className: string) => ReactNode;

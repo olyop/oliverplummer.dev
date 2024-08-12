@@ -21,7 +21,10 @@
 		"dev": "next dev --turbo --experimental-https --experimental-https-key /home/op/.mkcert/localhost-key.pem --experimental-https-cert /home/op/.mkcert/localhost.pem",
 		"build": "next build",
 		"start": "next start",
-		"lint": "next lint"
+		"lint": "next lint",
+		"deploy-clear": "aws s3 rm s3://oliverplummer.s3.ap-southeast-2.amazonaws.com --recursive",
+		"deploy-sync": "aws s3 sync --cache-control max-age=31536000 ./out/ s3://oliverplummer.s3.ap-southeast-2.amazonaws.com",
+		"deploy": "npm run build && npm run deploy-clear && npm run deploy-sync"
 	},
 	"dependencies": {
 		"@fontsource-variable/rubik": "5.0.22",
@@ -31,7 +34,7 @@
 		"react": "18.3.1",
 		"react-dom": "18.3.1",
 		"sharp": "0.33.4",
-		"tailwindcss": "3.4.7"
+		"tailwindcss": "3.4.9"
 	},
 	"devDependencies": {
 		"@oly_op/cspell-dict": "1.1.16",
@@ -39,12 +42,12 @@
 		"@oly_op/eslint-config-react": "4.3.11",
 		"@oly_op/prettier-config": "1.9.7",
 		"@oly_op/tsconfig": "1.2.3",
-		"@types/node": "22.0.2",
+		"@types/node": "22.2.0",
 		"@types/react": "18.3.3",
 		"@types/react-dom": "18.3.0",
-		"autoprefixer": "10.4.19",
-		"npm-check-updates": "17.0.3",
-		"postcss": "8.4.40",
+		"autoprefixer": "10.4.20",
+		"npm-check-updates": "17.0.6",
+		"postcss": "8.4.41",
 		"postcss-load-config": "6.0.1"
 	}
 }

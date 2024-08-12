@@ -1,5 +1,4 @@
 import { Metadata } from "next";
-import { Space_Grotesk } from "next/font/google";
 import { PropsWithChildren } from "react";
 
 import { Container } from "@/components/container";
@@ -7,16 +6,10 @@ import { Content } from "@/components/content";
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
 import { Sidebar } from "@/components/sidebar";
+import { rubik } from "@/lib/font";
 import { InitializeScript } from "@/lib/initialize";
 
 import "./index.css";
-
-const rubik = Space_Grotesk({
-	weight: ["400", "700"],
-	subsets: ["latin"],
-	display: "swap",
-	variable: "--font-family",
-});
 
 export const metadata: Metadata = {
 	title: "Oliver Plummer",

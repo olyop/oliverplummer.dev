@@ -34,7 +34,7 @@ export function Project({ item }: ProjectProps) {
 					<ProjectSection
 						title="Technologies"
 						icon={iconClassName => <BoltIcon className={iconClassName} />}
-						className="grid max-w-[35rem] grid-cols-[repeat(auto-fill,minmax(8rem,1fr))] items-center gap-2"
+						className="grid max-w-[45rem] grid-cols-[repeat(auto-fill,minmax(10rem,1fr))] items-center gap-2"
 					>
 						{item.technologies.map(technology => (
 							<div
@@ -48,7 +48,7 @@ export function Project({ item }: ProjectProps) {
 							</div>
 						))}
 					</ProjectSection>
-					{item.features.length > 0 && (
+					{item.features && item.features.length > 0 && (
 						<ProjectSection
 							title="Features"
 							icon={iconClassName => <BeakerIcon className={iconClassName} />}

@@ -1,3 +1,4 @@
+import { BuildingLibraryIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
 
 import apolloServerFastifyLogo from "@/assets/projects/apollo-server-fastify/logo.png";
@@ -28,14 +29,20 @@ import nextDarkLogo from "@/assets/skills/back-end/next-js-dark.png";
 import nextLogo from "@/assets/skills/back-end/next-js.png";
 import nodeLogo from "@/assets/skills/back-end/node.png";
 import springLogo from "@/assets/skills/back-end/spring.png";
+import tomcatLogo from "@/assets/skills/back-end/tomcat.png";
 import auth0Logo from "@/assets/skills/cloud/auth0.png";
+import azureLogo from "@/assets/skills/cloud/azure.png";
 import lambdaLogo from "@/assets/skills/cloud/lambda.png";
 import stripeLogo from "@/assets/skills/cloud/stripe.png";
 import postgresqlLogo from "@/assets/skills/database/postgresql.png";
+import sqlServerLogo from "@/assets/skills/database/sql-server.png";
+import octopusDeployLogo from "@/assets/skills/dev-ops/octopus-deploy.png";
+import powershellLogo from "@/assets/skills/dev-ops/powershell.png";
 import viteLogo from "@/assets/skills/dev-ops/vite.png";
 import reactLogo from "@/assets/skills/front-end/react.png";
 import tailwindLogo from "@/assets/skills/front-end/tailwind.png";
 import typescriptLogo from "@/assets/skills/front-end/typescript.png";
+import vueLogo from "@/assets/skills/front-end/vue.png";
 import webWorkerDarkLogo from "@/assets/skills/front-end/web-worker-dark.png";
 import webWorkerLogo from "@/assets/skills/front-end/web-worker.png";
 import { removeNewLines } from "@/helpers";
@@ -43,6 +50,116 @@ import { removeNewLines } from "@/helpers";
 import { Project } from "./types";
 
 export const projects: Project[] = [
+	{
+		code: "readycase",
+		label: "Ready Case",
+		text: "Modular platform for managing, reporting, and processing judicial cases. Used by courts, commissioners, and tribunals.",
+		image: className => <BuildingLibraryIcon className={className} />,
+		url: "https://www.readytech.com.au/what-we-do/justice/products/ready-case/",
+		sourceCodeUrl: null,
+		screencasts: [],
+		screenshots: [],
+		description: removeNewLines`
+			Working at Ready Tech, I was a key contributor to their flagship legal case management software, used by UK and Australian courts.
+			Developed new features and maintained code on both the front-end and back-end. Optimized database performance.
+			Rolled out CI/CD tooling and contributed to improving
+			quality and to maintenance releases. 
+		`,
+		features: null,
+		technologies: [
+			{
+				code: "java",
+				label: "Java",
+				image: className => (
+					<Image
+						width={16}
+						height={16}
+						className={className}
+						alt="Java logo"
+						src={javaLogo}
+					/>
+				),
+			},
+			{
+				code: "tomcat",
+				label: "Apache Tomcat",
+				image: className => (
+					<Image
+						width={16}
+						height={16}
+						className={className}
+						alt="Tomcat logo"
+						src={tomcatLogo}
+					/>
+				),
+			},
+			{
+				code: "vue",
+				label: "Vue.js",
+				image: className => (
+					<Image
+						width={16}
+						height={16}
+						className={className}
+						alt="Vue.js logo"
+						src={vueLogo}
+					/>
+				),
+			},
+			{
+				code: "azure",
+				label: "Azure",
+				image: className => (
+					<Image
+						width={16}
+						height={16}
+						className={className}
+						alt="Azure logo"
+						src={azureLogo}
+					/>
+				),
+			},
+			{
+				code: "sql-server",
+				label: "SQL Server",
+				image: className => (
+					<Image
+						width={16}
+						height={16}
+						className={className}
+						alt="SQL Server logo"
+						src={sqlServerLogo}
+					/>
+				),
+			},
+			{
+				code: "powershell",
+				label: "PowerShell",
+				image: className => (
+					<Image
+						width={16}
+						height={16}
+						className={className}
+						alt="PowerShell logo"
+						src={powershellLogo}
+					/>
+				),
+			},
+			{
+				code: "octopus-deploy",
+				label: "Octopus Deploy",
+				image: className => (
+					<Image
+						width={16}
+						height={16}
+						className={className}
+						alt="Octopus Deploy logo"
+						src={octopusDeployLogo}
+					/>
+				),
+			},
+		],
+	},
 	{
 		code: "xtremehiphop",
 		label: "Xtreme Hip-Hop",
