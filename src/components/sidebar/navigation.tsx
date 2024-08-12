@@ -14,7 +14,7 @@ import { CSSProperties } from "react";
 export function Navigation({ className }: NavigationProps) {
 	const pathname = usePathname();
 	return (
-		<nav className={clsx("relative grid grid-rows-4", className)}>
+		<nav tabIndex={-1} className={clsx("relative grid grid-rows-4", className)}>
 			<Link
 				href="/"
 				onClick={handleClick}

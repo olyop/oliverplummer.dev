@@ -175,7 +175,9 @@ function FooterSection({ title, children }: PropsWithChildren & { title: string 
 	return (
 		<div className="flex flex-col gap-4">
 			<h3 className="text-xl sm:text-2xl">
-				<b>{title}</b>
+				<b>
+					<u>{title}</u>
+				</b>
 			</h3>
 			<div className="flex flex-col items-start gap-3">{children}</div>
 		</div>

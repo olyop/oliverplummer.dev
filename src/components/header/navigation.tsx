@@ -10,7 +10,7 @@ import { HeaderUnderline } from "./underline";
 export function HeaderNavigation() {
 	const pathname = usePathname();
 	return (
-		<div className="relative flex h-full items-center gap-6">
+		<div className="pointer-events-none relative flex h-full items-center gap-6 lg:page:pointer-events-auto">
 			<Link
 				href="/"
 				id="nav-about"

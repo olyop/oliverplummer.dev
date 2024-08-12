@@ -15,7 +15,7 @@ export function Collapsible({
 		<details
 			open
 			className={clsx(
-				"sm:scroll-mt-[var(--header-height)+2rem)] bg-elevated hover:border-primary-accent hover:bg-hover open:bg-hover border-primary open:border-primary-accent group scroll-mt-[calc(10rem+2rem)] overflow-hidden rounded-2xl border shadow-lg transition-colors duration-200",
+				"sm:scroll-mt-[var(--header-height)+2rem)] group scroll-mt-[calc(10rem+2rem)] overflow-hidden rounded-2xl border border-primary bg-hover shadow-lg transition-colors duration-200 open:border-primary-accent open:!bg-hover hover:border-primary-accent hover:bg-primary",
 				className,
 			)}
 		>
@@ -54,10 +54,10 @@ export function Collapsible({
 			</summary>
 			<div
 				className={clsx(
-					"bg-elevated border-primary-accent border-t transition-colors duration-200",
+					"border-t border-primary-accent bg-elevated transition-colors duration-200",
 				)}
 			>
-				<div className={`bg-elevated rounded-b-2xl p-4 md:p-8 ${contentClassName ?? ""}`}>
+				<div className={`rounded-b-2xl bg-elevated p-4 md:p-8 ${contentClassName ?? ""}`}>
 					{content}
 				</div>
 			</div>
